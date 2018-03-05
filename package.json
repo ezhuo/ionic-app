@@ -2,7 +2,7 @@
   "name": "ionic-app",
   "version": "0.0.1",
   "author": "ezhuo",
-  "homepage": "http://ionicframework.com/",
+  "homepage": "http://ezhuo.cn/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -16,7 +16,7 @@
     "dev:aot": "ionic cordova run android --device --prod --aot",
     "release": "ionic cordova build android --release --prod --aot",
     "platform:install": "ionic cordova platform add android@6.3.0 --save",
-    "platform:remove": "ionic cordova platform remove android --save"
+    "platform:remove": "ionic cordova platform remove android --save && rimraf plugins && rimraf node_modules"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -54,7 +54,7 @@
     "cordova-plugin-advanced-http": "^1.11.0",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-appminimize": "^1.0.0",
-    "cordova-plugin-camera": "^2.4.1",
+    "cordova-plugin-camera": "^4.0.2",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^2.0.1",
@@ -62,11 +62,11 @@
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-opener2": "^2.0.19",
     "cordova-plugin-file-transfer": "^1.7.1",
-    "cordova-plugin-inappbrowser": "^1.7.2",
+    "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-jcore": "^1.2.0",
-    "cordova-plugin-network-information": "^1.3.4",
+    "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.1",
     "cordova-plugin-telerik-imagepicker": "git+https://github.com/Telerik-Verified-Plugins/ImagePicker.git",
@@ -74,7 +74,7 @@
     "cordova-plugin-x-toast": "^2.6.0",
     "cordova-plugin-zip": "^3.1.0",
     "cordova-sqlite-storage": "^2.2.1",
-    "cordova.plugins.diagnostic": "^3.9.2",
+    "cordova.plugins.diagnostic": "^4.0.0",
     "echarts": "^4.0.4",
     "fundebug-javascript": "^0.3.4",
     "ion2-calendar": "^2.1.6-beta.2",
@@ -82,7 +82,7 @@
     "ionic2-city-picker": "0.0.11",
     "ionicons": "3.0.0",
     "jpush-phonegap-plugin": "^3.4.1",
-    "phonegap-plugin-barcodescanner": "^6.0.8",
+    "phonegap-plugin-barcodescanner": "^7.0.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
@@ -94,7 +94,7 @@
   "config": {
     "ionic_aot_write_to_disk": true
   },
-  "description": "An Ionic project",
+  "description": "ezhuo",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -119,14 +119,14 @@
       "cordova-plugin-zip": {},
       "cordova-plugin-jcore": {},
       "cordova-hot-code-push-plugin": {},
-      "cordova-plugin-file-opener2": {},
       "call-number": {},
       "com.kit.cordova.amaplocation": {},
-      "cordova-plugin-file-transfer": {},
-      "cordova-plugin-file": {},
       "jpush-phonegap-plugin": {
         "APP_KEY": "a0becaf86f63fcdc3bd071e5"
       },
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-opener2": {},
       "com.synconset.imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "请允许使用图库"
       }
