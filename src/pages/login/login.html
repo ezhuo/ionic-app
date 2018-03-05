@@ -1,0 +1,48 @@
+<ion-header>
+  <div style="min-height: 30px;">
+    <button ion-button color="dark" clear icon-only *ngIf="globalData.user&&globalData.user.id" (click)="viewCtrl.dismiss()">
+      <ion-icon name="ios-close"></ion-icon>
+    </button>
+  </div>
+  <div text-center style="font-size: 20px">登 录</div>
+</ion-header>
+
+
+<ion-content>
+  <div padding>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+      <ion-item>
+        <ion-input type="text" formControlName="username" placeholder="用户名" clearInput></ion-input>
+      </ion-item>
+      <div *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.touched" class="validation-failed">
+        请输入正确用户名
+      </div>
+
+      <ion-item>
+        <ion-input type="password" formControlName="password" placeholder="密码" clearInput></ion-input>
+      </ion-item>
+      <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.username.touched" class="validation-failed">
+        请输入密码
+      </div>
+
+      <div padding>
+        <button ion-button block type="submit" [disabled]="!loginForm.valid||submitted">登 录</button>
+      </div>
+    </form>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center tappable (click)="try()">
+        <button ion-button small clear color="secondary">没有密码?点击试用</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center tappable (click)="findPassword()">
+        <button ion-button small clear color="dark">找回密码</button>
+      </ion-col>
+      <ion-col text-center tappable (click)="toRegister()">
+        <button ion-button small clear color="dark">注　册</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

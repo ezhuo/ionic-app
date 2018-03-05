@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ChartjsDemo page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>chartjs-demo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div padding-vertical>
+    <canvas #chartBar height="200"></canvas>
+  </div>
+  <div padding-vertical>
+    <canvas #chartLine height="200"></canvas>
+  </div>
+  <div padding-vertical>
+    <canvas #chartPie height="200"></canvas>
+  </div>
+  <div padding>
+    <button ion-button block (click)="details('http://www.jianshu.com/p/a14b438db0a0')">查看详情</button>
+  </div>
+</ion-content>

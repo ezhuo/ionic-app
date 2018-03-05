@@ -1,0 +1,29 @@
+<!--
+  Generated template for the QrcodeDemoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>qrcode-demo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>请改变内容</ion-label>
+    <ion-input type="text" [(ngModel)]="text"  #input (ionChange)="textStream.next(input.value)"></ion-input>
+  </ion-item>
+  <div text-center padding>
+    <div>方式一:</div>
+    <div #codeDiv></div>
+    <br>
+    <br>
+    <div>方式二:</div>
+    <img [src]="codeUrl" alt="">
+  </div>
+</ion-content>

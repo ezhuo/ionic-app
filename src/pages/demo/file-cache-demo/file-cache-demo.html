@@ -1,0 +1,32 @@
+<!--
+  Generated template for the FileCacheDemoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>图片缓存</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      1.在正常上传情况下,文件上传到后台,返回文件信息表文件对应的id,业务表id和文件id做关联即可<br>
+      2.在使用缓存情况下,文件根本没有上传到后台,所以需要返回一个临时id,用于先和业务表建立关系<br>
+      3.当文件真正上传到后台,得到真正的文件id,然后把临时id替换为真正的id<br>
+      核心实现请看 FileService.ts中uploadMultiByFilePath()和getFileInfoByIds()<br>
+      真机上传功能请看app"我的-图片缓存"功能
+    </ion-card-content>
+  </ion-card>
+  <div padding>
+    <page-select-picture [max]="6" [(fileObjList)]="fileObjList"></page-select-picture>
+  </div>
+  <div padding>
+    <button ion-button block (click)="save()">保存</button>
+  </div>
+</ion-content>

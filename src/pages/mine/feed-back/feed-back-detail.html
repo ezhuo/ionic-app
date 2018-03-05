@@ -1,0 +1,49 @@
+<!--
+  Generated template for the FeedBackDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      我的反馈
+    </ion-card-header>
+    <ion-list>
+      <ion-item text-wrap>
+        <div>{{detail.requirement.title}}</div>
+        <div>{{detail.requirement.content}}</div>
+        <div padding-vertical>
+          <page-select-picture [(fileObjList)]="detail.requirement.fileList" [allowAdd]="false"
+                               [allowDelete]="false"></page-select-picture>
+        </div>
+        <div class="my-time">{{detail.requirement.createTime|date:'yyyy-MM-dd HH:mm'}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      回复
+    </ion-card-header>
+    <ion-list>
+      <ion-item *ngIf="detail.answerList.length===0">
+        暂无回复
+      </ion-item>
+      <ion-item *ngFor="let item of detail.answerList" text-wrap>
+        <div>{{item.content}}</div>
+        <div class="my-time">{{item.createTime|date:'yyyy-MM-dd HH:mm'}}</div>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+</ion-content>
