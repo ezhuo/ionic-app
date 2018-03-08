@@ -94,7 +94,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
@@ -128,4 +127,5 @@
     <plugin name="com.synconset.imagepicker" spec="https://github.com/Telerik-Verified-Plugins/ImagePicker.git">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="请允许使用图库" />
     </plugin>
+    <engine name="android" spec="6.3.0" />
 </widget>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { DemoPage } from "./demo";
-import { PaginationDemoPage } from "./pagination-demo/pagination-demo";
 import { CustomIconDemoPage } from "./custom-icon-demo/custom-icon-demo";
 import { ChartjsDemoPage } from "./chartjs-demo/chartjs-demo";
 import { EchartsDemoPage } from "./echarts-demo/echarts-demo";
@@ -17,7 +16,6 @@ import { CityPickerModule } from "ionic2-city-picker";
 import { DemoService } from "./DemoService";
 import { CalendarModule } from "ion2-calendar";
 import { CalendarDemoPage } from "./calendar-demo/calendar-demo";
-import { NativeDemoPage } from "./native-demo/native-demo";
 import { FileCacheDemoPage } from "./file-cache-demo/file-cache-demo";
 import { PermissionDemoPage } from "./permission-demo/permission-demo";
 import { PatrolTaskPage } from "./permission-demo/patrol-task/patrol-task";
@@ -34,9 +32,9 @@ const Modules = [
 
 const Components = [
   DemoPage, PermissionDemoPage, PatrolTaskPage, CustomerListPage,
-  PaginationDemoPage, CustomIconDemoPage, ChartjsDemoPage,
+  CustomIconDemoPage, ChartjsDemoPage,
   EchartsDemoPage, SelectPicDemoPage, CustomPipeDemo, CropPicDemoPage,
-  CityPickerDemoPage, CalendarDemoPage, NativeDemoPage, FileCacheDemoPage,
+  CityPickerDemoPage, CalendarDemoPage, FileCacheDemoPage,
   QrcodeDemoPage, AllowleverDemoPage
 ];
 

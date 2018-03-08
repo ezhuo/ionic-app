@@ -5,6 +5,7 @@
   "homepage": "http://ezhuo.cn/",
   "private": true,
   "scripts": {
+    "start": "npm run ionic:serve",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -55,7 +56,9 @@
     "ionicons": "3.0.0",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "angular2-jwt": "^0.2.3",
+    "blueimp-md5": "^2.10.0",
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",

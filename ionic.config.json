@@ -1,8 +1,18 @@
 {
-  "name": "app-base",
+  "name": "ionic-app",
   "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://127.0.0.1:8090/api/sys/pc/v1"
+    },
+    {
+      "path": "/uploads",
+      "proxyUrl": "http://127.0.0.1:3022/uploads"
+    }
+  ]
 }

@@ -7,6 +7,10 @@ import { PagesModule } from "../pages/pages.module";
 import { AppComponent } from "./app.component";
 import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from "./modal-transitions";
 
+/**
+ * IonicModule.forRoot
+ * https://ionicframework.com/docs/api/config/Config
+ */
 const Components = [AppComponent]
 @NgModule({
   declarations: [...Components],

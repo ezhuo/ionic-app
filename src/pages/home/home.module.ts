@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { HomePage } from './home';
 import { SharedModule } from '../../shared/shared.module';
+import { SelectPicturePageModule } from "../../theme/components/select-picture/select-picture.module";
 
 const Modules = [
-  SharedModule
+  SharedModule,
+  SelectPicturePageModule
 ];
 
 const Components = [

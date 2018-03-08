@@ -7,6 +7,9 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { IonicNativeServiceModule } from './ionic.native.module';
 import { ServicesModule } from './services/services.module';
 
+import { UtilsModule } from './utils/utils.module';
+import { DataModule } from './data/data.module';
+
 import { IS_DEBUG, FUNDEBUG_API_KEY } from "../core/public/config";
 
 //参考文档:https://docs.fundebug.com/notifier/javascript/framework/ionic2.html
@@ -28,14 +31,18 @@ export class FunDebugErrorHandler implements ErrorHandler {
 }
 
 const CORE_PROVIDERS = [
-  IonicNativeServiceModule.forRoot().providers,
-  ServicesModule.forRoot().providers,
+  ...IonicNativeServiceModule.forRoot().providers,
+  ...ServicesModule.forRoot().providers,
+  ...DataModule.forRoot().providers,
+  ...UtilsModule.forRoot().providers,
   { provide: ErrorHandler, useClass: FunDebugErrorHandler }
 ];
 
 const Modules = [
   HttpModule,
   IonicStorageModule.forRoot(),
+  DataModule.forRoot(),
+  UtilsModule.forRoot(),
   CalendarModule
 ];
 

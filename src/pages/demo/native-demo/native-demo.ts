@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {NativeService} from "../../../core/services/NativeService";
-import {Position} from "../../../core/model/type";
+import { Component } from '@angular/core';
+import { NavController, IonicPage } from 'ionic-angular';
+import { NativeService } from "../../../core/services/NativeService";
+import { Position } from "../../../core/model/type";
 
+@IonicPage()
 @Component({
   selector: 'page-native-demo',
   templateUrl: 'native-demo.html',
@@ -63,10 +64,10 @@ export class NativeDemoPage {
     });
   }
 
-  navigation(){
-    let startPoint:Position = {'lng': '113.350912', 'lat': '23.119495'};
-    let endPoint :Position= {'lng': '113.450912', 'lat': '23.219495'};
-    this.nativeService.navigation(startPoint,endPoint).subscribe(res => {
+  navigation() {
+    let startPoint: Position = { 'lng': '113.350912', 'lat': '23.119495' };
+    let endPoint: Position = { 'lng': '113.450912', 'lat': '23.219495' };
+    this.nativeService.navigation(startPoint, endPoint).subscribe(res => {
       console.log(res);
     });
   }

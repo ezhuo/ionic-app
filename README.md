@@ -11,6 +11,7 @@
 * npm install
 * npm run platform:install
 * cordova plugin add --save cordova-plugin-whitelist cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
+* npm run build:android
 
 ## 常用包安装
 

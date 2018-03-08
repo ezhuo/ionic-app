@@ -1,20 +1,18 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {NativeDemoPage} from "./native-demo/native-demo";
-import {PaginationDemoPage} from "./pagination-demo/pagination-demo";
-import {CustomIconDemoPage} from "./custom-icon-demo/custom-icon-demo";
-import {ChartjsDemoPage} from "./chartjs-demo/chartjs-demo";
-import {SelectPicDemoPage} from "./select-pic-demo/select-pic-demo";
-import {CustomPipeDemo} from "./custom-pipe-demo/custom-pipe-demo";
-import {TransitionDemoPage} from "./transition-demo/transition-demo";
-import {CropPicDemoPage} from "./crop-pic-demo/crop-pic-demo";
-import {CityPickerDemoPage} from "./city-picker-demo/city-picker-demo";
-import {CalendarDemoPage} from "./calendar-demo/calendar-demo";
-import {FileCacheDemoPage} from "./file-cache-demo/file-cache-demo";
-import {EchartsDemoPage} from "./echarts-demo/echarts-demo";
-import {PermissionDemoPage} from "./permission-demo/permission-demo";
-import {QrcodeDemoPage} from "./qrcode-demo/qrcode-demo";
-import {AllowleverDemoPage} from './allowlever-demo/allowlever-demo';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { CustomIconDemoPage } from "./custom-icon-demo/custom-icon-demo";
+import { ChartjsDemoPage } from "./chartjs-demo/chartjs-demo";
+import { SelectPicDemoPage } from "./select-pic-demo/select-pic-demo";
+import { CustomPipeDemo } from "./custom-pipe-demo/custom-pipe-demo";
+import { TransitionDemoPage } from "./transition-demo/transition-demo";
+import { CropPicDemoPage } from "./crop-pic-demo/crop-pic-demo";
+import { CityPickerDemoPage } from "./city-picker-demo/city-picker-demo";
+import { CalendarDemoPage } from "./calendar-demo/calendar-demo";
+import { FileCacheDemoPage } from "./file-cache-demo/file-cache-demo";
+import { EchartsDemoPage } from "./echarts-demo/echarts-demo";
+import { PermissionDemoPage } from "./permission-demo/permission-demo";
+import { QrcodeDemoPage } from "./qrcode-demo/qrcode-demo";
+import { AllowleverDemoPage } from './allowlever-demo/allowlever-demo';
 
 @Component({
   selector: 'page-contact',
@@ -31,11 +29,11 @@ export class DemoPage {
   }
 
   native() {
-    this.navCtrl.push(NativeDemoPage);
+    this.navCtrl.push('NativeDemoPage');
   }
 
   pagination() {
-    this.navCtrl.push(PaginationDemoPage);
+    this.navCtrl.push('PaginationDemoPage');
   }
 
   customIcon() {
