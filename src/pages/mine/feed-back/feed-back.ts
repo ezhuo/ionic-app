@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
-import {FileObj} from "../../../core/model/FileObj";
-import {FileService} from "../../../core/services/FileService";
-import {Validators} from "../../../core/services/Validators";
-import {FormBuilder} from "@angular/forms";
-import {MineService} from "../MineService";
-import {AlertController, NavController} from "ionic-angular";
+import { Component } from '@angular/core';
+import { FileObj } from "../../../core/model/FileObj";
+import { FormBuilder } from "@angular/forms";
+import { MineService } from "../MineService";
+import { NavController } from "ionic-angular";
+import { FileService } from '../../../core/utils/file.service';
+import { ValidatorService } from '../../../core/data/validator.service';
+import { NoticeService } from '../../../core/utils/notice.service';
 
 @Component({
   selector: 'page-feed-back',
@@ -28,14 +29,16 @@ export class FeedBackPage {
   fileObjList: FileObj[] = [];
   form: any;
 
-  constructor(public navCtrl: NavController,
-              private mineService: MineService,
-              private fileService: FileService,
-              private alertCtrl: AlertController,
-              private formBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController,
+    private mineService: MineService,
+    private fileService: FileService,
+    private noticeService: NoticeService,
+    private formBuilder: FormBuilder
+  ) {
     this.form = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],// 第一个参数是默认值
-      content: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(500)]],
+      title: ['', [ValidatorService.required, ValidatorService.minLength(4), ValidatorService.maxLength(20)]],// 第一个参数是默认值
+      content: ['', [ValidatorService.required, ValidatorService.minLength(4), ValidatorService.maxLength(500)]],
       type: ['1'],//1:BUG;2:需求；3：问题；
       state: ['1'],//1:未回复；2:已回复；3:补充待回复;8：已关闭;9重新打开；
       sourceId: [1]//1:现场作业app；2:精准营销app；3:web
@@ -58,12 +61,12 @@ export class FeedBackPage {
 
 
   save(data) {
-    this.alertCtrl.create({
+    this.noticeService.alert({
       title: '确定提交？',
       subTitle: '提交后将不能修改',
-      buttons: [{text: '取消'},
-        {
-          text: '确定', handler: () => {
+      buttons: [{ text: '取消' },
+      {
+        text: '确定', handler: () => {
           this.fileService.uploadMultiByFilePath(this.fileObjList).subscribe(fileList => {
             let fileIdList = [];
             for (let fileObj of fileList) {
@@ -75,9 +78,9 @@ export class FeedBackPage {
             })
           });
         }
-        }
+      }
       ]
-    }).present();
+    });
 
   }
 

@@ -1,10 +1,11 @@
 // tslint:disable:no-console class-name
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpEvent, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import * as moment from 'moment';
-import { api } from '../public/config';
+import { api, http } from '../public/config';
+
 
 /**
  * 封装HttpClient，主要解决：
@@ -343,7 +344,7 @@ export class HttpService {
         if (!url.includes('./')) {
             url = this.SERVER_URL + url;
         }
-        return this.http.request(method, url, options).pipe(
+        return this.http.request(method, url, options).timeout(http.timeout).pipe(
             tap(() => this.end()),
             catchError((res) => {
                 this.end();

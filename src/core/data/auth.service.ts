@@ -33,7 +33,7 @@ export class AuthService {
         const to = setTimeout(() => {
           http$.unsubscribe();
           clearTimeout(to);
-        }, 0);
+        }, 10);
       })
       .subscribe(
         (data: any) => {
@@ -67,18 +67,6 @@ export class AuthService {
     if (data && data.data && data.data.menu_list)
       this.tokenService.menu_reload(data.data.menu_list);
 
-    this.http.get(`./assets/app-data.json`).pipe(
-      // 接收其他拦截器后产生的异常消息
-      catchError((appData) => {
-        return appData;
-      })
-    ).subscribe(
-      (appData: any) => {
-        this.tokenService.menu_reload(appData.menu);
-      },
-      (err) => { },
-      () => { }
-    );
   }
 
   /**

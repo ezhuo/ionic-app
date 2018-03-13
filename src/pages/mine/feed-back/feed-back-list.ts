@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MineService } from "../MineService";
 import { FeedBackPage } from "./feed-back";
 import { FeedBackDetailPage } from "./feed-back-detail";
-import { PAGE_SIZE } from "../../../core/public/config";
+import { define } from "../../../core/public/config";
 
 /**
  * Generated class for the FeedBackListPage page.
@@ -20,7 +20,7 @@ export class FeedBackListPage {
 
   query = {
     page: 1,
-    rows: PAGE_SIZE,
+    rows: define.table_page_size,
     sourceId: 1//1:现场作业app；2:精准营销app；3:web
   };
   data = {
@@ -44,7 +44,7 @@ export class FeedBackListPage {
 
 
   requirementPersonList() {
-    this.mineService.requirementPersonList(this.query).subscribe(res => {
+    this.mineService.requirementPersonList(this.query).subscribe((res: any) => {
       this.data = res;
     })
   }

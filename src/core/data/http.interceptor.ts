@@ -9,11 +9,9 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
+import { TimeoutError } from 'rxjs';
 import { TokenService } from './token.service';
-
 import 'rxjs/add/operator/do';
-
 import * as helper from '../../helpers';
 import { UserService } from './users.service';
 import { StateService } from './state.service';
@@ -47,7 +45,9 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       },
       (err: any) => {
-        if (err instanceof HttpErrorResponse) {
+        if (err instanceof TimeoutError) {
+          this.noticeService.msg_info('请求超时,请稍后再试!');
+        } else if (err instanceof HttpErrorResponse) {
           this.httpResponseError(authReq, err);
         }
       }

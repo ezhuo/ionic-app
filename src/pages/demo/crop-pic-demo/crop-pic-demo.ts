@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {NativeService} from "../../../core/services/NativeService";
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { NativeService } from "../../../core/utils/native.service";
 declare var AlloyCrop;
+
 /**
  * Generated class for the CropPicDemoPage page.
  *

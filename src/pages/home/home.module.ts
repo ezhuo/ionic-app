@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { HomePage } from './home';
+import { HomePage } from "./home";
 import { SharedModule } from '../../shared/shared.module';
-import { SelectPicturePageModule } from "../../theme/components/select-picture/select-picture.module";
 
 const Modules = [
-  SharedModule,
-  SelectPicturePageModule
+  SharedModule
 ];
 
 const Components = [
-  HomePage
+    HomePage
 ];
 
 const Services = [

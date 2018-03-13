@@ -1,8 +1,10 @@
-import {Component, Input} from '@angular/core';
-import {NavController, NavParams, ModalController, IonicPage} from 'ionic-angular';
-import {SearchAddress} from "../search-address/search-address";
-import {Navigation} from "../navigation/navigation";
-import {NativeService} from "../../../../core/services/NativeService";
+import { NoticeService } from './../../../../core/utils/notice.service';
+import { NativeService } from './../../../../core/utils/native.service';
+import { Component, Input } from '@angular/core';
+import { NavController, NavParams, ModalController, IonicPage } from 'ionic-angular';
+import { SearchAddress } from "../search-address/search-address";
+import { Navigation } from "../navigation/navigation";
+
 declare var AMap;
 
 @IonicPage()
@@ -30,9 +32,11 @@ export class MapLocation {
   };
 
   constructor(public navCtrl: NavController,
-              public modalCtrl: ModalController,
-              public  nativeService: NativeService,
-              public navParams: NavParams) {
+    public modalCtrl: ModalController,
+    public nativeService: NativeService,
+    public navParams: NavParams,
+    public noticeService: NoticeService
+  ) {
   }
 
   ngAfterContentInit() {
@@ -87,14 +91,14 @@ export class MapLocation {
       window['HomeAMap'] = this.map;
     } catch (err) {
       that.mapIsComplete = false;
-      that.nativeService.showToast('地图加载失败,请检查网络或稍后再试.')
+      that.noticeService.msg_info('地图加载失败,请检查网络或稍后再试.')
     }
   }
 
-//跳转到地址查询搜索页面,并返回一个地址对象(经纬坐标+中文地址)
+  //跳转到地址查询搜索页面,并返回一个地址对象(经纬坐标+中文地址)
   locationSearch() {
     let that = this;
-    let locationSearchModal = that.modalCtrl.create(SearchAddress, {address: that.params.address});
+    let locationSearchModal = that.modalCtrl.create(SearchAddress, { address: that.params.address });
     locationSearchModal.present();
     locationSearchModal.onDidDismiss(item => {
       if (item) {
@@ -103,7 +107,7 @@ export class MapLocation {
     })
   }
 
-//定位当前地址
+  //定位当前地址
   mapLocation() {
     let that = this;
     that.isPositioning = true;
@@ -115,7 +119,7 @@ export class MapLocation {
     });
   }
 
-//描点标注
+  //描点标注
   private drawMarker(position, addressName: string = '') {
     let that = this;
     that.params.position = position;
@@ -171,16 +175,16 @@ export class MapLocation {
     });
   }
 
-//导航函数
+  //导航函数
   mapNavigation(navigationType) {//1驾车,2公交,3步行
     let markerPosition = this.marker.getPosition();
     if (!markerPosition) {
-      this.nativeService.showToast('请先搜索要去的地点');
+      this.noticeService.msg_info('请先搜索要去的地点');
       return;
     }
     let modal = this.modalCtrl.create(Navigation, {
       'navigationType': navigationType,
-      'markerLocation': {'lng': markerPosition.lng, 'lat': markerPosition.lat}
+      'markerLocation': { 'lng': markerPosition.lng, 'lat': markerPosition.lat }
     });
     modal.present();
   }

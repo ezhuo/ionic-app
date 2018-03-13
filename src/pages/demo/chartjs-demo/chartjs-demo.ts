@@ -1,7 +1,7 @@
-import {Component, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import Chart from 'chart.js';
-import {NativeService} from "../../../core/services/NativeService"; // 导入chart.js
+import { NativeService } from "../../../core/utils/native.service"; // 导入chart.js
 
 /*
   Generated class for the ChartjsDemo page.
@@ -18,10 +18,10 @@ export class ChartjsDemoPage {
   @ViewChild('chartLine') chartLine: ElementRef;
   @ViewChild('chartPie') chartPie: ElementRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeService: NativeService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeService: NativeService) { }
 
 
-  details(url){
+  details(url) {
     this.nativeService.openUrlByBrowser(url);
   }
 

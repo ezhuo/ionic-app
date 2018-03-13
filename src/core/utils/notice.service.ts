@@ -1,10 +1,15 @@
 import { Injectable, Injector } from '@angular/core';
-import { Platform, ToastController, LoadingController, Loading, AlertController } from "ionic-angular";
+import { ToastController, LoadingController, Loading, AlertController, Platform } from "ionic-angular";
+import { Toast } from "@ionic-native/toast";
 
 @Injectable()
 export class NoticeService {
+  private loading: Loading;
+
   constructor(
-    private injector: Injector
+    private injector: Injector,
+    private platform: Platform,
+    private toast: Toast
   ) { }
 
   private types: string[] = ['default', 'info', 'success', 'warning', 'error', 'loading'];
@@ -17,24 +22,38 @@ export class NoticeService {
     return this.injector.get(AlertController);
   }
 
+  get loadingCtrl() {
+    return this.injector.get(LoadingController);
+  }
+
+  /**
+   * 是否真机环境
+   */
+  isMobile(): boolean {
+    return this.platform.is('mobile') && !this.platform.is('mobileweb');
+  }
+
   private showAlert(options) {
     let confirm = this.alertCtrl.create(options);
     confirm.present();
     return confirm;
   }
 
-  private showMsg(type: string, title: string, body: string) {
-    let toast = this.toastCtrl.create({
-      message: body,
-      duration: 3000,
-      position: 'middle'
-    });
-
-    return toast.present(toast);
+  private showMsg(type: string, title: string, body: string, duration: number = 2000) {
+    if (this.isMobile()) {
+      return this.toast.show(body, String(duration), 'bottom').subscribe();
+    } else {
+      let toast = this.toastCtrl.create({
+        message: body,
+        duration: duration,
+        position: 'bottom'
+      });
+      return toast.present(toast);
+    }
   }
 
   clear() {
-
+    return this.clearLoading();
   }
 
   msg_info(msg, title = '信息') {
@@ -62,15 +81,15 @@ export class NoticeService {
   msg_clear() {
   }
 
-  alert_info(body: string, title: string = '信息') {
+  alert_info(body: string, title: string = '') {
     return this.showAlert({
       title: title,
       message: body,
-      buttons: ['好']
+      buttons: ['我知道了']
     });
   }
 
-  alert_confirm(body: string, title: string = '询问？') {
+  alert_confirm(body: string, title: string = '询问？', btn_ok = '好的') {
     const self = this;
     return new Promise((resolve, reject) => {
       return self.showAlert({
@@ -84,7 +103,7 @@ export class NoticeService {
             }
           },
           {
-            text: '好的',
+            text: btn_ok,
             handler: () => {
               resolve('ok');
             }
@@ -124,5 +143,28 @@ export class NoticeService {
       });
     })
   }
+
+  alert(options: any = {}) {
+    return this.showAlert(options);
+  }
+
+  showLoading(content: string = ''): void {
+    //如果loading已经存在则不再打开
+    if (!this.loading) {
+      let loading = this.loadingCtrl.create({
+        content: content
+      });
+      loading.present();
+      this.loading = loading;
+    }
+  };
+
+  /**
+  * 关闭loading
+  */
+  clearLoading(): void {
+    this.loading && this.loading.dismiss();
+    this.loading = null;
+  };
 
 }

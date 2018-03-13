@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ModalController} from 'ionic-angular';
-import {MineEditModalPage} from '../mine-edit-modal/mine-edit-modal';
-import {MineEditAvatarModalPage} from '../mine-edit-avatar-modal/mine-edit-avatar-modal';
-import {GlobalData} from "../../../core/services/GlobalData";
+import { Component } from '@angular/core';
+import { ModalController } from 'ionic-angular';
+import { MineEditModalPage } from '../mine-edit-modal/mine-edit-modal';
+import { MineEditAvatarModalPage } from '../mine-edit-avatar-modal/mine-edit-avatar-modal';
+import { UserService } from '../../../core/data/users.service';
 
 @Component({
   selector: 'page-mine-edit',
@@ -11,8 +11,8 @@ import {GlobalData} from "../../../core/services/GlobalData";
 export class MineEditPage {
   userInfo;
   constructor(private modalCtrl: ModalController,
-              private globalData: GlobalData) {
-    this.userInfo = this.globalData.user;
+    private userService: UserService) {
+    this.userInfo = this.userService.userInfo;
   }
 
   viewAvatar() {

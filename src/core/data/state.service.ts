@@ -10,8 +10,19 @@ export class StateService {
   public canton = config.canton;
   public define = config.define;
   public router = config.router;
+  private _showLoading: boolean = true;
 
   constructor(
-    public user: UserService
+    public userService: UserService
   ) { }
+
+
+  get showLoading(): boolean {
+    return this._showLoading;
+  }
+
+  set showLoading(value: boolean) {
+    this._showLoading = value;
+  }
+
 }

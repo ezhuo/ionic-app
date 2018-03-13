@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
-import {Storage} from "@ionic/storage";
-import {NavController, NavParams, ModalController} from 'ionic-angular';
-import {Utils} from "../../../core/services/Utils";
-import {ChangePasswordPage} from "../change-password/change-password";
-import {NativeService} from "../../../core/services/NativeService";
-import {GlobalData} from "../../../core/services/GlobalData";
+import { Component } from '@angular/core';
+import { Storage } from "@ionic/storage";
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { ChangePasswordPage } from "../change-password/change-password";
+import { UserService } from '../../../core/data/users.service';
+import { NoticeService } from '../../../core/utils/notice.service';
+import { NativeService } from '../../../core/utils/native.service';
+import { TokenService } from '../../../core/data/token.service';
+import { define } from '../../../core/public/config';
 
 /**
  * Generated class for the SettingPage page.
@@ -22,23 +24,26 @@ export class SettingPage {
   enabledFileCache: boolean = true;//app是否开启缓存
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private storage: Storage,
-              public nativeService: NativeService,
-              public globalData: GlobalData,
-              private modalCtrl: ModalController) {
-    this.enabledFileCache = this.globalData.enabledFileCache;
+    public navParams: NavParams,
+    private storage: Storage,
+    public nativeService: NativeService,
+    public tokenService: TokenService,
+    private modalCtrl: ModalController,
+    private userService: UserService,
+    private noticeservice:NoticeService
+  ) {
+    this.enabledFileCache = define.file_cache;
   }
 
   clearCache() {
-    Utils.sessionStorageClear();//清除数据缓存
-    this.nativeService.showToast('缓存清除成功');
+    this.tokenService.token_destory();//清除数据缓存
+    this.noticeservice.msg_info('缓存清除成功');
     this.navCtrl.pop();
   }
 
   cacheChange() {
-    this.globalData.enabledFileCache = this.enabledFileCache;
-    this.storage.set('enabled-file-cache-' + this.globalData.userId, this.enabledFileCache);
+    define.file_cache = this.enabledFileCache;
+    this.storage.set('enabled-file-cache-' + this.userService.userInfo.Id, this.enabledFileCache);
   }
 
   changePassword() {

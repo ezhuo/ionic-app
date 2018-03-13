@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {HttpService} from "../../../../core/services/HttpService";
-import {NativeService} from "../../../../core/services/NativeService";
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { HttpService } from "../../../../core/data/http.service";
+import { NoticeService } from '../../../../core/utils/notice.service';
 
 /**
  * Generated class for the CustomerListPage page.
@@ -16,13 +16,15 @@ import {NativeService} from "../../../../core/services/NativeService";
 })
 export class CustomerListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpService: HttpService, public nativeService: NativeService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public httpService: HttpService,
+    public noticeService: NoticeService) {
   }
 
   click() {
-    this.httpService.get('/v1/user/view/id/1').subscribe(res => {
-      this.nativeService.alert('请求成功', '', JSON.stringify(res))
-    })
+
   }
 
 }

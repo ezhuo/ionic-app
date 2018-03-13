@@ -1,27 +1,26 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { IonicApp, IonicModule, Config } from "ionic-angular";
-
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicModule, Config } from 'ionic-angular';
 import { CoreModule } from '../core/core.module';
-import { PagesModule } from "../pages/pages.module";
-import { AppComponent } from "./app.component";
-import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from "./modal-transitions";
+import { PagesModule } from '../pages/pages.module';
+import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from './modal-transitions';
+
+import { AppComponent } from './app.component';
 
 /**
- * IonicModule.forRoot
- * https://ionicframework.com/docs/api/config/Config
+ * IonicModule.forRoot 请参考：https://ionicframework.com/docs/api/config/Config
  */
 const Components = [AppComponent]
 @NgModule({
   declarations: [...Components],
   imports: [
-    CoreModule.forRoot(),
     BrowserModule,
     IonicModule.forRoot(AppComponent, {
-      mode: 'ios',//android是'md',
+      mode: 'ios',
       iconMode: 'ios',
       backButtonText: ''
     }),
+    CoreModule.forRoot(),
     PagesModule
   ],
   bootstrap: [IonicApp],

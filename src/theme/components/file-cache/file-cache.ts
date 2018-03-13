@@ -1,11 +1,14 @@
+import { StateService } from './../../../core/data/state.service';
+import { UserService } from './../../../core/data/users.service';
 import { Component } from '@angular/core';
-import { Storage } from "@ionic/storage";
-import { AlertController, IonicPage, NavController } from 'ionic-angular';
-import { GlobalData } from "../../../core/services/GlobalData";
-import { FileService } from "../../../core/services/FileService";
-import { FileObj } from "../../../core/model/FileObj";
-import { CommonService } from "../../../core/services/CommonService";
-import { NativeService } from "../../../core/services/NativeService";
+import { IonicPage, NavController } from 'ionic-angular';
+
+import { FileObj } from "../../../core/model/fileobj";
+import { FileService } from '../../../core/utils/file.service';
+import { NativeService } from './../../../core/utils/native.service';
+import { NoticeService } from './../../../core/utils/notice.service';
+import { app, define } from './../../../core/public/config';
+import { StorageService } from '../../../core/utils/storage.service';
 
 /**
  * Generated class for the FileCachePage page.
@@ -24,25 +27,29 @@ export class FileCachePage {
   uploading: boolean = false;//是否正在上传
   fileObjList: FileObj[] = [];//待上传的文件数组
   uploadTotal: number = 0;//待上传的文件数量
-  progress;
+  progress: any;
 
   constructor(public navCtrl: NavController,
-    private alertCtrl: AlertController,
-    private storage: Storage,
+    private storage: StorageService,
     private fileService: FileService,
     private nativeService: NativeService,
-    private commonService: CommonService,
-    private globalData: GlobalData) {
-    this.enabledFileCache = this.globalData.enabledFileCache;
-    let cacheKey = 'file-cache-' + this.globalData.userId;
-    this.storage.get(cacheKey).then(cacheData => {
+    private noticeService: NoticeService,
+    private userService: UserService,
+    private stateService:StateService
+  ) {
+
+    this.enabledFileCache = define.file_cache;
+    let cacheKey = 'file-cache-' + this.userService.userInfo.id;
+    this.storage.ionicStorage.get(cacheKey).then(cacheData => {
       this.fileObjList = cacheData || [];
     });
+
   }
 
   upload() {
     this.uploadTotal = this.fileObjList.length;
-    this.progress = this.alertCtrl.create({
+
+    this.progress = this.noticeService.alert({
       title: '0/' + this.uploadTotal,
       subTitle: '上传中...',
       cssClass: 'js-upload',
@@ -53,8 +60,10 @@ export class FileCachePage {
         }
       }
       ]
-    });
+    })
+
     this.progress.present();
+
     this.uploading = true;
     this.doUpload();
   }
@@ -65,28 +74,29 @@ export class FileCachePage {
       let fileObj = this.fileObjList[0];
       fileObj.parameter = fileObj.id;
       //上传文件前,如果app开启了缓存需要先关闭缓存
-      this.enabledFileCache && (this.globalData.enabledFileCache = false);
+      this.enabledFileCache && (define.file_cache = false);
       //执行上传
-      this.globalData.showLoading = false;
+      this.stateService.showLoading = false;
       this.fileService.uploadByFilePath(fileObj).subscribe(res => {
         //文件上传成功后,重新开启app缓存
-        this.enabledFileCache && (this.globalData.enabledFileCache = true);
+        this.enabledFileCache && (define.file_cache = true);
         //修改缓存文件关系为真实文件关系
-        this.globalData.showLoading = false;
-        this.commonService.fileRelationReplace([{ 'realId': res.id, 'replaceId': res.parameter }]).subscribe(() => {
-          //更新上传进度
-          let title = document.getElementsByClassName('js-upload')[0].getElementsByClassName('alert-title')[0];
-          title && (title.innerHTML = this.uploadTotal - this.fileObjList.length + '/' + this.uploadTotal);
-          this.fileObjList.shift();
-          this.fileService.deleteFileCacheByIds([res.parameter]);
-          //上传完成
-          if (this.fileObjList.length == 0) {
-            this.progress.dismiss();
-            this.nativeService.alert('上传完成');
-            this.uploading = false;
-          }
-          this.doUpload();//继续上传下一个文件
-        })
+        this.stateService.showLoading = false;
+        // this.commonService.fileRelationReplace([{ 'realId': res.id, 'replaceId': res.parameter }])
+        //   .subscribe(() => {
+        //     //更新上传进度
+        //     let title = document.getElementsByClassName('js-upload')[0].getElementsByClassName('alert-title')[0];
+        //     title && (title.innerHTML = this.uploadTotal - this.fileObjList.length + '/' + this.uploadTotal);
+        //     this.fileObjList.shift();
+        //     this.fileService.deleteFileCacheByIds([res.parameter]);
+        //     //上传完成
+        //     if (this.fileObjList.length == 0) {
+        //       this.progress.dismiss();
+        //       this.nativeService.alert('上传完成');
+        //       this.uploading = false;
+        //     }
+        //     this.doUpload();//继续上传下一个文件
+        //   })
       })
     }
   }

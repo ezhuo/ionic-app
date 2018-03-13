@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
-import {ModalScalePage} from "./modal-scale/modal-scale";
-import {ModalFromRightPage} from "./modal-from-right/modal-from-right";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { ModalScalePage } from "./modal-scale/modal-scale";
+import { ModalFromRightPage } from "./modal-from-right/modal-from-right";
 
 /**
  * Generated class for the TransitionDemoPage page.

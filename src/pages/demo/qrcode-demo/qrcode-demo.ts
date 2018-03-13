@@ -1,6 +1,6 @@
-import {Component, ViewChild, ElementRef} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {Subject} from "rxjs/Subject";
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Subject } from "rxjs/Subject";
 
 declare var QRCode;
 

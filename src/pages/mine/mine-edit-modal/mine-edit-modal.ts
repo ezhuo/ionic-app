@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {Storage} from '@ionic/storage';
-
-import {FormBuilder} from '@angular/forms';
-import {ViewController} from 'ionic-angular';
-import {NativeService} from '../../../core/services/NativeService';
-import {Validators} from "../../../core/services/Validators";
-import {GlobalData} from "../../../core/services/GlobalData";
+import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { FormBuilder } from '@angular/forms';
+import { ViewController } from 'ionic-angular';
+import { NativeService } from '../../../core/utils/native.service';
+import { UserService } from '../../../core/data/users.service';
+import { ValidatorService } from './../../../core/data/validator.service';
+import { NoticeService } from './../../../core/utils/notice.service';
 
 @Component({
   selector: 'page-mine-edit-modal',
@@ -34,15 +34,17 @@ export class MineEditModalPage {
   };
 
   constructor(private viewCtrl: ViewController,
-              private storage: Storage,
-              private formBuilder: FormBuilder,
-              private globalData: GlobalData,
-              private nativeService: NativeService) {
-    this.userInfo = this.globalData.user;
+    private storage: Storage,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private nativeService: NativeService,
+    private noticeService: NoticeService
+  ) {
+    this.userInfo = this.userService.userInfo;
     this.userForm = this.formBuilder.group({
-      name: [this.userInfo.realname, [Validators.required, Validators.minLength(2), Validators.chinese]],
-      mobileNumber: [this.userInfo.mobileNumber, [Validators.required, Validators.phone]],
-      email: [this.userInfo.email, [Validators.required, Validators.email]]
+      name: [this.userInfo.realname, [ValidatorService.required, ValidatorService.minLength(2), ValidatorService.chinese]],
+      mobileNumber: [this.userInfo.mobileNumber, [ValidatorService.required, ValidatorService.phone]],
+      email: [this.userInfo.email, [ValidatorService.required, ValidatorService.email]]
     });
     this.userForm.valueChanges
       .subscribe(data => {
@@ -63,7 +65,7 @@ export class MineEditModalPage {
   onSubmit() {
     Object.assign(this.userInfo, this.userForm.value);
     this.storage.set('UserInfo', this.userInfo);
-    this.nativeService.showToast('保存成功');
+    this.noticeService.msg_info('保存成功');
     this.viewCtrl.dismiss(this.userInfo);
   }
 

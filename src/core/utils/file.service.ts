@@ -1,25 +1,26 @@
-/**
- * Created by yanxiaojun617@163.com on 12-23.
- */
 import { Injectable } from "@angular/core";
-import { HttpService } from "./HttpService";
+import { HttpService } from "../data/http.service"
 import { FILE_SERVE_URL } from "../public/config";
-import { FileObj } from "../model/FileObj";
+import { FileObj } from "../model/fileobj";
 import { Observable } from "rxjs";
-import { NativeService } from "./NativeService";
-import { GlobalData } from "./GlobalData";
-import { Utils } from "./Utils";
-import { Storage } from "@ionic/storage";
+import { NativeService } from "./native.service";
+import * as helper from '../../helpers';
+import { StateService } from './../data/state.service';
+import { NoticeService } from './notice.service';
+import { StorageService } from "./storage.service";
 
 /**
  * 上传图片到文件服务器
  */
 @Injectable()
 export class FileService {
-  constructor(private httpService: HttpService,
+  constructor(
+    private httpService: HttpService,
     private nativeService: NativeService,
-    private storage: Storage,
-    private globalData: GlobalData) {
+    private storage: StorageService,
+    private stateService: StateService,
+    private noticeService: NoticeService
+  ) {
   }
 
 
@@ -51,9 +52,9 @@ export class FileService {
       if (queryIds.length == 0) {
         return Observable.of(cacheData);
       }
-      return this.httpService.get(FILE_SERVE_URL + '/getByIds', { ids: queryIds }).map(result => {
+      return this.httpService.get(FILE_SERVE_URL + '/getByIds', { ids: queryIds }).map((result: any) => {
         if (!result.success) {
-          this.nativeService.alert(result.msg);
+          this.noticeService.alert_info(result.msg);
           return [].concat(cacheData);
         } else {
           for (let fileObj of result.data) {
@@ -90,9 +91,9 @@ export class FileService {
     if (!fileObjList || fileObjList.length == 0) {
       return Observable.of([]);
     }
-    return this.httpService.post(FILE_SERVE_URL + '/appUpload?directory=ionic2_tabs', fileObjList).map(result => {
+    return this.httpService.post(FILE_SERVE_URL + '/appUpload?directory=ionic2_tabs', fileObjList).map((result: any) => {
       if (!result.success) {
-        this.nativeService.alert(result.msg);
+        this.noticeService.alert_info(result.msg);
         return [];
       } else {
         for (let fileObj of result.data) {
@@ -128,21 +129,21 @@ export class FileService {
       return Observable.of([]);
     }
     //开启了缓存
-    if (this.globalData.enabledFileCache) {
+    if (this.stateService.config.define.file_cache) {
       for (let fileObj of fileObjList) {
         //生成一个临时id,待真正上传到后台需要替换掉临时id
         fileObj.id = FileService.uuid();
       }
-      let cacheKey = 'file-cache-' + this.globalData.userId;
-      this.storage.get(cacheKey).then(cacheData => {
+      let cacheKey = 'file-cache-' + this.stateService.userService.userInfo.id;
+      this.storage.ionicStorage.get(cacheKey).then(cacheData => {
         cacheData = cacheData ? cacheData.concat(fileObjList) : fileObjList;
         //缓存文件信息
-        this.storage.set(cacheKey, cacheData);
+        this.storage.ionicStorage.set(cacheKey, cacheData);
       });
       return Observable.of(fileObjList);
     } else {
       return Observable.create((observer) => {
-        this.nativeService.showLoading();
+        this.noticeService.showLoading();
         let fileObjs = [];
         for (let fileObj of fileObjList) {
           this.nativeService.convertImgToBase64(fileObj.origPath).subscribe(base64 => {
@@ -154,7 +155,7 @@ export class FileService {
             if (fileObjs.length === fileObjList.length) {
               this.uploadMultiByBase64(fileObjs).subscribe(res => {
                 observer.next(res);
-                this.nativeService.hideLoading();
+                this.noticeService.clearLoading();
               })
             }
           })
@@ -181,8 +182,8 @@ export class FileService {
   private getFileCacheByIds(ids: string[]): Observable<FileObj[]> {
     return Observable.create(observer => {
       let result = [];
-      let cacheKey = 'file-cache-' + this.globalData.userId;
-      this.storage.get(cacheKey).then(cacheData => {
+      let cacheKey = 'file-cache-' + this.stateService.userService.userInfo.id;
+      this.storage.ionicStorage.get(cacheKey).then(cacheData => {
         cacheData = cacheData ? cacheData : [];
         for (let cache of cacheData) {
           for (let id of ids) {
@@ -220,15 +221,15 @@ export class FileService {
 
   //获取uuid,前缀为'r_'代表缓存文件
   private static uuid(): string {
-    let uuid = Utils.uuid();
+    let uuid = helper.uuid();
     return 'r_' + uuid.substring(2);
   }
 
 
   //根据文件id数组从缓存中删除文件
   deleteFileCacheByIds(ids) {
-    let cacheKey = 'file-cache-' + this.globalData.userId;
-    this.storage.get(cacheKey).then(cacheData => {
+    let cacheKey = 'file-cache-' + this.stateService.userService.userInfo.id;
+    this.storage.ionicStorage.get(cacheKey).then(cacheData => {
       let newCacheData = [];
       for (let fileObj of cacheData) {
         let isExist = false;
@@ -241,7 +242,7 @@ export class FileService {
           newCacheData.push(fileObj);
         }
       }
-      this.storage.set(cacheKey, newCacheData);
+      this.storage.ionicStorage.set(cacheKey, newCacheData);
     });
   }
 }

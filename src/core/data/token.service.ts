@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { NoticeService } from '../utils/notice.service';
 import { http } from '../public/config';
-import { Storage } from '../public/storage';
+import { StorageService } from '../utils/storage.service';
 import { JwtHelper } from 'angular2-jwt';
 import { UserService } from './users.service';
 import * as helper from '../../helpers';
@@ -12,15 +12,19 @@ import * as md5 from 'blueimp-md5';
 export class TokenService {
   protected __token = '';
   protected __isAuth: Boolean = false;
-  protected __local = Storage.local();
-  protected __session = Storage.session();
+  protected __local = null;
+  protected __session = null;
   protected jwtHelper: JwtHelper = new JwtHelper();
   protected __menu: any[];
 
   constructor(
     private noticeService: NoticeService,
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    private storageService: StorageService
+  ) {
+    this.__local = this.storageService.local;
+    this.__session = this.storageService.session;
+  }
 
   /**
    * Returns the token value
@@ -134,7 +138,7 @@ export class TokenService {
       tmp = JSON.parse(tmp);
     }
     if (tmp) {
-      this.app_menu = [...tmp];
+      // this.app_menu = [...tmp];
     }
   }
 

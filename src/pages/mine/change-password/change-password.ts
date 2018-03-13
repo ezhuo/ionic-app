@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
-import {ViewController} from 'ionic-angular';
-import {FormBuilder} from "@angular/forms";
-import {Validators} from "../../../core/services/Validators";
-import {NativeService} from "../../../core/services/NativeService";
-import {MineService} from "../MineService";
+import { NoticeService } from './../../../core/utils/notice.service';
+import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
+import { FormBuilder } from "@angular/forms";
+import { MineService } from "../MineService";
+import { ValidatorService } from '../../../core/data/validator.service';
+import { NativeService } from '../../../core/utils/native.service';
 
 /**
  * Generated class for the ChangePasswordPage page.
@@ -41,13 +42,15 @@ export class ChangePasswordPage {
   };
 
   constructor(private viewCtrl: ViewController,
-              private formBuilder: FormBuilder,
-              private mineService: MineService,
-              private nativeService: NativeService) {
+    private formBuilder: FormBuilder,
+    private mineService: MineService,
+    private nativeService: NativeService,
+    private noticeService: NoticeService
+  ) {
     this.form = this.formBuilder.group({
-      oldPsw: ['', [Validators.required]],
-      newPsw: ['', [Validators.required, Validators.minLength(4)]],
-      newPsw2: ['', [Validators.required, Validators.minLength(4)]]
+      oldPsw: ['', [ValidatorService.required]],
+      newPsw: ['', [ValidatorService.required, ValidatorService.minLength(4)]],
+      newPsw2: ['', [ValidatorService.required, ValidatorService.minLength(4)]]
     });
     this.form.valueChanges
       .subscribe(data => {
@@ -70,13 +73,13 @@ export class ChangePasswordPage {
     let newPsw = this.form.value.newPsw;
     let newPsw2 = this.form.value.newPsw2;
     if (newPsw2 != newPsw) {
-      this.nativeService.alert('新密码两次输入不一致');
+      this.noticeService.alert_info('新密码两次输入不一致');
       return;
     }
-    this.mineService.updateUserPassword(oldPsw, newPsw).subscribe(res => {
-      this.nativeService.showToast('密码修改成功');
-      this.dismiss();
-    });
+    // this.mineService.updateUserPassword(oldPsw, newPsw).subscribe(res => {
+    //   this.noticeService.msg_info('密码修改成功');
+    //   this.dismiss();
+    // });
   }
 
   dismiss() {
@@ -85,17 +88,17 @@ export class ChangePasswordPage {
 
   input(val) {
     let m = this.checkPass(val);
-    if(m>=3){
-      this.strength.high=true;
+    if (m >= 3) {
+      this.strength.high = true;
     }
-    if(m==2){
-      this.strength.high=false;
-      this.strength.middle=true;
+    if (m == 2) {
+      this.strength.high = false;
+      this.strength.middle = true;
     }
-    if(m<2){
-      this.strength.high=false;
-      this.strength.middle=false;
-      this.strength.low=true;
+    if (m < 2) {
+      this.strength.high = false;
+      this.strength.middle = false;
+      this.strength.low = true;
     }
   }
 

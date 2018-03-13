@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {FileObj} from "../../../core/model/FileObj";
-import {Response, Http} from "@angular/http";
-import {NativeService} from "../../../core/services/NativeService";
-import {FileService} from "../../../core/services/FileService";
+import { NoticeService } from './../../../core/utils/notice.service';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { FileObj } from "../../../core/model/FileObj";
+import { Response, Http } from "@angular/http";
+import { NativeService } from "../../../core/utils/native.service";
+import { FileService } from "../../../core/utils/file.service";
 
 @Component({
   selector: 'page-select-pic-demo',
@@ -14,9 +15,11 @@ export class SelectPicDemoPage {
   filePaths: FileObj[] = [];
 
   constructor(public navCtrl: NavController,
-              private http: Http,
-              private fileService: FileService,
-              private nativeService: NativeService) {
+    private http: Http,
+    private fileService: FileService,
+    private nativeService: NativeService,
+    private noticeService: NoticeService
+  ) {
     //使用Http加载本地json文件,因为HttpService给url默认加了http://ip,加载本地文件不需要http://ip
     this.http.get('./assets/data/fileData.json').map((res: Response) => res.json()).subscribe(res => {
       if (res.success) {
@@ -31,19 +34,19 @@ export class SelectPicDemoPage {
     });
   }
 
-  details(url){
+  details(url) {
     this.nativeService.openUrlByBrowser(url);
   }
 
-  uploadMultiByBase64(){
+  uploadMultiByBase64() {
     this.fileService.uploadMultiByBase64(this.fileObjList).subscribe(fileList => {
-        this.nativeService.showToast('成功上传' + fileList.length + '张图片');
+      this.noticeService.msg_info('成功上传' + fileList.length + '张图片');
     });
   }
 
-  uploadMultiByFilePath(){
+  uploadMultiByFilePath() {
     this.fileService.uploadMultiByFilePath(this.filePaths).subscribe(fileList => {
-      this.nativeService.showToast('成功上传' + fileList.length + '张图片');
+      this.noticeService.msg_info('成功上传' + fileList.length + '张图片');
     });
   }
 

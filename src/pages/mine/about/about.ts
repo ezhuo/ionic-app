@@ -1,9 +1,12 @@
-import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
-import {NativeService} from "../../../core/services/NativeService";
-import {UpdateLogPage} from "../update-log/update-log";
-import {FeedBackListPage} from "../feed-back/feed-back-list";
-import {VersionService} from "../../../core/services/VersionService";
+import { Component } from "@angular/core";
+import { NavController } from "ionic-angular";
+import { UpdateLogPage } from "../update-log/update-log";
+import { FeedBackListPage } from "../feed-back/feed-back-list";
+import { NativeService } from "../../../core/utils/native.service";
+import { VersionService } from "../../../core/utils/version.service";
+import { NoticeService } from './../../../core/utils/notice.service';
+import { LoggerService } from './../../../core/utils/logger.service';
+
 declare var AlloyLever;
 
 @Component({
@@ -15,20 +18,24 @@ export class AboutPage {
   latestVersionNo: string = '0.0.1';
   lastVersionInfo: any = {};
 
-  constructor(private navCtrl: NavController,
-              private versionService: VersionService,
-              private nativeService: NativeService) {
+  constructor(
+    private navCtrl: NavController,
+    private versionService: VersionService,
+    private nativeService: NativeService,
+    private loggerService: LoggerService,
+    private noticeService: NoticeService
+  ) {
     if (this.nativeService.isMobile()) {
       this.currentVersionNo = this.versionService.getCurrentVersionNo();
       this.latestVersionNo = this.versionService.getLatestVersionNo();
       this.lastVersionInfo = this.versionService.getLastVersionInfo();
     } else {
-      this.nativeService.alert('请使用真机调试');
+      this.noticeService.alert_info('请使用真机调试');
     }
   }
 
   ionViewDidEnter() {
-    AlloyLever.entry('#entry3')
+    this.loggerService.AlloyLeverEntry('#entry3');
   }
 
   checkNewVersion() {
@@ -40,7 +47,7 @@ export class AboutPage {
   }
 
   features() {
-    this.nativeService.alert(this.lastVersionInfo.introduction);
+    this.noticeService.alert_info(this.lastVersionInfo.introduction);
   }
 
   feedBack() {

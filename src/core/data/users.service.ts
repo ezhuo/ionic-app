@@ -1,14 +1,14 @@
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import * as helper from '../../helpers';
 import { define } from '../public/config';
+import { UserInfo } from './../model/userinfo.d';
 
 @Injectable()
 export class UserService {
   private __api_dt: any = null;
-  private __userInfo: any = {};
+  private __userInfo: UserInfo = {};
   private __user: any = {};
 
   constructor() { }

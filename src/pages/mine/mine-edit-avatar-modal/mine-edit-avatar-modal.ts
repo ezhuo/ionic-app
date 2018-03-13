@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {ViewController} from 'ionic-angular';
-import {NativeService} from '../../../core/services/NativeService';
-import {FileService} from "../../../core/services/FileService";
-import {FileObj} from "../../../core/model/FileObj";
-import {MineService} from "../MineService";
-import {GlobalData} from "../../../core/services/GlobalData";
+import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
+import { FileObj } from "../../../core/model/FileObj";
+import { MineService } from "../MineService";
+import { NativeService } from '../../../core/utils/native.service';
+import { FileService } from '../../../core/utils/file.service';
+import { UserService } from '../../../core/data/users.service';
 
 declare var AlloyCrop;
 
@@ -17,11 +17,11 @@ export class MineEditAvatarModalPage {
   isChange: boolean = false;//头像是否改变标识
 
   constructor(private viewCtrl: ViewController,
-              private fileService: FileService,
-              private nativeService: NativeService,
-              private mineService: MineService,
-              private globalData: GlobalData) {
-    this.userInfo = this.globalData.user;
+    private fileService: FileService,
+    private nativeService: NativeService,
+    private mineService: MineService,
+    private userService: UserService) {
+    this.userInfo = this.userService.userInfo;
   }
 
   getPicture(type) {//1拍照,0从图库选择
@@ -62,12 +62,12 @@ export class MineEditAvatarModalPage {
 
   saveAvatar() {
     if (this.isChange) {
-      let fileObj = <FileObj>{'base64': this.userInfo.avatarPath};
+      let fileObj = <FileObj>{ 'base64': this.userInfo.avatarPath };
       this.fileService.uploadByBase64(fileObj).subscribe(fileObj => {// 上传头像图片到文件服务器
         let avatarId = fileObj.id, avatarPath = fileObj.origPath;
         this.mineService.updateUserAvatarId(avatarId).subscribe(res => {//保存avatar字段到用户表
-          this.globalData.user.avatarId = avatarId;
-          this.globalData.user.avatarPath = avatarPath;
+          this.userService.userInfo.avatarId = avatarId;
+          this.userService.userInfo.avatarPath = avatarPath;
           this.viewCtrl.dismiss();
         });
       });

@@ -15,7 +15,7 @@
   <ion-list class="mine-header">
     <button ion-item (click)="edit()">
       <ion-thumbnail item-left (click)="viewAvatar();$event.stopPropagation()">
-        <img [src]="userInfo?.avatarPath">
+        <img [src]="avatar">
       </ion-thumbnail>
       <div>{{userInfo?.realname}}</div>
       <div class="description">{{userInfo?.username}}</div>

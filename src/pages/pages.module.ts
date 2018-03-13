@@ -1,18 +1,21 @@
+import { DemoModule } from './demo/demo.module';
 import { NgModule } from '@angular/core';
-
-import { TestModule } from "./test/test.module";
-import { DemoModule } from "./demo/demo.module";
-import { TabModule } from "./tabs/tab.module";
+import { TabsModule } from "./tabs/tabs.module";
 import { HomeModule } from "./home/home.module";
-import { MineModule } from "./mine/mine.module";
+import { ContactModule } from './contact/contact.module';
+import { AboutModule } from './about/about.module';
+import { MineModule } from './mine/mine.module';
+
+const Modules = [
+    TabsModule,
+    HomeModule,
+    ContactModule,
+    MineModule,
+    DemoModule
+];
 
 @NgModule({
-    imports: [
-        TabModule,
-        HomeModule,
-        DemoModule,
-        MineModule,
-        TestModule],
+    imports: [...Modules],
     exports: [],
     declarations: [],
     providers: [],

@@ -1,13 +1,15 @@
 export interface UserInfo {
-  id?: string;
-  username?: string;
-  realname?: string;
-  mobileNumber?: string;
+  id?: number;
+  login_username?: string;
+  true_name?: string;
+  tel?: string;
   email?: string;
-  avatarId?: string;
+  end_time?: string;
   departmentId?: string;
   departmentName?: string;
-  roles?: Array<string>;
-
-  avatarPath?: string;
+  role_id?: number;
+  role_name?: string;
+  avatar?: string;
+  canton_name?: string;
+  style?: string;
 }

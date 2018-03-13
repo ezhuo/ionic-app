@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CommonService } from "../../../core/services/CommonService";
-import { NativeService } from "../../../core/services/NativeService";
 import { PatrolTaskPage } from "./patrol-task/patrol-task";
 import { CustomerListPage } from "./customer-list/customer-list";
+import { NoticeService } from '../../../core/utils/notice.service';
 
 /**
  * Generated class for the PermissionDemoPage page.
@@ -43,20 +42,10 @@ export class PermissionDemoPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public nativeService: NativeService,
-    public commonService: CommonService) {
+    public noticeService: NoticeService) {
     let menu = [];
     //从后台获取当前登录用户的菜单资源
-    this.commonService.getResource(1).subscribe(res => {
-      for (let item of res) {
-        for (let _menuRelation of this.menuRelation) {
-          if (item.code == _menuRelation.code) {
-            menu.push(_menuRelation);
-          }
-        }
-      }
-      this.menu = this.menu.concat(menu);
-    })
+
   }
 
   navigation(code) {
@@ -68,7 +57,7 @@ export class PermissionDemoPage {
         this.navCtrl.push(CustomerListPage);
         break;
       default:
-        this.nativeService.alert('未找到页面');
+        this.noticeService.alert_info('未找到页面');
     }
   }
 

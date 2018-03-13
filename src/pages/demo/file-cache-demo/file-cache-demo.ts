@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {NativeService} from "../../../core/services/NativeService";
-import {FileService} from "../../../core/services/FileService";
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { NativeService } from "../../../core/utils/native.service";
+import { FileService } from "../../../core/utils/file.service";
+import { NoticeService } from '../../../core/utils/notice.service';
 
 /**
  * Generated class for the FileCacheDemoPage page.
@@ -17,23 +18,28 @@ import {FileService} from "../../../core/services/FileService";
 export class FileCacheDemoPage {
   fileObjList = [];
 
-  constructor(public navCtrl: NavController, public nativeService: NativeService, public fileService: FileService) {
+  constructor(
+    public navCtrl: NavController,
+    public nativeService: NativeService,
+    public fileService: FileService,
+    public noticeService: NoticeService
+  ) {
   }
 
   ionViewWillEnter() {
     if (!this.nativeService.isMobile()) {
-      this.nativeService.alert('请使用真机调试');
+      this.noticeService.alert_info('请使用真机调试');
     }
   }
 
-  save(){
-    if(this.fileObjList.length==0){
-      this.nativeService.alert('请选择照片');
+  save() {
+    if (this.fileObjList.length == 0) {
+      this.noticeService.alert_info('请选择照片');
       return;
     }
-    this.fileService.uploadMultiByFilePath(this.fileObjList).subscribe(res=>{
+    this.fileService.uploadMultiByFilePath(this.fileObjList).subscribe(res => {
       this.fileObjList = [];
-      this.nativeService.alert('文件已缓存','重启app在"我的-图片缓存"功能查看');
+      this.noticeService.alert_info('文件已缓存', '重启app在"我的-图片缓存"功能查看');
     });
   }
 

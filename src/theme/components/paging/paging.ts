@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { PAGE_SIZE } from "../../../core/public/config";
+import { define } from "../../../core/public/config";
 
 /**
  * @name 自定义分页组件
@@ -19,7 +19,7 @@ export class PagingPage {
   total: number;//共多少条数据
 
   @Input()
-  pageSize: number = PAGE_SIZE;//每页大小,默认5条
+  pageSize: number = define.table_page_size;//每页大小,默认5条
 
   @Input()
   color: string = 'primary';//主题颜色

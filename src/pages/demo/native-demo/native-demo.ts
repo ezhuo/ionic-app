@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { NativeService } from "../../../core/services/NativeService";
+import { NativeService } from "../../../core/utils/native.service";
 import { Position } from "../../../core/model/type";
+import { NoticeService } from '../../../core/utils/notice.service';
 
 @IonicPage()
 @Component({
@@ -15,12 +16,16 @@ export class NativeDemoPage {
   location = {};
   imgPath;
 
-  constructor(public navCtrl: NavController, public nativeService: NativeService) {
+  constructor(
+    public navCtrl: NavController,
+    public nativeService: NativeService,
+    public noticeService: NoticeService
+  ) {
   }
 
   ionViewWillEnter() {
     if (!this.nativeService.isMobile()) {
-      this.nativeService.alert('请使用真机调试');
+      this.noticeService.alert_info('请使用真机调试');
     }
   }
 
@@ -67,9 +72,9 @@ export class NativeDemoPage {
   navigation() {
     let startPoint: Position = { 'lng': '113.350912', 'lat': '23.119495' };
     let endPoint: Position = { 'lng': '113.450912', 'lat': '23.219495' };
-    this.nativeService.navigation(startPoint, endPoint).subscribe(res => {
-      console.log(res);
-    });
+    // this.nativeService.navigation(startPoint, endPoint).subscribe(res => {
+    //   console.log(res);
+    // });
   }
 
 

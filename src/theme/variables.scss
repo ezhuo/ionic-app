@@ -71,9 +71,9 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-/*********************************************åä¸½çš„åˆ†å‰²çº¿**************************************************/
+/*********************************************»ªÀöµÄ·Ö¸îÏß**************************************************/
 
-/*start:è¦†ç›–ionic é»˜è®¤æ ·å¼*/
+/*start:¸²¸Çionic Ä¬ÈÏÑùÊ½*/
 
 $toolbar-background: color($colors, primary);
 $toolbar-ios-border-color: color($colors, primary);
@@ -94,16 +94,16 @@ $list-border-color: #e0dfe4;
 
 /*end*/
 
-/*********************************************åä¸½çš„åˆ†å‰²çº¿**************************************************/
+/*********************************************»ªÀöµÄ·Ö¸îÏß**************************************************/
 
-/*start:è‡ªå®šä¹‰å…¨å±€css,å…·ä½“ä½¿ç”¨ä¾‹å­,è¯·å…¨å±€æœç´¢classå*/
-ion-label.required:after { //è¡¨å•å¿…å¡«é¡¹æ ·å¼
+/*start:×Ô¶¨ÒåÈ«¾Öcss,¾ßÌåÊ¹ÓÃÀı×Ó,ÇëÈ«¾ÖËÑË÷classÃû*/
+ion-label.required:after { //±íµ¥±ØÌîÏîÑùÊ½
   content: '*';
   color: #DB2828;
   padding-left: 3px;
 }
 
-.validation-failed { //è¡¨å•éªŒè¯å¤±è´¥æ ·å¼
+.validation-failed { //±íµ¥ÑéÖ¤Ê§°ÜÑùÊ½
   float: right;
   padding-right: 10px;
   color: #ff0000;
@@ -112,7 +112,7 @@ ion-label.required:after { //è¡¨å•å¿…å¡«é¡¹æ ·å¼
 }
 
 .clear-fix:before,
-.clear-fix:after { //æ¸…é™¤æµ®åŠ¨
+.clear-fix:after { //Çå³ı¸¡¶¯
   display: table;
   content: " ";
 }

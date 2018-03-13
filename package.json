@@ -12,7 +12,7 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "live": "ionic cordova run android -lc",
-    "build:android": "ionic cordova build android",
+    "build:android": "ionic cordova build android --prod --aot",
     "dev": "ionic cordova run android --device",
     "dev:aot": "ionic cordova run android --device --prod --aot",
     "release": "ionic cordova build android --release --prod --aot",
@@ -63,7 +63,6 @@
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-file": "^6.0.1",
-    "cordova-plugin-file-opener2": "^2.0.19",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -85,7 +84,6 @@
     "ionic2-city-picker": "0.0.11",
     "ionicons": "3.0.0",
     "jpush-phonegap-plugin": "^3.4.1",
-    "phonegap-plugin-barcodescanner": "^7.0.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
@@ -106,7 +104,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-camera": {},
       "cordova-plugin-compat": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-console": {},
@@ -117,7 +114,6 @@
       "cordova-plugin-app-version": {},
       "cordova-plugin-appminimize": {},
       "cordova-plugin-x-toast": {},
-      "phonegap-plugin-barcodescanner": {},
       "cordova-plugin-advanced-http": {},
       "cordova-plugin-zip": {},
       "cordova-plugin-jcore": {},
@@ -129,10 +125,10 @@
       },
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-file-opener2": {},
       "com.synconset.imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "请允许使用图库"
-      }
+      },
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android"

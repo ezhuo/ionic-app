@@ -1,7 +1,7 @@
-import {Component} from "@angular/core";
-import {NavController, NavParams} from "ionic-angular";
-import {NativeService} from "../../../core/services/NativeService";
-import {DemoService} from "../DemoService";
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "ionic-angular";
+import { NativeService } from "../../../core/utils/native.service";
+import { DemoService } from "../DemoService";
 
 /**
  * Generated class for the CityPickerDemoPage page.
@@ -16,12 +16,12 @@ import {DemoService} from "../DemoService";
 })
 export class CityPickerDemoPage {
   cityData: any[] = []; //城市数据
-  cityName:string = '广东省-广州市-天河区'; //初始化城市名
+  cityName: string = '广东省-广州市-天河区'; //初始化城市名
   code: string; //城市编码
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public nativeService: NativeService,
-              public demoService: DemoService) {
+    public navParams: NavParams,
+    public nativeService: NativeService,
+    public demoService: DemoService) {
   }
 
   ionViewDidLoad() {

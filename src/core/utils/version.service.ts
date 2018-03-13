@@ -4,12 +4,14 @@ import { File } from "@ionic-native/file";
 import { FileTransfer, FileTransferObject } from "@ionic-native/file-transfer";
 import { FileOpener } from '@ionic-native/file-opener';
 import { AlertController } from "ionic-angular";
-import { Logger } from "./Logger";
+import { LoggerService } from "./logger.service";
 import { APP_VERSION_SERVE_URL, FILE_SERVE_URL } from "../public/config";
-import { Utils } from "./Utils";
-import { HttpService } from "./HttpService";
-import { NativeService } from "./NativeService";
-import { FileService } from "./FileService";
+
+import { HttpService } from "../data/http.service";
+import { NativeService } from "./native.service";
+import { FileService } from "./file.service";
+import * as helper from '../../helpers';
+import { NoticeService } from './notice.service';
 
 @Injectable()
 export class VersionService {
@@ -37,7 +39,9 @@ export class VersionService {
     public fileService: FileService,
     public fileOpener: FileOpener,
     public alertCtrl: AlertController,
-    public logger: Logger) {
+    public logger: LoggerService,
+    public noticeService: NoticeService
+  ) {
 
   }
 
@@ -56,8 +60,8 @@ export class VersionService {
         this.appDownloadPageUrl = FILE_SERVE_URL + '/static/download.html?name=' + this.appName;
 
         //从后台查询app最新版本信息
-        let url = Utils.formatUrl(`${APP_VERSION_SERVE_URL}/v1/apply/getDownloadPageByEName/${this.appName}/${this.appType}`);
-        this.httpService.get(url).subscribe(res => {
+        let url = helper.formatUrl(`${APP_VERSION_SERVE_URL}/v1/apply/getDownloadPageByEName/${this.appName}/${this.appType}`);
+        this.httpService.get(url).subscribe((res: any) => {
           this.isInit = false;//初始化完成
           if (res && res.code == 1 && res.data && res.data.lastVersion) {
             let data = res.data;
@@ -72,7 +76,7 @@ export class VersionService {
             }
           }
         }, err => {
-          this.logger.log(err, '从版本升级服务获取版本信息失败', { url: url });
+          this.logger.err(err, '从版本升级服务获取版本信息失败', { url: url });
           this.isInit = false;//初始化完成
         })
       });
@@ -142,7 +146,7 @@ export class VersionService {
     }
     if (this.nativeService.isAndroid()) {//android本地下载
       if (!this.apkUrl) {
-        this.nativeService.alert('未找到android apk下载地址');
+        this.noticeService.alert_info('未找到android apk下载地址');
         return;
       }
       this.nativeService.externalStoragePermissionsAuthorization().subscribe(() => {
@@ -166,7 +170,7 @@ export class VersionService {
         }
         alert.present();
         const fileTransfer: FileTransferObject = this.transfer.create();
-        const apk = this.file.externalRootDirectory + 'download/' + `android_${Utils.getSequence()}.apk`; //apk保存的目录
+        const apk = this.file.externalRootDirectory + 'download/' + `android_${helper.getSequence()}.apk`; //apk保存的目录
         //下载并安装apk
         fileTransfer.download(this.apkUrl, apk).then(() => {
           alert && alert.dismiss();
@@ -175,7 +179,7 @@ export class VersionService {
         }, err => {
           this.updateProgress = -1;
           alert && alert.dismiss();
-          this.logger.log(err, 'android app 本地升级失败');
+          this.logger.err(err, 'android app 本地升级失败');
           this.alertCtrl.create({
             title: '前往网页下载',
             subTitle: '本地升级失败',
@@ -220,7 +224,7 @@ export class VersionService {
       if (this.currentVersionNo != this.latestVersionNo) {
         this.assertUpgrade();
       } else {
-        this.nativeService.alert('已经是最新版本');
+        this.noticeService.alert_info('已经是最新版本');
       }
     } else {//正在更新
       let alert = this.alertCtrl.create({
@@ -243,8 +247,8 @@ export class VersionService {
    */
   getVersionList() {
     if (this.isMobile) {
-      let url = Utils.formatUrl(`${APP_VERSION_SERVE_URL}/v1/apply/findVersionList/${this.appName}/${this.appType}`);
-      return this.httpService.get(url).map(res => {
+      let url = helper.formatUrl(`${APP_VERSION_SERVE_URL}/v1/apply/findVersionList/${this.appName}/${this.appType}`);
+      return this.httpService.get(url).map((res: any) => {
         if (res && res.code == 1) {
           return res.data.versions || [];
         }

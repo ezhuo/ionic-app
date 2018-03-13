@@ -1,13 +1,9 @@
-/**
- * Created by yanxiaojun617@163.com on 12-27.
- */
 import { Injectable } from "@angular/core";
-import { ToastController, LoadingController, Platform, Loading, AlertController } from "ionic-angular";
+import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { AppVersion } from "@ionic-native/app-version";
 import { Camera, CameraOptions } from "@ionic-native/camera";
-import { Toast } from "@ionic-native/toast";
 import { File, FileEntry } from "@ionic-native/file";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { ImagePicker } from "@ionic-native/image-picker";
@@ -15,32 +11,23 @@ import { Network } from "@ionic-native/network";
 import { AppMinimize } from "@ionic-native/app-minimize";
 import { CallNumber } from "@ionic-native/call-number";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
-import { Position } from "../model/type";
-import {
-  IMAGE_SIZE,
-  QUALITY_SIZE,
-  CODE_PUSH_DEPLOYMENT_KEY,
-  IS_DEBUG
-} from "../public/config";
-import { Observable } from "rxjs";
-import { Logger } from "./Logger";
 import { Diagnostic } from "@ionic-native/diagnostic";
+import { Position } from "../model/type";
+import { define } from './../public/config';
+import { Observable } from "rxjs";
+import { LoggerService } from "./logger.service";
+import { NoticeService } from "./notice.service";
 
 declare var LocationPlugin;
-declare var AMapNavigation;
 
 @Injectable()
 export class NativeService {
-  private loading: Loading;
 
   constructor(private platform: Platform,
-    private toastCtrl: ToastController,
-    private alertCtrl: AlertController,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private appVersion: AppVersion,
     private camera: Camera,
-    private toast: Toast,
     private file: File,
     private inAppBrowser: InAppBrowser,
     private imagePicker: ImagePicker,
@@ -48,49 +35,9 @@ export class NativeService {
     private appMinimize: AppMinimize,
     private cn: CallNumber,
     private barcodeScanner: BarcodeScanner,
-    private loadingCtrl: LoadingController,
-    public logger: Logger,
-    private diagnostic: Diagnostic) {
-  }
-
-  /**
-   * 热更新同步方法
-   */
-  sync() {
-    if (this.isMobile()) {
-      let deploymentKey = '';
-      if (this.isAndroid() && IS_DEBUG) {
-        deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Staging;
-      }
-      if (this.isAndroid() && !IS_DEBUG) {
-        deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Production;
-      }
-      if (this.isIos() && IS_DEBUG) {
-        deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Staging;
-      }
-      if (this.isIos() && !IS_DEBUG) {
-        deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Production;
-      }
-      // this.codePush.sync({
-      //   deploymentKey: deploymentKey
-      // }).subscribe(syncStatus => {
-      //   if (syncStatus == 0) {
-      //     console.log('[CodePush]:app已经是最新版本;syncStatus:' + syncStatus);
-      //   } else if (syncStatus == 3) {
-      //     console.log('[CodePush]:更新出错;syncStatus:' + syncStatus);
-      //   } else if (syncStatus == 5) {
-      //     console.log('[CodePush]:检查是否有更新;syncStatus:' + syncStatus);
-      //   } else if (syncStatus == 7) {
-      //     console.log('[CodePush]:准备下载安装包;syncStatus:' + syncStatus);
-      //   } else if (syncStatus == 8) {
-      //     console.log('[CodePush]:下载完成准备安装;syncStatus:' + syncStatus);
-      //   } else {
-      //     console.log('[CodePush]:syncStatus:' + syncStatus);
-      //   }
-      // });
-
-    }
-  }
+    public logger: LoggerService,
+    private diagnostic: Diagnostic,
+    public noticeService: NoticeService) { }
 
   /**
    * 状态栏
@@ -107,7 +54,7 @@ export class NativeService {
    * 隐藏启动页面
    */
   splashScreenHide(): void {
-    this.isMobile() && this.splashScreen.hide();
+    return (this.isMobile() && this.splashScreen.hide());
   }
 
   /**
@@ -164,83 +111,19 @@ export class NativeService {
   }
 
   /**
-   * 只有一个确定按钮的弹出框.
-   * 如果已经打开则不再打开
-   */
-  alert = (() => {
-    let isExist = false;
-    return (title: string, subTitle: string = '', message: string = '', callBackFun = null): void => {
-      if (!isExist) {
-        isExist = true;
-        this.alertCtrl.create({
-          title: title,
-          subTitle: subTitle,
-          message: message,
-          buttons: [{
-            text: '确定', handler: () => {
-              isExist = false;
-              callBackFun && callBackFun();
-            }
-          }],
-          enableBackdropDismiss: false
-        }).present();
-      }
-    };
-  })();
-
-  /**
-   * 统一调用此方法显示提示信息
-   * @param message 信息内容
-   * @param duration 显示时长
-   */
-  showToast(message: string = '操作完成', duration: number = 2000): void {
-    if (this.isMobile()) {
-      this.toast.show(message, String(duration), 'center').subscribe();
-    } else {
-      this.toastCtrl.create({
-        message: message,
-        duration: duration,
-        position: 'middle',
-        showCloseButton: false
-      }).present();
-    }
-  };
-
-  /**
-   * 统一调用此方法显示loading
-   * @param content 显示的内容
-   */
-  showLoading(content: string = ''): void {
-    if (!this.loading) {//如果loading已经存在则不再打开
-      let loading = this.loadingCtrl.create({
-        content: content
-      });
-      loading.present();
-      this.loading = loading;
-    }
-  };
-
-  /**
-   * 关闭loading
-   */
-  hideLoading(): void {
-    this.loading && this.loading.dismiss();
-    this.loading = null;
-  };
-
-  /**
    * 使用cordova-plugin-camera获取照片
    * @param options
    */
   getPicture(options: CameraOptions = {}): Observable<string> {
+    const self = this;
     let ops: CameraOptions = Object.assign({
       sourceType: this.camera.PictureSourceType.CAMERA,//图片来源,CAMERA:拍照,PHOTOLIBRARY:相册
       destinationType: this.camera.DestinationType.DATA_URL,//默认返回base64字符串,DATA_URL:base64   FILE_URI:图片路径
-      quality: QUALITY_SIZE,//图像质量，范围为0 - 100
+      quality: define.quality_size,//图像质量，范围为0 - 100
       allowEdit: false,//选择图片前是否允许编辑
       encodingType: this.camera.EncodingType.JPEG,
-      targetWidth: IMAGE_SIZE,//缩放图像的宽度（像素）
-      targetHeight: IMAGE_SIZE,//缩放图像的高度（像素）
+      targetWidth: define.image_size,//缩放图像的宽度（像素）
+      targetHeight: define.image_size,//缩放图像的高度（像素）
       saveToPhotoAlbum: false,//是否保存到相册
       correctOrientation: true//设置摄像机拍摄的图像是否为正确的方向
     }, options);
@@ -253,14 +136,14 @@ export class NativeService {
         }
       }).catch(err => {
         if (err == 20) {
-          this.alert('没有权限,请在设置中开启权限');
+          self.noticeService.alert_info('没有权限,请在设置中开启权限');
           return;
         }
         if (String(err).indexOf('cancel') != -1) {
           return;
         }
-        this.logger.log(err, '使用cordova-plugin-camera获取照片失败');
-        this.alert('获取照片失败');
+        this.logger.err(err, '使用cordova-plugin-camera获取照片失败');
+        self.noticeService.alert_info('获取照片失败');
         observer.error(false);
       });
     });
@@ -295,12 +178,12 @@ export class NativeService {
    * @param options
    */
   getMultiplePicture(options = {}): Observable<any> {
-    let that = this;
+    let self = this;
     let ops = Object.assign({
       maximumImagesCount: 6,
-      width: IMAGE_SIZE,//缩放图像的宽度（像素）
-      height: IMAGE_SIZE,//缩放图像的高度（像素）
-      quality: QUALITY_SIZE//图像质量，范围为0 - 100
+      width: define.image_size,//缩放图像的宽度（像素）
+      height: define.image_size,//缩放图像的高度（像素）
+      quality: define.quality_size//图像质量，范围为0 - 100
     }, options);
     return Observable.create(observer => {
       this.imagePicker.getPictures(ops).then(files => {
@@ -310,7 +193,7 @@ export class NativeService {
         } else {
           let imgBase64s = [];//base64字符串数组
           for (let fileUrl of files) {
-            that.convertImgToBase64(fileUrl).subscribe(base64 => {
+            self.convertImgToBase64(fileUrl).subscribe(base64 => {
               imgBase64s.push(base64);
               if (imgBase64s.length === files.length) {
                 observer.next(imgBase64s);
@@ -319,8 +202,8 @@ export class NativeService {
           }
         }
       }).catch(err => {
-        this.logger.log(err, '通过图库选择多图失败');
-        this.alert('获取照片失败');
+        this.logger.err(err, '通过图库选择多图失败');
+        self.noticeService.alert_info('获取照片失败');
         observer.error(false);
       });
     });
@@ -341,7 +224,7 @@ export class NativeService {
           reader.readAsDataURL(file);
         });
       }).catch(err => {
-        this.logger.log(err, '根据图片绝对路径转化为base64字符串失败');
+        this.logger.err(err, '根据图片绝对路径转化为base64字符串失败');
         observer.error(false);
       });
     });
@@ -356,7 +239,7 @@ export class NativeService {
       this.appVersion.getVersionNumber().then((value: string) => {
         observer.next(value);
       }).catch(err => {
-        this.logger.log(err, '获得app版本号失败');
+        this.logger.err(err, '获得app版本号失败');
         observer.error(false);
       });
     });
@@ -371,7 +254,7 @@ export class NativeService {
       this.appVersion.getAppName().then((value: string) => {
         observer.next(value);
       }).catch(err => {
-        this.logger.log(err, '获得app name失败');
+        this.logger.err(err, '获得app name失败');
         observer.error(false);
       });
     });
@@ -386,7 +269,7 @@ export class NativeService {
       this.appVersion.getPackageName().then((value: string) => {
         observer.next(value);
       }).catch(err => {
-        this.logger.log(err, '获得app包名失败');
+        this.logger.err(err, '获得app包名失败');
         observer.error(false);
       });
     });
@@ -399,7 +282,7 @@ export class NativeService {
   callNumber(number: string): void {
     this.cn.callNumber(number, true)
       .then(() => console.log('成功拨打电话:' + number))
-      .catch(err => this.logger.log(err, '拨打电话失败'));
+      .catch(err => this.logger.err(err, '拨打电话失败'));
   }
 
   /**
@@ -411,7 +294,7 @@ export class NativeService {
       this.barcodeScanner.scan().then((barcodeData) => {
         observer.next(barcodeData.text);
       }).catch(err => {
-        this.logger.log(err, '扫描二维码失败');
+        this.logger.err(err, '扫描二维码失败');
         observer.error(false);
       });
     });
@@ -458,6 +341,7 @@ export class NativeService {
    * 获取位置
    */
   getLocation() {
+    const self = this;
     return Observable.create(observer => {
       if (this.isMobile()) {
         // 检查app是否开始位置服务和定位权限.没有则会请求权限
@@ -470,25 +354,19 @@ export class NativeService {
             observer.next({ 'lng': data.longitude, 'lat': data.latitude });
           }, msg => {
             if (msg.indexOf('缺少定位权限') != -1 || (this.isIos() && msg.indexOf('定位失败') != -1)) {
-              this.alertCtrl.create({
-                title: '缺少定位权限',
-                subTitle: '请在手机设置或app权限管理中开启',
-                buttons: [{ text: '取消' },
-                {
-                  text: '去开启',
-                  handler: () => {
-                    this.diagnostic.switchToSettings();
-                  }
-                }
-                ]
-              }).present();
+
+              self.noticeService.alert_confirm('请在手机设置或app权限管理中开启', '缺少定位权限', '去开启')
+                .then(() => {
+                  this.diagnostic.switchToSettings();
+                })
+
             } else if (msg.indexOf('WIFI信息不足') != -1) {
               alert('定位失败,请确保连上WIFI或者关掉WIFI只开流量数据')
             } else if (msg.indexOf('网络连接异常') != -1) {
               alert('网络连接异常,请检查您的网络是否畅通')
             } else {
               alert('获取位置错误,错误消息:' + msg);
-              this.logger.log(msg, '获取位置失败');
+              this.logger.err(msg, '获取位置失败');
             }
             observer.error('获取位置失败');
           });
@@ -502,9 +380,20 @@ export class NativeService {
     });
   }
 
+  public assertNetwork() {
+    if (!this.isConnecting()) {
+      this.noticeService.alert({
+        message: '未检测到网络,请连接网络',
+        showCloseButton: true,
+        closeButtonText: '确定'
+      });
+    }
+  }
+
   //检测app位置服务是否开启
   private assertLocationService = (() => {
     let enabledLocationService = false;//手机是否开启位置服务
+    const self = this;
     return () => {
       return Observable.create(observer => {
         if (enabledLocationService) {
@@ -516,22 +405,14 @@ export class NativeService {
               observer.next(true);
             } else {
               enabledLocationService = false;
-              this.alertCtrl.create({
-                title: '您未开启位置服务',
-                subTitle: '正在获取位置信息',
-                buttons: [{ text: '取消' },
-                {
-                  text: '去开启',
-                  handler: () => {
-                    this.diagnostic.switchToLocationSettings();
-                  }
-                }
-                ]
-              }).present();
+              self.noticeService.alert_confirm('正在获取位置信息', '您未开启位置服务', '去开启')
+                .then(() => {
+                  this.diagnostic.switchToLocationSettings();
+                })
               observer.error(false);
             }
           }).catch(err => {
-            this.logger.log(err, '调用diagnostic.isLocationEnabled方法失败');
+            this.logger.err(err, '调用diagnostic.isLocationEnabled方法失败');
             observer.error(false);
           });
         }
@@ -542,6 +423,7 @@ export class NativeService {
   //检测app是否有定位权限,如果没有权限则会请求权限
   private assertLocationAuthorization = (() => {
     let locationAuthorization = false;
+    const self = this;
     return () => {
       return Observable.create(observer => {
         if (locationAuthorization) {
@@ -556,30 +438,22 @@ export class NativeService {
               this.diagnostic.requestLocationAuthorization('always').then(res => {//请求定位权限
                 if (res == 'DENIED_ALWAYS') {//拒绝访问状态,必须手动开启
                   locationAuthorization = false;
-                  this.alertCtrl.create({
-                    title: '缺少定位权限',
-                    subTitle: '请在手机设置或app权限管理中开启',
-                    buttons: [{ text: '取消' },
-                    {
-                      text: '去开启',
-                      handler: () => {
-                        this.diagnostic.switchToSettings();
-                      }
-                    }
-                    ]
-                  }).present();
+                  self.noticeService.alert_confirm('请在手机设置或app权限管理中开启', '缺少定位权限', '去开启')
+                    .then(() => {
+                      this.diagnostic.switchToSettings();
+                    })
                   observer.error(false);
                 } else {
                   locationAuthorization = true;
                   observer.next(true);
                 }
               }).catch(err => {
-                this.logger.log(err, '调用diagnostic.requestLocationAuthorization方法失败');
+                this.logger.err(err, '调用diagnostic.requestLocationAuthorization方法失败');
                 observer.error(false);
               });
             }
           }).catch(err => {
-            this.logger.log(err, '调用diagnostic.isLocationAvailable方法失败');
+            this.logger.err(err, '调用diagnostic.isLocationAvailable方法失败');
             observer.error(false);
           });
         }
@@ -592,6 +466,7 @@ export class NativeService {
    */
   externalStoragePermissionsAuthorization = (() => {
     let havePermission = false;
+    const self = this;
     return () => {
       return Observable.create(observer => {
         if (havePermission) {
@@ -610,61 +485,26 @@ export class NativeService {
                   observer.next(true);
                 } else {
                   havePermission = false;
-                  this.alertCtrl.create({
-                    title: '缺少读取存储权限',
-                    subTitle: '请在手机设置或app权限管理中开启',
-                    buttons: [{ text: '取消' },
-                    {
-                      text: '去开启',
-                      handler: () => {
-                        this.diagnostic.switchToSettings();
-                      }
-                    }
-                    ]
-                  }).present();
+
+                  self.noticeService.alert_confirm('请在手机设置或app权限管理中开启', '缺少定位权限', '去开启')
+                    .then(() => {
+                      this.diagnostic.switchToSettings();
+                    })
+
                   observer.error(false);
                 }
               }).catch(err => {
-                this.logger.log(err, '调用diagnostic.requestRuntimePermissions方法失败');
+                this.logger.err(err, '调用diagnostic.requestRuntimePermissions方法失败');
                 observer.error(false);
               });
             }
           }).catch(err => {
-            this.logger.log(err, '调用diagnostic.getPermissionsAuthorizationStatus方法失败');
+            this.logger.err(err, '调用diagnostic.getPermissionsAuthorizationStatus方法失败');
             observer.error(false);
           });
         }
       });
     };
   })();
-
-  /**
-   * 地图导航
-   * @param startPoint 开始坐标
-   * @param endPoint 结束坐标
-   * @param type 0驾车实时导航,1驾车模拟导航,2步行实时导航,3步行模拟导航.默认为0
-   */
-  navigation(startPoint: Position, endPoint: Position, type = 1): Observable<string> {
-    return Observable.create(observer => {
-      if (this.platform.is('mobile') && !this.platform.is('mobileweb')) {
-        AMapNavigation.navigation({
-          lng: startPoint.lng,
-          lat: startPoint.lat
-        }, {
-            lng: endPoint.lng,
-            lat: endPoint.lat
-          }, type, message => {
-            observer.next(message);
-          }, err => {
-            this.logger.log(err, '导航失败');
-            this.alert('导航失败');
-            observer.error(false);
-          });
-      } else {
-        this.alert('非手机环境不能导航');
-        observer.error(false);
-      }
-    });
-  }
 
 }

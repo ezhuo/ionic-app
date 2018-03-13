@@ -20,5 +20,5 @@ const Services = [
   providers: [...Services],
   exports: []
 })
-export class TabModule {
+export class TabsModule {
 }

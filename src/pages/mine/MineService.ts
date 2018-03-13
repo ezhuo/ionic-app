@@ -1,9 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Response} from "@angular/http";
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {HttpService} from "../../core/services/HttpService";
-import {FileService} from "../../core/services/FileService";
-import {Utils} from "../../core/services/Utils";
+import { HttpService } from '../../core/data/http.service';
+import { FileService } from '../../core/utils/file.service';
 
 @Injectable()
 export class MineService {
@@ -21,10 +19,10 @@ export class MineService {
    * 修改密码
    */
   updateUserPassword(oldPsw: string, newPsw: string) {
-    return this.httpService.postFormData('/v1/update_password', {
-      "old_password": Utils.hex_md5(oldPsw),
-      "new_password": Utils.hex_md5(newPsw),
-    });
+    // return this.httpService.postFormData('/v1/update_password', {
+    //   "old_password": Utils.hex_md5(oldPsw),
+    //   "new_password": Utils.hex_md5(newPsw),
+    // });
   }
 
   /**
@@ -46,7 +44,7 @@ export class MineService {
    * 反馈详情
    */
   requirementDetail(id) {
-    return this.httpService.get(`/requirement/getDetailById/${id}`).map((res: Response) => {
+    return this.httpService.get(`/requirement/getDetailById/${id}`).map((res: any) => {
       let data = res.json();
       data.answerList = data.answerList.reverse();
       this.fileService.getFileInfoByIds(data.requirement.fileIdList).subscribe(fileList => {
@@ -55,4 +53,5 @@ export class MineService {
       return data;
     });
   }
+  
 }
