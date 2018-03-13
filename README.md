@@ -27,5 +27,4 @@ cordova plugin add --save phonegap-plugin-barcodescanner
 * cordova-plugin-file-transfer 有时会安装出错，不知道是什么原因
 * com.synconset.imagepicker 安装此插件时，如果发生错误，请一定要删除package.json文件中的 com.synconset.imagepicker 和 cordova-plugin-telerik-imagepicker 等节点，然后再rimraf node_modules ,再执行npm i,
 最后，再重新安装
-* phonegap-plugin-barcodescanner 这个插件版本太低，不能用了
-cordova-plugin-file-opener2
+* phonegap-plugin-barcodescanner cordova-plugin-file-opener2 这2个插件版本太低，不能用了
