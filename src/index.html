@@ -1,73 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
-  <title>ionic-app</title>
+  <title>Ionic-App</title>
+
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
-  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4e8ef7">
+  <meta name="theme-color" content="#387ef5">
 
-  <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  <!--阿里图标 http://www.iconfont.cn/ -->
-  <link href="http://at.alicdn.com/t/font_498485_hmfwqcdm9rudi.css" rel="stylesheet">
 
-  <!--高德地图 http://lbs.amap.com/api/javascript-api/summary/ -->
-  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=39d5ce75adbc78bdffd0c9fe13e3b5eb&plugin=AMap.Geocoder"></script>
+  <base href="/">
 
-  <!--字符串加密-->
-  <script src="./assets/lib/myjs.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="assets/img/appicon.png">
+  <link rel="manifest" href="assets/manifest.json">
 
-  <!--生成二维码 https://github.com/davidshimjs/qrcodejs -->
-  <script src="./assets/lib/qrcode.min.js"></script>
+  <link rel="apple-touch-icon" href="assets/img/appicon.png">
 
-  <!--AlloyLever https://github.com/AlloyTeam/AlloyLever -->
-  <script src="./assets/lib/alloy-lever.js"></script>
-
-  <!--图片预览 swiper http://www.swiper.com.cn/api/index.html -->
-  <link rel="stylesheet" href="./assets/lib/swiper/swiper-3.4.2.min.css">
-  <script src="./assets/lib/swiper/swiper-3.4.2.min.js"></script>
-
-  <!--图片裁剪 AlloyCrop https://github.com/AlloyTeam/AlloyCrop -->
-  <script src="./assets/lib/alloycrop/alloy-finger.js"></script>
-  <script src="./assets/lib/alloycrop/transform.js"></script>
-  <script src="./assets/lib/alloycrop/alloy-crop.js"></script>
-
-  <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
-
-  <!-- un-comment this code to enable service worker
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.error('Error', err));
-    }
-  </script>-->
-
-  <link href="build/main.css" rel="stylesheet">
-
+    /*
+     * if ('serviceWorker' in navigator) {
+     *   navigator.serviceWorker.register('service-worker.js')
+     *     .then(() => console.log('service worker installed'))
+     *     .catch(err => console.log('Error', err));
+     * }
+     */
+  </script>
 </head>
+
 <body>
 
-  <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
-
-  <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
-
-  <!-- The vendor js is generated during the build process
-       It contains all of the dependencies in node_modules -->
-  <script src="build/vendor.js"></script>
-
-  <!-- The main bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
+  <app-root></app-root>
 
 </body>
+
 </html>

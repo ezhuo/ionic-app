@@ -1,0 +1,23 @@
+// app IOS Variables
+.ios {
+    ion-toolbar {
+        ion-buttons {
+            .hydrated {
+                color: #fff
+            }
+        }
+    }
+}
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only CSS variables can go here
+
+.md {
+    // Use the primary color as the background for the toolbar
+    // $toolbar-md-background:                   color($colors, primary);
+
+    // Change the color of the segment button text
+    // $toolbar-md-active-color:                 #fff;
+}

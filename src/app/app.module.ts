@@ -1,43 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, Config } from 'ionic-angular';
-import { CoreModule } from '../core/core.module';
-import { PagesModule } from '../pages/pages.module';
-import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from './modal-transitions';
+import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './@core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-/**
- * IonicModule.forRoot 请参考：https://ionicframework.com/docs/api/config/Config
- */
-const Components = [AppComponent]
+import { SharedModule, IonicDefineModule } from '@shared';
+
+import { UserData } from './providers/user-data';
+import { ConferenceData } from './providers/conference-data';
+
 @NgModule({
-  declarations: [...Components],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(AppComponent, {
-      mode: 'ios',
-      iconMode: 'ios',
-      backButtonText: ''
-    }),
-    CoreModule.forRoot(),
-    PagesModule
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [...Components],
-  providers: []
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        SharedModule,
+        IonicDefineModule.forRoot(),
+        CoreModule.forRoot(),
+    ],
+    declarations: [AppComponent],
+    providers: [UserData, ConferenceData],
+    bootstrap: [AppComponent],
 })
-export class AppModule {
-
-  constructor(public config: Config) {
-    this.setCustomTransitions();
-  }
-
-  private setCustomTransitions() {
-    this.config.setTransition('modal-from-right-enter', ModalFromRightEnter);
-    this.config.setTransition('modal-from-right-leave', ModalFromRightLeave);
-    this.config.setTransition('modal-scale-enter', ModalScaleEnter);
-    this.config.setTransition('modal-scale-leave', ModalScaleLeave);
-  }
-
-}
+export class AppModule {}

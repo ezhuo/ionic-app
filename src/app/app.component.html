@@ -1,0 +1,87 @@
+<ion-app>
+    <ion-split-pane>
+
+        <ion-menu>
+            <ion-header>
+                <ion-toolbar color="primary">
+                    <ion-title>菜单</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+
+                <ion-list *ngIf="loggedIn">
+                    <ion-list-header>
+                        Account
+                    </ion-list-header>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="navigate('/app/admin/account')">
+                            <ion-icon slot="start" name="person"></ion-icon>
+                            <ion-label>
+                                Account
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="navigate('/app/admin/support')">
+                            <ion-icon slot="start" name="help"></ion-icon>
+                            <ion-label>
+                                Support
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="logout()">
+                            <ion-icon slot="start" name="log-out"></ion-icon>
+                            <ion-label>
+                                Logout
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                </ion-list>
+
+                <ion-list *ngIf="!loggedIn">
+                    <ion-list-header>
+                        Account
+                    </ion-list-header>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="navigate('/passport/login')">
+                            <ion-icon slot="start" name="log-in"></ion-icon>
+                            <ion-label>
+                                Login
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="navigate('/passport/signup')">
+                            <ion-icon slot="start" name="person-add"></ion-icon>
+                            <ion-label>
+                                Signup
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        Tutorial
+                    </ion-list-header>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item button (click)="openTutorial()">
+                            <ion-icon slot="start" name="hammer"></ion-icon>
+                            <ion-label>Show Tutorial</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+
+        <ion-router-outlet main></ion-router-outlet>
+
+    </ion-split-pane>
+</ion-app>

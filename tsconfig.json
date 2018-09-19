@@ -1,28 +1,58 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
     "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2015"
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
     ],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "target": "es5"
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts"
-  ],
-  "compileOnSave": false,
-  "atom": {
-    "rewriteTsconfig": false
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": "src/",
+    "paths": {
+      "@shared": [
+        "app/@shared"
+      ],
+      "@shared/*": [
+        "app/@shared/*"
+      ],
+      "@core": [
+        "app/@core/"
+      ],
+      "@core/*": [
+        "app/@core/*"
+      ],
+      "@testing": [
+        "testing/"
+      ],
+      "@testing/*": [
+        "testing/*"
+      ],
+      "@env": [
+        "environments/"
+      ],
+      "@env/*": [
+        "environments/*"
+      ],
+      "@layout": [
+        "app/layout/"
+      ],
+      "@layout/*": [
+        "app/layout/*"
+      ],
+      "@routes": [
+        "app/routes/"
+      ],
+      "@routes/*": [
+        "app/routes/*"
+      ]
+    }
   }
 }
