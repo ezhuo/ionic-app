@@ -54,4 +54,24 @@ export class LayoutTabsComponent extends IndexControl
     ngOnDestory() {
         super.ngOnDestroy();
     }
+
+    ionChange($event) {
+        console.log('ionChange', $event);
+    }
+
+    ionNavDidChange() {
+        console.log('ionNavDidChange');
+    }
+
+    ionNavWillChange($event) {
+        console.log('ionNavWillChange', $event);
+    }
+
+    ionNavWillLoad() {
+        console.log('ionNavWillLoad');
+    }
+
+    ionSelect($event) {
+        console.log('ionSelect', $event);
+    }
 }

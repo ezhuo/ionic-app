@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { List } from '@ionic/angular';
 import { IndexControl } from '@core';
-import { ScheduleFilterPage } from './schedule-filter/schedule-filter';
-import { ConferenceData } from '../../../providers/conference-data';
-import { UserData } from '../../../providers/user-data';
+import { ScheduleFilterPage } from '.././schedule-filter/schedule-filter';
+import { ConferenceData } from '../../../../providers/conference-data';
+import { UserData } from '../../../../providers/user-data';
 
 @Component({
     selector: 'page-schedule',
@@ -41,9 +41,29 @@ export class SchedulePage extends IndexControl {
         return this.injector.get(UserData);
     }
 
+    // constructor --> ionViewDidLoad --> ionViewWillEnter --> ionViewDidEnter --> ionViewWillLeave --> ionViewDidLeave --> ionViewWillUnload.
+    ionViewDidLoad(){
+        console.log('ionViewDidLoad');
+    }
     ionViewWillEnter() {
         // this.app.setTitle('Schedule');
+        console.log('ionViewWillEnter');
         this.updateSchedule();
+    }
+    ionViewDidEnter(){
+        console.log('ionViewDidEnter');
+    }
+    ionViewWillLeave(){
+        console.log('ionViewWillLeave');
+    }
+    ionViewDidLeave(){
+        console.log('ionViewDidLeave');
+    }
+    ionViewWillUnload(){
+        console.log('ionViewWillUnload');
+    }
+    ionSelect(){
+        console.log('ionSelect');
     }
 
     updateSchedule() {

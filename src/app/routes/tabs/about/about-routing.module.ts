@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AboutPage } from './about';
+import { AboutPage } from './default/about';
 import { PopoverPage } from './about-popover/about-popover';
 
 

@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutTabsComponent } from '@layout';
 import { AuthGuard } from '@core';
 
-import { AboutPage } from './about/about';
+import { AboutPage } from './about/default/about';
 
-import { SchedulePage } from './schedule/schedule';
+import { SchedulePage } from './schedule/default/schedule';
 import { SessionDetailPage } from './schedule/session-detail/session-detail';
 
-import { SpeakerListPage } from './speaker-list/speaker-list';
+import { SpeakerListPage } from './speaker-list/default/speaker-list';
 import { SpeakerDetailPage } from './speaker-list/speaker-detail/speaker-detail';
 
 import { routes as routesDemo } from './demo';

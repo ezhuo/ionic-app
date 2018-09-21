@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SchedulePage } from './schedule';
+import { SchedulePage } from './default/schedule';
 import { ScheduleFilterPage } from './schedule-filter/schedule-filter';
 import { SessionDetailPage } from './session-detail/session-detail';
 

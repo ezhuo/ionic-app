@@ -25,7 +25,7 @@ const routes: Routes = [
     },
     {
         path: 'tutorial',
-        loadChildren: './layout/tutorial/tutorial.module#TutorialModule',
+        loadChildren: './routes/tutorial/tutorial.module#TutorialModule',
     },
     { path: '', redirectTo: 'tutorial', pathMatch: 'full' },
     { path: '**', redirectTo: 'tutorial' },

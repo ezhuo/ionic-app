@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Injector } from '@angular/core';
 
 import { IndexControl } from '@core';
-import { PopoverPage } from './about-popover/about-popover';
+import { PopoverPage } from '../about-popover/about-popover';
 
 @Component({
     selector: 'page-about',
