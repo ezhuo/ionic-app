@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormGroup, Validators, NgForm } from '@angular/forms';
 
-import { AppControl } from '@core';
+import { IndexControl } from '@core';
 import { UserData } from '../../../providers/user-data';
 import { UserOptions } from '../../../interfaces/user-options';
 
@@ -17,7 +17,7 @@ import { UserOptions } from '../../../interfaces/user-options';
     styleUrls: ['./login.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class UserLoginComponent extends AppControl
+export class UserLoginComponent extends IndexControl
     implements OnInit, OnDestroy {
     form: FormGroup;
     error = '';
@@ -178,12 +178,11 @@ export class UserLoginComponent extends AppControl
     }
 
     onLogin(form: NgForm) {
-        debugger;
         this.submitted = true;
 
         if (form.valid) {
             this.userData.login(this.login.username);
-            this.route.navigateByUrl('/app/admin/tabs/(schedule:schedule)');
+            this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
         }
     }
 

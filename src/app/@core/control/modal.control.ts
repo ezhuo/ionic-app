@@ -1,22 +1,23 @@
 import { OnInit, OnDestroy, Injector } from '@angular/core';
 import { AppControl } from './app.control';
 
-export class ParentModalControl extends AppControl
-    implements OnInit, OnDestroy {
+export class ModalControl extends AppControl implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);
     }
 
     ngOnInit() {
         super.ngOnInit();
-        this.appBase.__getPrimaryKeyValue();
+        this.appFunc.__getPrimaryKeyValue();
     }
 
     ngOnDestroy() {
         super.ngOnDestroy();
     }
 
-    modalClose(result?: any) {}
+    modalClose(result?: any) {
+        this.modalSrv.close();
+    }
 
     get modalTitle() {
         if (this.modalParams.title) {

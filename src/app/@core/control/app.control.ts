@@ -9,8 +9,8 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);
 
-        this.__baseFunc = new AppFunc(this);
-        this.__baseCase = new AppCase(this);
+        this.__appFunc = new AppFunc(this);
+        this.__appCase = new AppCase(this);
     }
 
     // ----------------------------------------
@@ -21,8 +21,8 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         super.ngOnDestroy();
-        this.__baseFunc = null;
-        this.__baseCase = null;
+        this.__appFunc = null;
+        this.__appCase = null;
         // 清空其它的
         for (const idx of Object.keys(this)) {
             if (idx && idx.indexOf('___') > -1) {
@@ -34,12 +34,12 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
     /**
      * 基础处理类
      */
-    protected __baseFunc: AppFunc;
+    protected __appFunc: AppFunc;
 
     /**
      * 业务处理类
      */
-    protected __baseCase: AppCase;
+    protected __appCase: AppCase;
 
     /**
      * 当前页面的参数
@@ -88,11 +88,11 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
     // --------------------------------------
 
     get appCase() {
-        return this.__baseCase;
+        return this.__appCase;
     }
 
-    get appBase() {
-        return this.__baseFunc;
+    get appFunc() {
+        return this.__appFunc;
     }
 
     get primaryURL() {

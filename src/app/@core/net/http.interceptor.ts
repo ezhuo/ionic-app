@@ -53,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
             const $http_code = event.status;
             const $notice = 'info';
             const data = event.body;
-            this.noticeSrv.clear();
+            this.noticeSrv.clearAll();
 
             if (helper.isObject(data.dt)) {
                 this.userSrv.apiDt = data.dt || helper.getNow();
@@ -100,7 +100,7 @@ export class AuthInterceptor implements HttpInterceptor {
             const $http_code = err.status;
             let $notice = 'error';
             const data = err.error;
-            this.noticeSrv.clear();
+            this.noticeSrv.clearAll();
 
             const format_validate_message = function($str) {
                 let $msg_str = $str;

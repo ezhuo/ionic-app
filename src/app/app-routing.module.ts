@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@core';
+import { AuthGuard, configInc } from '@core';
 import { environment } from '@env/environment';
 
 const routes: Routes = [
     {
         path: 'app',
-        loadChildren: './routes/routes.module#RoutesModule',
+        loadChildren: './routes/tabs/tabs.module#TabsModule',
+        canLoad: [AuthGuard],
         data: { app: true },
+    },
+    {
+        path: 'account',
+        loadChildren: './routes/account/account.module#AccountModule',
+    },
+    {
+        path: 'support',
+        loadChildren: './routes/support/support.module#SupportModule',
     },
     // passport
     {
@@ -20,9 +29,14 @@ const routes: Routes = [
     },
     { path: '', redirectTo: 'tutorial', pathMatch: 'full' },
     { path: '**', redirectTo: 'tutorial' },
+    // { path: '', redirectTo: configInc.router.routeDefault, pathMatch: 'full' },
+    // { path: '**', redirectTo: configInc.router.routeDefault },
 ];
 
-const config: ExtraOptions = { useHash: environment.useHash };
+const config: ExtraOptions = {
+    useHash: environment.useHash,
+    enableTracing: false,
+};
 
 export const routedComponents = [];
 

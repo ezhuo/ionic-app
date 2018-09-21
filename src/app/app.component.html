@@ -1,9 +1,9 @@
-<ion-app>
+<ion-app [class]="configSrv.platformConfig.mode">
     <ion-split-pane>
 
         <ion-menu>
             <ion-header>
-                <ion-toolbar color="primary">
+                <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
                     <ion-title>菜单</ion-title>
                 </ion-toolbar>
             </ion-header>
@@ -15,7 +15,7 @@
                     </ion-list-header>
 
                     <ion-menu-toggle auto-hide="false">
-                        <ion-item button (click)="navigate('/app/admin/account')">
+                        <ion-item button (click)="navigate('/app/account')">
                             <ion-icon slot="start" name="person"></ion-icon>
                             <ion-label>
                                 Account
@@ -24,7 +24,7 @@
                     </ion-menu-toggle>
 
                     <ion-menu-toggle auto-hide="false">
-                        <ion-item button (click)="navigate('/app/admin/support')">
+                        <ion-item button (click)="navigate('/app/support')">
                             <ion-icon slot="start" name="help"></ion-icon>
                             <ion-label>
                                 Support

@@ -10,8 +10,9 @@ import {
 import { UtilsModule } from './utils/utils.module';
 import { DataModule } from './data/data.module';
 import { NetModule } from './net/net.module';
-import { throwIfAlreadyLoaded } from './module-import-guard';
+import { IonicDefineModule } from './ionic/ionic.define.module';
 
+import { throwIfAlreadyLoaded } from './module-import-guard';
 import { StartupService } from './startup/startup.service';
 
 // 中文设置
@@ -30,7 +31,8 @@ const CORE_PROVIDERS = [
 ];
 
 @NgModule({
-    exports: [DataModule, UtilsModule, NetModule],
+    imports: [IonicDefineModule.forRoot()],
+    exports: [DataModule, UtilsModule, NetModule, IonicDefineModule],
     providers: [],
 })
 export class CoreModule {

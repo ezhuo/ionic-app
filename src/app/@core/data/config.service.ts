@@ -11,4 +11,5 @@ export class ConfigService {
     define: any = config.define;
     router: any = config.router;
     ckeditor: any = config.editor;
+    platformConfig = config.platformConfig;
 }

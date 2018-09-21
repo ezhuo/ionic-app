@@ -6,7 +6,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
  */
 @Injectable()
 export class ModalService {
-    private __modal: any;
+    private __modalList: any[] = [];
     constructor(private injector: Injector) {}
 
     get modalCtl() {
@@ -18,15 +18,19 @@ export class ModalService {
     }
 
     async create(comp: any, params?: any, options?: any) {
-        this.__modal = await this.modalCtl.create({
+        const __modal = await this.modalCtl.create({
             mode: 'ios',
             component: comp,
             componentProps: params,
         });
-        return await this.__modal.present();
+        this.__modalList.push(__modal);
+        await __modal.present();
+        return __modal;
     }
 
-    close() {
-        if (this.__modal) return this.modalCtl.dismiss({}, undefined, null);
+    close(data?: any, role?: string, id?: string) {
+        if (this.__modalList.length > 0) {
+            return (this.__modalList.pop() as any).dismiss(data, role, id);
+        }
     }
 }

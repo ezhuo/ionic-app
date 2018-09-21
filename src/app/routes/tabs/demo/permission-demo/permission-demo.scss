@@ -1,0 +1,29 @@
+page-permission-demo {
+  .menu {
+    list-style-type: none;
+    overflow: hidden;
+    zoom: 1;
+    padding: 5px 0;
+    margin: 0;
+  }
+  .menu > li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 10px 0 0 0;
+  }
+  .menu > li > ion-icon {
+    font-size: 38px;
+    padding: 8px;
+    color: #fff;
+    border-radius: 10px;
+    position: relative;
+  }
+  .menu > li > div {
+    font-size: 15px;
+    padding: 4px;
+  }
+  .menu > li > img {
+    width: 56px;
+  }
+}

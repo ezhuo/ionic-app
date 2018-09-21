@@ -2,6 +2,8 @@ export * from './control';
 export * from './data';
 export * from './net';
 export * from './utils';
+export * from './ionic';
+export * from './model';
 export * from './module-import-guard';
 export * from './startup/startup.service';
 

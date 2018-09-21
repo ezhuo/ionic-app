@@ -1,7 +1,7 @@
 import { OnInit, OnDestroy, Injector } from '@angular/core';
 import { AppControl } from './app.control';
 
-export class ParentIndexControl extends AppControl
+export class IndexControl extends AppControl
     implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);

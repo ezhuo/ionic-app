@@ -1,12 +1,14 @@
 import {
     Component,
     Injector,
+    OnInit,
+    OnDestroy,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 
 import { Slides } from '@ionic/angular';
-import { ParentIndexControl } from '@core';
+import { IndexControl } from '@core';
 
 @Component({
     selector: 'page-tutorial',
@@ -14,7 +16,7 @@ import { ParentIndexControl } from '@core';
     styleUrls: ['./tutorial.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class TutorialPage extends ParentIndexControl {
+export class TutorialPage extends IndexControl implements OnInit, OnDestroy {
     showSkip = true;
 
     @ViewChild('slides')
@@ -24,9 +26,17 @@ export class TutorialPage extends ParentIndexControl {
         super(injector);
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+    }
+
+    ngOnDestroy() {
+        super.ngOnDestroy();
+    }
+
     startApp() {
         this.route
-            .navigateByUrl('/app/admin/tabs/(schedule:schedule)')
+            .navigateByUrl('/app/tabs/(schedule:schedule)')
             .then(() => this.ionStorage.set('ion_did_tutorial', 'true'));
     }
 
@@ -39,7 +49,7 @@ export class TutorialPage extends ParentIndexControl {
     ionViewWillEnter() {
         this.ionStorage.get('ion_did_tutorial').then(res => {
             if (res) {
-                this.route.navigateByUrl('/app/admin/tabs/(schedule:schedule)');
+                this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
             }
         });
 

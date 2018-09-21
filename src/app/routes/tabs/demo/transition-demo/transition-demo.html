@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>自定义过渡动画-demo</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-button block (click)="scaleModalScalePage()">modal动画1</ion-button>
+    <ion-button block (click)="presentModalFromRightPage()">modal动画2</ion-button>
+</ion-content>

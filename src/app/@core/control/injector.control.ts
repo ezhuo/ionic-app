@@ -13,11 +13,18 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Events, MenuController } from '@ionic/angular';
+import {
+    Events,
+    MenuController,
+    NavController,
+    NavParams,
+} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 import { ModalService } from '../utils/modal.service';
 import { NoticeService } from '../utils/notice.service';
+
+import { NativeService } from '../ionic';
 
 import { AuthService } from '../data/auth.service';
 import { TokenService } from '../data/token.service';
@@ -148,6 +155,10 @@ export class InjectorControl implements OnInit, OnDestroy {
 
     // -------------------
 
+    get ionStorage() {
+        return this.injector.get(Storage);
+    }
+
     get ionEvents() {
         return this.injector.get(Events);
     }
@@ -156,7 +167,15 @@ export class InjectorControl implements OnInit, OnDestroy {
         return this.injector.get(MenuController);
     }
 
-    get ionStorage() {
-        return this.injector.get(Storage);
+    get ionNav() {
+        return this.injector.get(NavController);
+    }
+
+    get ionNavParams() {
+        return this.injector.get(NavParams);
+    }
+
+    get ionNativeSrv() {
+        return this.injector.get(NativeService);
     }
 }

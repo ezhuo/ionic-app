@@ -1,208 +1,114 @@
-# Ionic Conference Application
+# 养老服务需求评估系统
 
-This is purely a demo of Ionic with TypeScript. It is still in development.
+> android APP , ionic1.3.3 ，angular.js 1.5.3
 
+## 安装
 
-## Important!
-**There is not an actual Ionic Conference at this time.** This project is just to show off Ionic components in a real-world application. Please go through the steps in [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) before submitting an issue.
+* npm i
+* npm run platform
+* npm run serve
+* npm run live
+* npm run dev
+* npm run build
+* npm run release
 
+## 编译
 
-## Table of Contents
- - [Getting Started](#getting-started)
- - [Contributing](#contributing)
- - [Use Cases](#use-cases)
- - [App Preview](#app-preview)
- - [File Structure of App](#file-structure-of-app)
+* ionic cordova build android --release
+* ionic cordova platform add android --save
+* ionic cordova platform rm android --save
+* git config --system core.longpaths true
 
+## 调试 1
 
-## Getting Started
+* ionic serve -lc
+* ionic cordova run android --device --livereload
+* ionic serve --address 192.168.168.202
+* weinre --boundHost 192.168.168.202
+* chrome://inspect/#devices
+* 然后运行 ionic cordova run android -l -c -s 或者 ionic cordova emulate android -lcs
+* ios 运行 ionic run/emulate ios -livereload -consolelogs -serverlogs
+* ionic serve -lc 感觉 ionic serve 已经支持热更新了，好像没有必要加上-lc 这个调试参数，谷歌浏览器本身就有 APP 模式，加上这个参数以后可以在地址后面加上平台参数来模拟平台如http://localhost:8100?ionicplatform=android
+* ionic cordova run android 在 android 模拟器或者真机上运行
+* ionic cordova run android -lc 可以在真机上远程调试
+* ionic cordova run android --device
+* ionic cordova run android --prod --release
+* ionic cordova build android --prod --release 生成发布的 apk
 
-* [Download the installer](https://nodejs.org/) for Node.js 6 or greater.
-* Install the ionic CLI globally: `npm install -g ionic`
-* Clone this repository: `git clone https://github.com/ionic-team/ionic-conference-app.git`.
-* Run `npm install` from the project root.
-* Run `ionic serve` in a terminal from the project root.
-* Profit. :tada:
+## 生成资源
 
-_Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-started/fixing-npm-permissions) if you are running into issues when trying to install packages globally._
+* ionic cordova resources
 
-## Contributing
-See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) :tada::+1:
+## 热更新
 
+* cordova-hcp build 将 conrdova-hcp.json 文件中 content_url , update 复制到 chcp.json 到这个中
+* cordova-hcp server
+* cordova build --chcp-dev
 
-## Use Cases
+## 生成 key
 
-* Action Sheet - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/speaker-list/speaker-list.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/speaker-list/speaker-list.ts) ]
-* Alert - [ [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
-* Cards - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/speaker-list/speaker-list.html) ]
-* Datetime - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/about/about.html) ]
-* Grid - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/login/login.html) ]
-* Inputs - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/login/login.html) ]
-* Items (Sliding) - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
-* Menu - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/app.template.html) |
-[code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/app.component.ts) ]
-* Modal - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule-filter/schedule-filter.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
-* Searchbar - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
-* Segment - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
-* Slides - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/tutorial/tutorial.html) |
-* Sticky headers - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.html) ]
-* Tabs - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/tabs/tabs.html) | [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/tabs/tabs.ts) ]
-* Toggle - [ [template](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule-filter/schedule-filter.html) ]
-[code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/tutorial/tutorial.ts) ]
-* Using Angular HTTP for JSON - [ [code](https://github.com/ionic-team/ionic-conference-app/blob/master/src/providers/conference-data.ts) | [usage](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts) ]
+    另一种配置方法是使用 Gradle ，一个 Android 的自动化构建工具。
+    cordova build android 的过程其实就是使用它。
+    你要在 platforms/android 目录下建立 release-signing.properties 文件，内容类似下面这样：
+    storeFile=relative/path/to/keystore
+    storePassword=SECRET1
+    keyAlias=ALIAS_NAME
+    keyPassword=SECRET2
 
+## 重置 ionic
 
-## App Preview
+* ionic state reset
 
-[Try it live](https://ionic-team.github.io/ionic-conference-app/www)
+## 连接不上手机
 
-All app preview screenshots were taken by running `ionic serve --lab` on a retina display.
+* adb start-server 启动服务
+* adb kill-server 停止服务
+* adb devices 查看已连接设备
 
-- [Schedule Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/schedule/schedule.html)
+## 编译过程错误（先清除平台，再编辑）
 
-  <img src="resources/screenshots/SchedulePage.png" alt="Schedule">
+* 如果在编译中发生错误，极有可能是plugin版本不对，或android版本不对，解决办法是 npm run unplatform 删除当前系统及plugin，并且一定要保证config.xml的plugin版本是最新的可用的，最好用 https://www.npmjs.com/package/package 查询下版本
+* 删除 C:\Users\Administrator\.gradle\caches 缓存
+* cordova clean android
+* cordova build android
 
-
-- [About Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/pages/about/about.html)
-
-  <img src="resources/screenshots/AboutPage.png" alt="Schedule">
-
-
-- To see more images of the app, check out the [screenshots directory](https://github.com/ionic-team/ionic-conference-app/tree/master/resources/screenshots)!
-
-
-## Deploying
-
-* PWA - Un-comment [this](https://github.com/ionic-team/ionic2-app-base/blob/master/src/index.html#L21), run `npm run ionic:build --prod` and then push the `www` folder to your favorite hosting service
-* Android - Run `ionic cordova run android --prod`
-  - If you are deploying to Android 4.4 or below we recommend adding crosswalk: `cordova plugin add cordova-plugin-crosswalk-webview`
-* iOS - Run `ionic cordova run ios --prod`
-
-## File Structure of App
+## install plugin
 
 ```
-ionic-conference-app/
-├-- .github/                            * GitHub files
-│   ├── CONTRIBUTING.md                 * Documentation on contributing to this repo
-│   └── ISSUE_TEMPLATE.md               * Template used to populate issues in this repo
-|
-|-- resources/
-|
-|-- src/
-|    |-- app/
-|    |    ├── app.component.ts
-|    |    └── app.module.ts
-|    |    └── app.template.html
-|    |    └── main.ts
-|    |
-|    |-- assets/
-|    |    ├── data/
-|    |    |    └── data.json
-|    |    |
-|    |    ├── fonts/
-|    |    |     ├── ionicons.eot
-|    |    |     └── ionicons.svg
-|    |    |     └── ionicons.ttf
-|    |    |     └── ionicons.woff
-|    |    |     └── ionicons.woff2
-|    |    |
-|    |    ├── img/
-|    |
-|    |-- pages/                          * Contains all of our pages
-│    │    ├── about/                     * About tab page
-│    │    │    ├── about.html            * AboutPage template
-│    │    │    └── about.ts              * AboutPage code
-│    │    │    └── about.scss            * AboutPage stylesheet
-│    │    │
-│    │    ├── account/                   * Account page
-│    │    │    ├── account.html          * AccountPage template
-│    │    │    └── account.ts            * AccountPage code
-│    │    │    └── account.scss          * AccountPage stylesheet
-│    │    │
-│    │    │── login/                     * Login page
-│    │    │    ├── login.html            * LoginPage template
-│    │    │    └── login.ts              * LoginPage code
-│    │    │    └── login.scss            * LoginPage stylesheet
-│    │    │
-│    │    │── map/                       * Map tab page
-│    │    │    ├── map.html              * MapPage template
-│    │    │    └── map.ts                * MapPage code
-│    │    │    └── map.scss              * MapPage stylesheet
-│    │    │
-│    │    │── schedule/                  * Schedule tab page
-│    │    │    ├── schedule.html         * SchedulePage template
-│    │    │    └── schedule.ts           * SchedulePage code
-│    │    │    └── schedule.scss         * SchedulePage stylesheet
-│    │    │
-│    │    │── schedule-filter/            * Schedule Filter page
-│    │    │    ├── schedule-filter.html   * ScheduleFilterPage template
-│    │    │    └── schedule-filter.ts     * ScheduleFilterPage code
-│    │    │    └── schedule-filter.scss   * ScheduleFilterPage stylesheet
-│    │    │
-│    │    │── session-detail/            * Session Detail page
-│    │    │    ├── session-detail.html   * SessionDetailPage template
-│    │    │    └── session-detail.ts     * SessionDetailPage code
-│    │    │
-│    │    │── signup/                    * Signup page
-│    │    │    ├── signup.html           * SignupPage template
-│    │    │    └── signup.ts             * SignupPage code
-│    │    │
-│    │    │── speaker-detail/            * Speaker Detail page
-│    │    │    ├── speaker-detail.html   * SpeakerDetailPage template
-│    │    │    └── speaker-detail.ts     * SpeakerDetailPage code
-│    │    │    └── speaker-detail.scss   * SpeakerDetailPage stylesheet
-│    │    │
-│    │    │── speaker-list/              * Speakers tab page
-│    │    │    ├── speaker-list.html     * SpeakerListPage template
-│    │    │    └── speaker-list.ts       * SpeakerListPage code
-│    │    │    └── speaker-list.scss     * SpeakerListPage stylesheet
-|    |    |
-│    │    │── support/                   * Support page
-│    │    │    ├── support.html          * SupportPage template
-│    │    │    └── support.ts            * SupportPage code
-│    │    │    └── support.scss          * SupportPage stylesheet
-│    │    │
-│    │    │── tabs/                      * Tabs page
-│    │    │    ├── tabs.html             * TabsPage template
-│    │    │    └── tabs.ts               * TabsPage code
-│    │    │
-│    │    └── tutorial/                  * Tutorial Intro page
-│    │         ├── tutorial.html         * TutorialPage template
-│    │         └── tutorial.ts           * TutorialPage code
-│    │         └── tutorial.scss         * TutorialPage stylesheet
-|    |
-│    ├── providers/                      * Contains all Injectables
-│    │     ├── conference-data.ts        * ConferenceData code
-│    │     └── user-data.ts              * UserData code
-│    ├── theme/                          * App theme files
-|    |     ├── variables.scss            * App Shared Sass Variables
-|    |
-|    |-- index.html
-|
-|-- www/
-|    ├── assets/
-|    |    ├── data/
-|    |    |    └── data.json
-|    |    |
-|    |    ├── fonts/
-|    |    |     ├── ionicons.eot
-|    |    |     └── ionicons.svg
-|    |    |     └── ionicons.ttf
-|    |    |     └── ionicons.woff
-|    |    |     └── ionicons.woff2
-|    |    |
-|    |    ├── img/
-|    |
-|    └── build/
-|    └── index.html
-|
-├── .editorconfig                       * Defines coding styles between editors
-├── .gitignore                          * Example git ignore file
-├── LICENSE                             * Apache License
-├── README.md                           * This file
-├── config.xml                          * Cordova configuration file
-├── ionic.config.json                   * Ionic configuration file
-├── package.json                        * Defines our JavaScript dependencies
-├── tsconfig.json                       * Defines the root files and the compiler options
-├── tslint.json                         * Defines the rules for the TypeScript linter
+删除 package.json 文件中 的 plugins 节点 和 config.xml 中的所有 <plugin 再进行如下安装
 ```
+
+
+```
+--apache & ionic----------
+*  cordova plugin add --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information
+*  cordova plugin add --save cordova-plugin-file  cordova-plugin-file-transfer cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
+--other----------
+*  cordova plugin add --save cordova-hot-code-push-plugin cordova-plugin-app-version  cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
+*  cordova plugin add --save cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="请允许使用图库"
+```
+
+## remove plugin
+
+```
+*  cordova plugin rm --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information
+*  cordova plugin rm --save cordova-plugin-file  cordova-plugin-file-transfer cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
+--other----------
+*  cordova plugin rm --save cordova-hot-code-push-plugin cordova-plugin-app-version  cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
+*  cordova plugin rm --save cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="请允许使用图库"
+```
+
+## 编译不通的组件
+``` 
+* cordova plugin add --save https://github.com/DaiHuaXieHuaKai/GaoDeLocation.git --variable API_KEY=dbea1b5c1f8c451320ab32b293a0b8d7
+* cordova plugin add --save cordova-plugin-file-opener2
+cordova plugin add --save call-number
+```
+
+## 闪退
+```
+* cordova plugin add  --save cordova-plugin-app-update
+```
+
+
+npm i -g ionic@3.20.0

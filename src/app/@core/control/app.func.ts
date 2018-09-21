@@ -2,16 +2,16 @@ import { AppControl } from './app.control';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export class AppFunc {
-    private ___bc: AppControl = null;
+    private ___appCtl: AppControl = null;
 
-    get bc() {
-        return this.___bc;
+    get appCtl() {
+        return this.___appCtl;
     }
 
-    constructor(bc: AppControl) {
-        this.___bc = bc;
+    constructor(appCtl: AppControl) {
+        this.___appCtl = appCtl;
 
-        this.___bc.modalParams = {
+        this.___appCtl.modalParams = {
             button: {
                 submit: {
                     show: true,
@@ -33,7 +33,7 @@ export class AppFunc {
      * 表单初始化
      */
     __formGroupFillData(__frmGroup?: FormGroup, __frmData?: Object): void {
-        const self = this.bc;
+        const self = this.appCtl;
         if (!__frmGroup === null) __frmGroup = self.mainForm;
         for (const idx of Object.keys(__frmData)) {
             if (__frmGroup.controls.hasOwnProperty(idx)) {
@@ -46,7 +46,7 @@ export class AppFunc {
      * 获取主键值
      */
     __getPrimaryKeyValue = (__frmData?: any, __primaryKey?: string) => {
-        const self = this.bc;
+        const self = this.appCtl;
         let result = null;
         if (!__frmData) {
             __frmData = self.formData;

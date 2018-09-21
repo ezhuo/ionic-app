@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AppControl } from '@core';
+import { IndexControl } from '@core';
 import { UserData } from '../../../providers/user-data';
 
 import { UserOptions } from '../../../interfaces/user-options';
@@ -11,7 +11,7 @@ import { UserOptions } from '../../../interfaces/user-options';
     styleUrls: ['./signup.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class SignupPage extends AppControl {
+export class SignupPage extends IndexControl {
     signup: UserOptions = { username: '', password: '' };
     submitted = false;
 
@@ -28,7 +28,7 @@ export class SignupPage extends AppControl {
 
         if (form.valid) {
             this.userData.signup(this.signup.username);
-            this.route.navigateByUrl('/app/admin/tabs/(schedule:schedule)');
+            this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
         }
     }
 }

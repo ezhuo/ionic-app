@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>我的</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentPopover($event)">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+    <ion-list class="mine-header">
+        <ion-item (click)="edit()">
+            <ion-avatar slot="start">
+                <img src="assets/img/appicon.png">
+            </ion-avatar>
+            <ion-label>
+                <h2>Finn</h2>
+                <p>I've had a pretty messed up day. If we just...</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item (click)="setting()">
+            <ion-icon name="settings" slot="start" color="primary"></ion-icon>
+            <ion-label>设置</ion-label>
+        </ion-item>
+        <ion-item (click)="map()">
+            <ion-icon name="map" slot="start" color="primary"></ion-icon>
+            <ion-label>工作地图</ion-label>
+        </ion-item>
+        <ion-item (click)="fileCache()">
+            <ion-icon class="cloud-upload" slot="start" style="color: #6fc572;"></ion-icon>
+            <ion-label>图片缓存</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item (click)="exitSoftware()" hideWhen="ios" detail-none>
+            <ion-icon name="log-out" slot="start" color="danger"></ion-icon>
+            <ion-label>退出软件</ion-label>
+        </ion-item>
+        <ion-item (click)="loginOut()" detail-none>
+            <ion-icon name="log-in" slot="start" color="danger"></ion-icon>
+            <ion-label>重新登录</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item (click)="about()">
+            <ion-icon name="information-circle" slot="start" color="secondary"></ion-icon>
+            <ion-label>关于</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

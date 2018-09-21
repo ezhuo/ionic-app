@@ -1,12 +1,12 @@
 import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
-import { AppControl } from '@core';
+import { IndexControl } from '@core';
 
 @Component({
     selector: 'layout-passport',
     templateUrl: './passport.component.html',
     styleUrls: ['./passport.component.scss'],
 })
-export class LayoutPassportComponent extends AppControl
+export class LayoutPassportComponent extends IndexControl
     implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);
