@@ -9,16 +9,16 @@ export class ModalService {
     private __modalList: any[] = [];
     constructor(private injector: Injector) {}
 
-    get modalCtl() {
+    get modalCtrl() {
         return this.injector.get(ModalController);
     }
 
-    get popoverCtl() {
+    get popoverCtrl() {
         return this.injector.get(PopoverController);
     }
 
     async create(comp: any, params?: any, options?: any) {
-        const __modal = await this.modalCtl.create({
+        const __modal = await this.modalCtrl.create({
             mode: 'ios',
             component: comp,
             componentProps: params,

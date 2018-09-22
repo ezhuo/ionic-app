@@ -2,21 +2,21 @@ import { AppControl } from './app.control';
 import { of } from 'rxjs';
 
 export class AppCase {
-    private ___appCtl: AppControl = null;
+    private ___appCtrl: AppControl = null;
 
-    get appCtl() {
-        return this.___appCtl;
+    get appCtrl() {
+        return this.___appCtrl;
     }
 
-    constructor(appCtl: AppControl) {
-        this.___appCtl = appCtl;
+    constructor(appCtrl: AppControl) {
+        this.___appCtrl = appCtrl;
     }
 
     /**
      * 写日志
      */
     __logs = (content: string) => {
-        const bc = this.appCtl;
+        const bc = this.appCtrl;
         bc.freeData.logs = bc.httpSrv
             .post('/logs', {
                 title: '',
@@ -35,7 +35,7 @@ export class AppCase {
      * 根据服务器端，数据导出到EXCEL
      */
     exportXlsFromServer = (__url?: string, __body?: any, __options?: any) => {
-        const self = this.appCtl;
+        const self = this.appCtrl;
         __url = __url || self.primaryURL;
         __body = __body || {};
         __options = __options || {
@@ -84,7 +84,7 @@ export class AppCase {
      * 数据上传
      */
     nzUploadHandleChange = ($event: any, $isMult?: boolean): void => {
-        const self = this.appCtl;
+        const self = this.appCtrl;
         const file = $event.file;
         const fileList: any[] = $event.fileList;
         const status = file.status;
@@ -115,7 +115,7 @@ export class AppCase {
      * 地区加载数据
      */
     nzCascaderLoadData = (node: any, index: number): PromiseLike<any> => {
-        const self = this.appCtl;
+        const self = this.appCtrl;
         return new Promise(resolve => {
             const arrCanton = self.stateSrv.cantonList;
             if (index < 0 && arrCanton.length > 0) {
@@ -141,7 +141,7 @@ export class AppCase {
      * 动态表单中的地区加载数据
      */
     nzCascaderLoadDataBySchema = (node?: any): any => {
-        const self = this.appCtl;
+        const self = this.appCtrl;
         if (!node) {
             const arrCanton = self.stateSrv.cantonList;
             if (arrCanton.length > 0) {

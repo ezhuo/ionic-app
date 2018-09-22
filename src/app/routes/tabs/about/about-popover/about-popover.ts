@@ -29,11 +29,11 @@ export class PopoverPage extends ModalControl {
 
     support() {
         // this.app.getRootNavs()[0].push('/support');
-        this.modalSrv.popoverCtl.dismiss();
+        this.modalSrv.popoverCtrl.dismiss();
     }
 
     close(url: string) {
         window.open(url, '_blank');
-        this.modalSrv.popoverCtl.dismiss();
+        this.modalSrv.popoverCtrl.dismiss();
     }
 }

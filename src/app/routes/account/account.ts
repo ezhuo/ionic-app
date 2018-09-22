@@ -37,7 +37,7 @@ export class AccountPage extends IndexControl implements AfterViewInit {
     // clicking OK will update the username and display it
     // clicking Cancel will close the alert and do nothing
     async changeUsername() {
-        const alert = await this.noticeSrv.alertCtl.create({
+        const alert = await this.noticeSrv.alertCtrl.create({
             header: 'Change Username',
             buttons: [
                 'Cancel',

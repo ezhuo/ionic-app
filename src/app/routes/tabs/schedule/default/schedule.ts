@@ -86,7 +86,7 @@ export class SchedulePage extends IndexControl {
     }
 
     async presentFilter() {
-        const modal = await this.modalSrv.modalCtl.create({
+        const modal = await this.modalSrv.modalCtrl.create({
             component: ScheduleFilterPage,
             componentProps: { excludedTracks: this.excludeTracks },
         });
@@ -124,7 +124,7 @@ export class SchedulePage extends IndexControl {
             this.user.addFavorite(sessionData.name);
 
             // create an alert instance
-            const alert = await this.noticeSrv.alertCtl.create({
+            const alert = await this.noticeSrv.alertCtrl.create({
                 header: 'Favorite Added',
                 buttons: [
                     {
@@ -146,7 +146,7 @@ export class SchedulePage extends IndexControl {
         sessionData: any,
         title: string,
     ) {
-        const alert = await this.noticeSrv.alertCtl.create({
+        const alert = await this.noticeSrv.alertCtrl.create({
             header: title,
             message:
                 'Would you like to remove this session from your favorites?',
@@ -185,7 +185,7 @@ export class SchedulePage extends IndexControl {
     }
 
     async openSocial(network: string, fab: HTMLIonFabElement) {
-        const loading = await this.noticeSrv.loadingCtl.create({
+        const loading = await this.noticeSrv.loadingCtrl.create({
             message: `Posting to ${network}`,
             duration: Math.random() * 1000 + 500,
         });

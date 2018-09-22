@@ -58,6 +58,6 @@ export class ScheduleFilterPage extends ModalControl
     dismiss(data?: any) {
         // using the injected ModalController this page
         // can "dismiss" itself and pass back data
-        this.modalSrv.modalCtl.dismiss(data);
+        this.modalSrv.modalCtrl.dismiss(data);
     }
 }

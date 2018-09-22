@@ -17,7 +17,7 @@ export class SupportPage extends IndexControl {
     }
 
     async ionViewDidEnter() {
-        const toast = await this.noticeSrv.toastCtl.create({
+        const toast = await this.noticeSrv.toastCtrl.create({
             message: 'This does not actually send a support request.',
             duration: 3000,
         });
@@ -31,7 +31,7 @@ export class SupportPage extends IndexControl {
             this.supportMessage = '';
             this.submitted = false;
 
-            const toast = await this.noticeSrv.toastCtl.create({
+            const toast = await this.noticeSrv.toastCtrl.create({
                 message: 'Your support request has been sent.',
                 duration: 3000,
             });

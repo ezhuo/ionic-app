@@ -22,20 +22,20 @@ export class NoticeService {
         'loading',
     ];
 
-    get toastCtl() {
+    get toastCtrl() {
         return this.injector.get(ToastController);
     }
 
-    get alertCtl() {
+    get alertCtrl() {
         return this.injector.get(AlertController);
     }
 
-    get loadingCtl() {
+    get loadingCtrl() {
         return this.injector.get(LoadingController);
     }
 
     async showToAst(type: string, msg: string) {
-        const __create = await this.toastCtl.create({
+        const __create = await this.toastCtrl.create({
             position: 'top',
             message: msg,
             duration: 3000,
@@ -46,7 +46,7 @@ export class NoticeService {
     }
 
     async showAlert(type: string, title: string, msg: string) {
-        const __create = await this.alertCtl.create({
+        const __create = await this.alertCtrl.create({
             header: title,
             // subHeader: 'Subtitle',
             message: msg,
@@ -59,7 +59,7 @@ export class NoticeService {
 
     async showLoading(opts: any) {
         opts = opts || { message: null };
-        const __create = await this.loadingCtl.create(
+        const __create = await this.loadingCtrl.create(
             Object.assign(
                 {
                     duration: 10000,
@@ -114,7 +114,7 @@ export class NoticeService {
 
     alertConfirm(msg: any, title = '询问') {
         return new Promise(async (resolve, reject) => {
-            const alert = await this.alertCtl.create({
+            const alert = await this.alertCtrl.create({
                 header: title,
                 message: msg,
                 buttons: [

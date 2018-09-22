@@ -86,10 +86,13 @@ export class TabsMine extends IndexControl implements OnInit, OnDestroy {
     exitSoftware() {
         this.noticeSrv
             .alertConfirm('确认退出软件？')
-            .then(() => {
+            .then((res:any) => {
+                console.log('ok');
                 // this.platform.exitApp();
             })
-            .catch(() => {});
+            .catch((err:any) => {
+                console.log('err');
+            });
     }
 
     about() {

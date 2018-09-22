@@ -17,7 +17,7 @@ export class AboutPage extends IndexControl {
     }
 
     async presentPopover(event: Event) {
-        const popover = await this.modalSrv.popoverCtl.create({
+        const popover = await this.modalSrv.popoverCtrl.create({
             component: PopoverPage,
             event,
         });
