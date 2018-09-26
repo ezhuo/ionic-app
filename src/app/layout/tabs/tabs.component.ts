@@ -3,6 +3,7 @@ import {
     Injector,
     OnInit,
     OnDestroy,
+    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -12,6 +13,8 @@ import {
     NavigationCancel,
 } from '@angular/router';
 import { IndexControl } from '@core';
+
+import { Tabs, Tab } from '@ionic/angular';
 
 @Component({
     selector: 'layout-tabs',
@@ -23,9 +26,14 @@ export class LayoutTabsComponent extends IndexControl
     implements OnInit, OnDestroy {
     isFetching = false;
 
+    @ViewChild('tabs')
+    tabs: Tabs;
+
+    @ViewChild('tab1')
+    tab1: Tab;
+
     constructor(protected injector: Injector) {
         super(injector);
-
         // scroll to top in change page
         this.freeData.route = this.route.events.subscribe(evt => {
             if (!this.isFetching && evt instanceof RouteConfigLoadStart) {
@@ -49,29 +57,29 @@ export class LayoutTabsComponent extends IndexControl
 
     ngOnInit() {
         super.ngOnInit();
+        this.listenForSelectEvents();
     }
 
     ngOnDestory() {
         super.ngOnDestroy();
     }
 
-    ionChange($event) {
-        console.log('ionChange', $event);
-    }
-
-    ionNavDidChange() {
-        console.log('ionNavDidChange');
+    ionNavDidChange($event) {
+        // console.log('ionNavDidChange', $event);
     }
 
     ionNavWillChange($event) {
-        console.log('ionNavWillChange', $event);
+        // console.log('ionNavWillChange', $event);
     }
 
     ionNavWillLoad() {
-        console.log('ionNavWillLoad');
+        // console.log('ionNavWillLoad');
     }
 
     ionSelect($event) {
-        console.log('ionSelect', $event);
+        // console.log('ionSelect', $event);
     }
+    ionChange($event: any) {}
+
+    listenForSelectEvents() {}
 }

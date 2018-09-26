@@ -10,6 +10,11 @@ const routes: Routes = [
         canLoad: [AuthGuard],
         data: { app: true },
     },
+    // passport
+    {
+        path: 'passport',
+        loadChildren: './layout/passport/passport.module#LayoutPassportModule',
+    },
     {
         path: 'account',
         loadChildren: './routes/account/account.module#AccountModule',
@@ -18,19 +23,12 @@ const routes: Routes = [
         path: 'support',
         loadChildren: './routes/support/support.module#SupportModule',
     },
-    // passport
-    {
-        path: 'passport',
-        loadChildren: './layout/passport/passport.module#LayoutPassportModule',
-    },
     {
         path: 'tutorial',
         loadChildren: './routes/tutorial/tutorial.module#TutorialModule',
     },
-    { path: '', redirectTo: 'tutorial', pathMatch: 'full' },
-    { path: '**', redirectTo: 'tutorial' },
-    // { path: '', redirectTo: configInc.router.routeDefault, pathMatch: 'full' },
-    // { path: '**', redirectTo: configInc.router.routeDefault },
+    { path: '', redirectTo: configInc.router.default, pathMatch: 'full' },
+    { path: '**', redirectTo: configInc.router.default },
 ];
 
 const config: ExtraOptions = {

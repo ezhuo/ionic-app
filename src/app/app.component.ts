@@ -7,7 +7,7 @@ import {
     QueryList,
 } from '@angular/core';
 import { IndexControl } from '@core';
-import { IonRouterOutlet } from '@ionic/angular';
+import { IonRouterOutlet, StackController } from '@ionic/angular';
 import { UserData } from './providers/user-data';
 
 @Component({
@@ -39,70 +39,61 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     initializeApp() {
-        this.ionNativeSrv.platform.ready().then(() => {
+        const init = () => {
             this.ionNativeSrv.app.statusBarStyle();
             this.ionNativeSrv.splashScreen.hide();
             this.checkVer();
+        };
+        this.ionNativeSrv.platform.ready().then(() => {
+            setTimeout(init, 500);
         });
     }
 
     backButtonEvent() {
-        this.ionNativeSrv.platform.backButton.subscribe(async () => {
-            // close action sheet
-            try {
-                const element = await this.noticeSrv.actionSheetCtrl.getTop();
-                if (element) {
-                    element.dismiss();
-                    return;
-                }
-            } catch (error) {}
-
-            // close popover
-            try {
-                const element = await this.modalSrv.popoverCtrl.getTop();
-                if (element) {
-                    element.dismiss();
-                    return;
-                }
-            } catch (error) {}
-
-            // close modal
-            try {
-                const element = await this.modalSrv.modalCtrl.getTop();
-                if (element) {
-                    element.dismiss();
-                    return;
-                }
-            } catch (error) {
-                console.log(error);
-            }
-
-            // close side menua
-            try {
-                const element = await this.ionSrv.menu.getOpen();
-                if (element !== null) {
-                    this.ionSrv.menu.close();
-                    return;
-                }
-            } catch (error) {}
+        const tabsUrl = [
+            '/app/tabs/(speakers:speakers)',
+            '/app/tabs/(demo:demo)',
+            '/app/tabs/(mine:mine)',
+        ];
+        const subscribe = async () => {
+            // try {
+            //     const isClose =
+            //         (await this.noticeSrv.closeActionSheet()) ||
+            //         (await this.noticeSrv.closeAlert()) ||
+            //         (await this.modalSrv.closePopover()) ||
+            //         (await this.modalSrv.closeModal()) ||
+            //         (await this.ionSrv.closeMenu());
+            //     if (isClose) return false;
+            // } catch (e) {}
 
             this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
-                console.log(this.route.url);
-                if (outlet && outlet.canGoBack()) {
-                    outlet.pop();
-                } else if (this.route.url === '/home') {
+                if (this.route.url == this.configSrv.router.default) {
                     if (
                         new Date().getTime() - this.lastTimeBackPress <
                         this.timePeriodToExit
                     ) {
                         this.ionNativeSrv.exitApp();
                     } else {
-                        this.noticeSrv.msgSuccess(`再按一次退出系统`);
+                        this.ionSrv.nav.this.noticeSrv.msgSuccess(
+                            `再按一次退出系统`,
+                        );
                         this.lastTimeBackPress = new Date().getTime();
+                        this.navigateByUrl(this.configSrv.router.default);
                     }
+                } else if (tabsUrl.indexOf(this.route.url) > -1) {
+                    this.navigateByUrl(this.configSrv.router.default);
                 }
+
+                // else if (outlet && outlet.canGoBack()) {
+                //     outlet.pop();
+                // }
             });
-        });
+        };
+
+        // setTimeout(() => {
+        //     subscribe();
+        // }, 5000);
+        this.ionNativeSrv.platform.backButton.subscribe(subscribe);
     }
 
     logout() {

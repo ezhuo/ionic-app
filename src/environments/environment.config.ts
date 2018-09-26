@@ -45,8 +45,7 @@ export const canton = {
  *路由配置
  */
 export const router = {
-    routeDefault: 'tabs',
-    default: '/app/tabs',
+    default: '/app/tabs/(schedule:schedule)',
     home: '/app/home',
     admin: '/app/tabs',
 };

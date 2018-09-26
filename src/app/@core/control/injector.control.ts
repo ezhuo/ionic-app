@@ -13,14 +13,6 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {
-    Events,
-    MenuController,
-    NavController,
-    NavParams,
-} from '@ionic/angular';
-import { Storage } from '@ionic/storage';
-
 import { ModalService } from '../utils/modal.service';
 import { NoticeService } from '../utils/notice.service';
 

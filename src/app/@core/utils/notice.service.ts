@@ -93,6 +93,30 @@ export class NoticeService {
         return __create;
     }
 
+    async closeActionSheet(data?: any, role?: string, id?: string) {
+        try {
+            const element = await this.actionSheetCtrl.getTop();
+            if (element) {
+                return element.dismiss();
+            }
+        } catch (error) {
+            return error;
+        }
+        return false;
+    }
+
+    async closeAlert(data?: any, role?: string, id?: string) {
+        try {
+            const element = await this.alertCtrl.getTop();
+            if (element) {
+                return element.dismiss();
+            }
+        } catch (error) {
+            return error;
+        }
+        return false;
+    }
+
     clearAlert(data?: any, role?: string, id?: string) {
         if (this.__alertList.length > 0)
             return (this.__alertList.pop() as any).dismiss(data, role, id);

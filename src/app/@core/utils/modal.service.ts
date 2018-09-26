@@ -33,4 +33,35 @@ export class ModalService {
             return (this.__modalList.pop() as any).dismiss(data, role, id);
         }
     }
+
+    clearModal() {
+        this.__modalList.forEach(res => {
+            if (res) (res as any).dismiss();
+        });
+        this.__modalList = [];
+    }
+
+    async closePopover() {
+        try {
+            const element = await this.popoverCtrl.getTop();
+            if (element) {
+                return element.dismiss();
+            }
+        } catch (error) {
+            return error;
+        }
+        return false;
+    }
+
+    async closeModal() {
+        try {
+            const element = await this.modalCtrl.getTop();
+            if (element) {
+                return element.dismiss();
+            }
+        } catch (error) {
+            return error;
+        }
+        return false;
+    }
 }

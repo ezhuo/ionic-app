@@ -30,4 +30,16 @@ export class IonicService {
     get navParams() {
         return this.injector.get(NavParams);
     }
+
+    async closeMenu() {
+        try {
+            const element = await this.menu.getOpen();
+            if (element !== null) {
+                return this.menu.close();
+            }
+        } catch (error) {
+            return error;
+        }
+        return false;
+    }
 }
