@@ -61,7 +61,8 @@ export class NativeApp {
      */
     splashScreenHide(): void {
         return (
-            this.ionNativeSrv.app.isMobile() && this.ionNativeSrv.splashScreen.hide()
+            this.ionNativeSrv.app.isMobile() &&
+            this.ionNativeSrv.splashScreen.hide()
         );
     }
 
@@ -137,7 +138,9 @@ export class NativeApp {
 
     public assertNetwork() {
         if (!this.ionNativeSrv.app.isConnecting()) {
-            this.ionNativeSrv.noticeService.alertInfo('未检测到网络,请连接网络');
+            this.ionNativeSrv.noticeSrv.alertInfo(
+                '未检测到网络,请连接网络',
+            );
         }
     }
 }

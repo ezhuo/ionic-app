@@ -33,13 +33,17 @@ export const router = deepExtend(
 /**
  * API
  */
-export const api = {
-    base: 'api',
-    upload: '/api/file/upload',
-    show: '/file/show/',
-    down: '/uploads/',
-    canton: 'canton/selectselectselect', // 获取区域的默认URL
-};
+export const api = deepExtend(
+    {
+        host: '',
+        base: 'api',
+        upload: '/api/file/upload',
+        show: '/file/show/',
+        down: '/uploads/',
+        canton: 'canton/selectselectselect', // 获取区域的默认URL
+    },
+    env.api,
+);
 
 /**
  * 富文本编辑器

@@ -3,7 +3,10 @@ import {
     ToastController,
     AlertController,
     LoadingController,
+    ActionSheetController,
 } from '@ionic/angular';
+import { Toast } from '../ionic/native.plugins';
+import { Platform } from '@ionic/angular';
 
 @Injectable()
 export class NoticeService {
@@ -33,24 +36,40 @@ export class NoticeService {
     get loadingCtrl() {
         return this.injector.get(LoadingController);
     }
-
-    async showToAst(type: string, msg: string) {
-        const __create = await this.toastCtrl.create({
-            position: 'top',
-            message: msg,
-            duration: 3000,
-        });
-        this.__msgList.push(__create);
-        await __create.present();
-        return __create;
+    get actionSheetCtrl() {
+        return this.injector.get(ActionSheetController);
     }
-
+    get toast() {
+        return this.injector.get(Toast);
+    }
+    get platform() {
+        return this.injector.get(Platform);
+    }
+    get isMobile(): boolean {
+        return this.platform.is('mobile');
+    }
+    async showToast(type: string, msg: string) {
+        if (this.isMobile) {
+            this.toast.show(msg, '5000', 'top').subscribe(toast => {
+                console.log(msg);
+            });
+        } else {
+            const __create = await this.toastCtrl.create({
+                position: 'top',
+                message: msg,
+                duration: 3000,
+            });
+            this.__msgList.push(__create);
+            await __create.present();
+            return __create;
+        }
+    }
     async showAlert(type: string, title: string, msg: string) {
         const __create = await this.alertCtrl.create({
             header: title,
             // subHeader: 'Subtitle',
             message: msg,
-            buttons: ['好的'],
+            buttons: ['好'],
         });
         this.__alertList.push(__create);
         await __create.present();
@@ -112,7 +131,7 @@ export class NoticeService {
         return this.showAlert(this.types[4], title, msg);
     }
 
-    alertConfirm(msg: any, title = '询问') {
+    alertConfirm(msg: any, title = '询问？') {
         return new Promise(async (resolve, reject) => {
             const alert = await this.alertCtrl.create({
                 header: title,
@@ -122,14 +141,14 @@ export class NoticeService {
                         text: '取消',
                         role: 'cancel',
                         cssClass: 'secondary',
-                        handler: blah => {
-                            reject(blah);
+                        handler: (blah?: any) => {
+                            reject(blah || 'cancel');
                         },
                     },
                     {
                         text: '确定',
-                        handler: () => {
-                            resolve(true);
+                        handler: (res?: any) => {
+                            resolve(res || 'ok');
                         },
                     },
                 ],
@@ -139,19 +158,19 @@ export class NoticeService {
     }
 
     msgInfo(msg: any, title = '信息') {
-        return this.showToAst(this.types[1], msg);
+        return this.showToast(this.types[1], msg);
     }
 
     msgSuccess(msg: any, title = '成功') {
-        return this.showToAst(this.types[2], msg);
+        return this.showToast(this.types[2], msg);
     }
 
     msgWarning(msg: any, title = '警告') {
-        return this.showToAst(this.types[3], msg);
+        return this.showToast(this.types[3], msg);
     }
 
     msgError(msg: any, title = '错误') {
-        return this.showToAst(this.types[4], msg);
+        return this.showToast(this.types[4], msg);
     }
 
     loading(msg?: any) {

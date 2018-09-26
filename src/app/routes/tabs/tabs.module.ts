@@ -12,14 +12,12 @@ import {
 import { DemoModule } from './demo/demo.module';
 import { MineModule } from './mine';
 
-import { AboutModule } from './about/about.module';
 import { ScheduleModule } from './schedule/schedule.module';
 import { SpeakerListModule } from './speaker-list/speaker-list.module';
 
 const MODULES = [
     TabsRoutingModule,
     LayoutTabsModule,
-    AboutModule,
     ScheduleModule,
     SpeakerListModule,
     DemoModule,

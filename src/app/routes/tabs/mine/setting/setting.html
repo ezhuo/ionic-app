@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/app/tabs/(mine:mine)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>设置</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item button (click)="clearCache()" detail-none>
+            <ion-icon name="trash" slot="start" color="primary"></ion-icon>
+            <ion-label>清除缓存数据</ion-label>
+        </ion-item>
+        <ion-item button>
+            <ion-icon name="map" slot="start" color="primary"></ion-icon>
+            <ion-label>图片缓存</ion-label>
+            <ion-note slot="end">
+                {{enabledFileCache?'已开启':'已关闭'}}
+            </ion-note>
+        </ion-item>
+        <ion-item button (click)="changePassword()" detail-none>
+            <ion-icon name="finger-print" slot="start" color="primary"></ion-icon>
+            <ion-label>修改密码</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

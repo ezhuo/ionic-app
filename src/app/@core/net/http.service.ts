@@ -11,6 +11,7 @@ import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError, switchMap } from 'rxjs/operators';
 import { api, app_debug } from '../config.inc';
 import { UserService } from './../data/users.service';
+import { Platform } from '@ionic/angular';
 
 /**
  * 封装HttpClient，主要解决：
@@ -29,6 +30,9 @@ export class HttpService {
     get userSrv() {
         return this.injector.get(UserService);
     }
+    get platform() {
+        return this.injector.get(Platform);
+    }
 
     private _loading = false;
 
@@ -39,6 +43,9 @@ export class HttpService {
 
     set loading(value: boolean) {
         this._loading = value;
+    }
+    get isMobile(): boolean {
+        return this.platform.is('mobile');
     }
 
     parseParams(params: any): HttpParams {
@@ -79,6 +86,9 @@ export class HttpService {
 
     /** 服务端URL地址 */
     get SERVER_URL(): string {
+        if (this.isMobile || true) {
+            return api.host;
+        }
         return api.base;
     }
 
@@ -478,7 +488,7 @@ export class HttpService {
             if (options.params)
                 options.params = this.parseParams(options.params);
         }
-        const findIdx = ['mock/', 'assets/'].findIndex(value => {
+        const findIdx = ['mock/', 'assets/', 'http://'].findIndex(value => {
             return url.includes(value);
         });
         if (findIdx === -1) {

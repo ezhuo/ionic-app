@@ -5,7 +5,7 @@ import { SchedulePage } from './default/schedule';
 import { ScheduleFilterPage } from './schedule-filter/schedule-filter';
 import { SessionDetailPage } from './session-detail/session-detail';
 
-const routes: Routes = [
+export const routes: Routes = [
     {
         path: '',
         component: SchedulePage,

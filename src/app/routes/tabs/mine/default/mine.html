@@ -14,7 +14,7 @@
 
 <ion-content class="content-background">
     <ion-list class="mine-header">
-        <ion-item (click)="edit()">
+        <ion-item (click)="navigateByUrl('app/tabs/(mine:mine/edit)')">
             <ion-avatar slot="start">
                 <img src="assets/img/appicon.png">
             </ion-avatar>
@@ -26,33 +26,33 @@
     </ion-list>
 
     <ion-list>
-        <ion-item (click)="setting()">
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/setting)')">
             <ion-icon name="settings" slot="start" color="primary"></ion-icon>
             <ion-label>设置</ion-label>
         </ion-item>
-        <ion-item (click)="map()">
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:map)')">
             <ion-icon name="map" slot="start" color="primary"></ion-icon>
             <ion-label>工作地图</ion-label>
         </ion-item>
-        <ion-item (click)="fileCache()">
+        <ion-item button>
             <ion-icon class="cloud-upload" slot="start" style="color: #6fc572;"></ion-icon>
             <ion-label>图片缓存</ion-label>
         </ion-item>
     </ion-list>
 
     <ion-list>
-        <ion-item (click)="exitSoftware()" hideWhen="ios" detail-none>
+        <ion-item button (click)="exitApp()" hideWhen="ios" detail-none>
             <ion-icon name="log-out" slot="start" color="danger"></ion-icon>
             <ion-label>退出软件</ion-label>
         </ion-item>
-        <ion-item (click)="loginOut()" detail-none>
+        <ion-item button (click)="loginOut()" detail-none>
             <ion-icon name="log-in" slot="start" color="danger"></ion-icon>
             <ion-label>重新登录</ion-label>
         </ion-item>
     </ion-list>
 
     <ion-list>
-        <ion-item (click)="about()">
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/about)')">
             <ion-icon name="information-circle" slot="start" color="secondary"></ion-icon>
             <ion-label>关于</ion-label>
         </ion-item>

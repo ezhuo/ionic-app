@@ -37,7 +37,7 @@ export class TutorialPage extends IndexControl implements OnInit, OnDestroy {
     startApp() {
         this.route
             .navigateByUrl('/app/tabs/(schedule:schedule)')
-            .then(() => this.ionStorage.set('ion_did_tutorial', 'true'));
+            .then(() => this.ionSrv.storage.set('ion_did_tutorial', 'true'));
     }
 
     onSlideChangeStart(event) {
@@ -50,18 +50,18 @@ export class TutorialPage extends IndexControl implements OnInit, OnDestroy {
 
     ionViewWillEnter() {
         console.log('ionViewWillEnter');
-        this.ionStorage.get('ion_did_tutorial').then(res => {
+        this.ionSrv.storage.get('ion_did_tutorial').then(res => {
             if (res) {
                 this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
             }
         });
 
-        this.ionMenu.enable(false);
+        this.ionSrv.menu.enable(false);
     }
 
     ionViewDidLeave() {
         console.log('ionViewDidLeave');
         // enable the root left menu when leaving the tutorial page
-        this.ionMenu.enable(true);
+        this.ionSrv.menu.enable(true);
     }
 }

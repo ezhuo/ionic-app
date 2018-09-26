@@ -24,6 +24,7 @@ import { NativeApp } from './native.app';
 import { NativeGets } from './native.gets';
 
 import { LoggerService } from './logger.service';
+import { HttpService } from '../net';
 import { NoticeService } from '../utils';
 
 @Injectable()
@@ -70,7 +71,10 @@ export class NativeService {
     get diagnostic() {
         return this.injector.get(Diagnostic);
     }
-    get noticeService() {
+    get httpSrv() {
+        return this.injector.get(HttpService);
+    }
+    get noticeSrv() {
         return this.injector.get(NoticeService);
     }
     get device() {
@@ -90,6 +94,9 @@ export class NativeService {
     }
     get app() {
         return this.__nativeApp;
+    }
+    exitApp() {
+        return navigator['app'].exitApp();
     }
     constructor(protected injector: Injector) {
         this.__nativeGets = new NativeGets(this);

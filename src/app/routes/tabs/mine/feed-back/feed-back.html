@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>用户信息反馈</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="form" (ngSubmit)="save(form.value)">
+        <ion-item>
+            <ion-label stacked>标题:</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+        </ion-item>
+        <div *ngIf="verifyMessages.title.errorMsg" class="validation-failed">{{verifyMessages.title.errorMsg}}</div>
+        <ion-item>
+            <ion-label stacked>反馈类型:</ion-label>
+            <ion-select formControlName="type" cancelText="取消" okText="确定">
+                <ion-select-option value="1">BUG</ion-select-option>
+                <ion-select-option value="2">需求</ion-select-option>
+                <ion-select-option value="3">问题</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-textarea autosize formControlName="content" placeholder="请填写反馈内容"></ion-textarea>
+        </ion-item>
+        <div *ngIf="verifyMessages.content.errorMsg" class="validation-failed">{{verifyMessages.content.errorMsg}}</div>
+        <ion-item>
+            <!-- <page-select-picture [(fileObjList)]="fileObjList"></page-select-picture> -->
+        </ion-item>
+        <div padding>
+            <button ion-button type="submit" block [disabled]="!form.valid">提交反馈</button>
+        </div>
+    </form>
+</ion-content>

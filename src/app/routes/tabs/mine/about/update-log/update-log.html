@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/app/tabs/(mine:mine)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>更新日志</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+    <ion-list>
+        <ion-item *ngFor="let version of versions" margin-top no-lines>
+            <div>{{version.updateTime|date:'yyyy-MM-dd HH:mm'}}</div>
+            <div class="label-color" text-wrap>{{version.updateLog}}</div>
+        </ion-item>
+    </ion-list>
+</ion-content>

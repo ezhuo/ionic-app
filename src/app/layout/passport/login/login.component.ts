@@ -46,7 +46,7 @@ export class UserLoginComponent extends IndexControl
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.ionMenu.enable(false);
+        this.ionSrv.menu.enable(false);
         // this.getCaptchaPic();
     }
 

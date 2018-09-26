@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutTabsComponent } from '@layout';
 import { AuthGuard } from '@core';
 
-import { AboutPage } from './about/default/about';
 
 import { SchedulePage } from './schedule/default/schedule';
 import { SessionDetailPage } from './schedule/session-detail/session-detail';
@@ -40,12 +39,6 @@ const routesChild: Routes = [
         path: 'speaker-details/:speakerId',
         component: SpeakerDetailPage,
         outlet: 'speakers',
-    },
-    // tab four
-    {
-        path: 'about',
-        component: AboutPage,
-        outlet: 'about',
     },
 ];
 

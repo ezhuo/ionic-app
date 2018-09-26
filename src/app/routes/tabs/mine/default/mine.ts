@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { IndexControl } from '@core';
 
+import { PopoverPage } from '../about-popover/about-popover';
+
 // import { MineEditPage } from './mine-edit/mine-edit';
 // import { MineEditAvatarModalPage } from './mine-edit-avatar-modal/mine-edit-avatar-modal';
 // import { AboutPage } from './about/about';
@@ -30,7 +32,7 @@ export class TabsMine extends IndexControl implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);
         // this.userInfo = this.globalData.user;
-        this.ionEvents.subscribe('user:login', userInfo => {
+        this.ionSrv.events.subscribe('user:login', userInfo => {
             this.userInfo = userInfo;
         });
     }
@@ -43,7 +45,13 @@ export class TabsMine extends IndexControl implements OnInit, OnDestroy {
         super.ngOnDestroy();
     }
 
-    presentPopover(event: Event) {}
+    async presentPopover(event: Event) {
+        const popover = await this.modalSrv.popoverCtrl.create({
+            component: PopoverPage,
+            event,
+        });
+        await popover.present();
+    }
 
     // constructor2(
     //     public navCtrl: NavController,
@@ -83,24 +91,16 @@ export class TabsMine extends IndexControl implements OnInit, OnDestroy {
         // this.navCtrl.push(FileCachePage);
     }
 
-    exitSoftware() {
+    exitApp() {
+        debugger;
         this.noticeSrv
             .alertConfirm('确认退出软件？')
-            .then((res:any) => {
-                console.log('ok');
-                // this.platform.exitApp();
+            .then((res: any) => {
+                this.ionNativeSrv.exitApp();
             })
-            .catch((err:any) => {
-                console.log('err');
+            .catch((err: any) => {
+                // console.log('err');
             });
-    }
-
-    about() {
-        // this.navCtrl.push(AboutPage);
-    }
-
-    viewAvatar() {
-        // this.modalCtrl.create(MineEditAvatarModalPage).present();
     }
 
     notice() {

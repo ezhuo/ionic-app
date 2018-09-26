@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/app/tabs/(mine:mine)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>关于</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div padding text-center>
+        <img src="./assets/img/appicon.png" alt="" style="border-radius: 50%;">
+    </div>
+    <ion-list>
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/about/update-log)')">
+            <ion-label>更新日志</ion-label>
+        </ion-item>
+        <ion-item button detail-none>
+            <ion-label>功能介绍</ion-label>
+        </ion-item>
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/about/feed-back-list)')">
+            <ion-label>我的反馈</ion-label>
+        </ion-item>
+        <!-- <button ion-item (click)="checkNewVersion()" detail-none>
+            <span *ngIf="(currentVersionNo==latestVersionNo)||!latestVersionNo">已经是最新版本(版本号:{{currentVersionNo}})</span>
+            <span *ngIf="latestVersionNo&&currentVersionNo!=latestVersionNo">发现新版本(最新版本:{{latestVersionNo}};当前版本:{{currentVersionNo}})</span>
+        </button> -->
+    </ion-list>
+</ion-content>

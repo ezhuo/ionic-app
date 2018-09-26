@@ -26,7 +26,8 @@ export class NativeGets {
         let ops: CameraOptions = Object.assign(
             {
                 sourceType: this.ionNativeSrv.camera.PictureSourceType.CAMERA, //图片来源,CAMERA:拍照,PHOTOLIBRARY:相册
-                destinationType: this.ionNativeSrv.camera.DestinationType.DATA_URL, //默认返回base64字符串,DATA_URL:base64   FILE_URI:图片路径
+                destinationType: this.ionNativeSrv.camera.DestinationType
+                    .DATA_URL, //默认返回base64字符串,DATA_URL:base64   FILE_URI:图片路径
                 quality: define.quality_size, //图像质量，范围为0 - 100
                 allowEdit: false, //选择图片前是否允许编辑
                 encodingType: this.ionNativeSrv.camera.EncodingType.JPEG,
@@ -52,7 +53,7 @@ export class NativeGets {
                 })
                 .catch(err => {
                     if (err == 20) {
-                        self.ionNativeSrv.noticeService.alertInfo(
+                        self.ionNativeSrv.noticeSrv.alertInfo(
                             '没有权限,请在设置中开启权限',
                         );
                         return;
@@ -64,7 +65,7 @@ export class NativeGets {
                         err,
                         '使用cordova-plugin-camera获取照片失败',
                     );
-                    self.ionNativeSrv.noticeService.alertInfo('获取照片失败');
+                    self.ionNativeSrv.noticeSrv.alertInfo('获取照片失败');
                     observer.error(false);
                 });
         });
@@ -78,7 +79,8 @@ export class NativeGets {
         let ops: CameraOptions = Object.assign(
             {
                 sourceType: this.ionNativeSrv.camera.PictureSourceType.CAMERA,
-                destinationType: this.ionNativeSrv.camera.DestinationType.DATA_URL, //DATA_URL: 0 base64字符串, FILE_URI: 1图片路径
+                destinationType: this.ionNativeSrv.camera.DestinationType
+                    .DATA_URL, //DATA_URL: 0 base64字符串, FILE_URI: 1图片路径
             },
             options,
         );
@@ -94,7 +96,8 @@ export class NativeGets {
             {
                 sourceType: this.ionNativeSrv.camera.PictureSourceType
                     .PHOTOLIBRARY,
-                destinationType: this.ionNativeSrv.camera.DestinationType.DATA_URL, //DATA_URL: 0 base64字符串, FILE_URI: 1图片路径
+                destinationType: this.ionNativeSrv.camera.DestinationType
+                    .DATA_URL, //DATA_URL: 0 base64字符串, FILE_URI: 1图片路径
             },
             options,
         );
@@ -139,8 +142,30 @@ export class NativeGets {
                 })
                 .catch(err => {
                     this.ionNativeSrv.logger.err(err, '通过图库选择多图失败');
-                    self.ionNativeSrv.noticeService.alertInfo('获取照片失败');
+                    self.ionNativeSrv.noticeSrv.alertInfo('获取照片失败');
                     observer.error(false);
+                });
+        });
+    }
+
+    getCheckVersion() {
+        this.getVersionNumber().subscribe(resVer => {
+            this.ionNativeSrv.httpSrv
+                .post(`/ver/check`, { ver: resVer })
+                .subscribe((res: any) => {
+                    console.log(res);
+                    const dd = res.data || [];
+                    if (dd.length > 0) {
+                        if (dd[0].url) {
+                            this.ionNativeSrv.noticeSrv
+                                .alertConfirm(dd[0].message, '更新')
+                                .then(() => {
+                                    this.ionNativeSrv.app.openUrlByBrowser(
+                                        dd[0].url,
+                                    );
+                                });
+                        }
+                    }
                 });
         });
     }
@@ -182,7 +207,7 @@ export class NativeGets {
     }
 
     /**
-     * 获得app包名/id,如com.kit.ionic2tabs
+     * 获得app包名/id,如com.zishi.app
      * @description  对应/config.xml中id的值
      */
     getPackageName(): Observable<string> {
@@ -239,7 +264,7 @@ export class NativeGets {
                                     (this.ionNativeSrv.app.isIos() &&
                                         msg.indexOf('定位失败') != -1)
                                 ) {
-                                    self.ionNativeSrv.noticeService
+                                    self.ionNativeSrv.noticeSrv
                                         .alertConfirm(
                                             '请在手机设置或app权限管理中开启',
                                             '去开启',
@@ -341,7 +366,7 @@ export class NativeGets {
                                         if (res == 'DENIED_ALWAYS') {
                                             //拒绝访问状态,必须手动开启
                                             locationAuthorization = false;
-                                            self.ionNativeSrv.noticeService
+                                            self.ionNativeSrv.noticeSrv
                                                 .alertConfirm(
                                                     '请在手机设置或app权限管理中开启',
                                                     '去开启',
@@ -393,7 +418,7 @@ export class NativeGets {
                                 observer.next(true);
                             } else {
                                 enabledLocationService = false;
-                                self.ionNativeSrv.noticeService
+                                self.ionNativeSrv.noticeSrv
                                     .alertConfirm('您未开启位置服务', '去开启')
                                     .then(() => {
                                         this.ionNativeSrv.diagnostic.switchToLocationSettings();
@@ -456,7 +481,7 @@ export class NativeGets {
                                         } else {
                                             havePermission = false;
 
-                                            self.ionNativeSrv.noticeService
+                                            self.ionNativeSrv.noticeSrv
                                                 .alertConfirm(
                                                     '请在手机设置或app权限管理中开启',
                                                     '去开启',

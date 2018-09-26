@@ -24,7 +24,7 @@ import { Storage } from '@ionic/storage';
 import { ModalService } from '../utils/modal.service';
 import { NoticeService } from '../utils/notice.service';
 
-import { NativeService } from '../ionic';
+import { NativeService, IonicService } from '../ionic';
 
 import { AuthService } from '../data/auth.service';
 import { TokenService } from '../data/token.service';
@@ -155,27 +155,11 @@ export class InjectorControl implements OnInit, OnDestroy {
 
     // -------------------
 
-    get ionStorage() {
-        return this.injector.get(Storage);
-    }
-
-    get ionEvents() {
-        return this.injector.get(Events);
-    }
-
-    get ionMenu() {
-        return this.injector.get(MenuController);
-    }
-
-    get ionNav() {
-        return this.injector.get(NavController);
-    }
-
-    get ionNavParams() {
-        return this.injector.get(NavParams);
-    }
-
     get ionNativeSrv() {
         return this.injector.get(NativeService);
+    }
+
+    get ionSrv() {
+        return this.injector.get(IonicService);
     }
 }

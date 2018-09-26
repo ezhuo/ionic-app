@@ -9,6 +9,10 @@ export const app = {
     year: 2018,
 };
 
+export const api = {
+    host: 'http://192.168.168.202:8090/api/sys/app/v1',
+};
+
 export const platformConfig: PlatformConfig = {
     mode: 'ios',
     toolbarColor: 'primary',

@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>我的反馈</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngFor="let item of data.rows">
+        <ion-item detail-push tappable (click)="detail(item.id)">
+            <div><span class="my-label">标题：</span>{{item.title}}</div>
+            <div><span class="my-label">内容：</span>{{item.content}}</div>
+            <div><span class="my-label">状态：</span>{{item.state==1?'未回复':'已回复'}}</div>
+            <div class="my-time">{{item.createTime|date:'yyyy-MM-dd HH:mm'}}</div>
+        </ion-item>
+    </div>
+    <!-- <page-paging [total]="data.total" (pageNumChange)="doSearch($event)"></page-paging> -->
+</ion-content>

@@ -51,7 +51,7 @@ export class AuthInterceptor implements HttpInterceptor {
         try {
             // this.httpService.end();
             const $http_code = event.status;
-            const $notice = 'info';
+            const $notice = 'Info';
             const data = event.body;
             this.noticeSrv.clearAll();
 
@@ -85,7 +85,7 @@ export class AuthInterceptor implements HttpInterceptor {
             }
 
             if ($message && $notice) {
-                this.noticeSrv['msg_' + $notice]($message);
+                this.noticeSrv['msg' + $notice]($message);
             }
         } catch (e) {
             console.error(e);
@@ -182,8 +182,8 @@ export class AuthInterceptor implements HttpInterceptor {
                 .set('style', rh.get('style').toString())
                 .set('token', rh.get('token').toString())
                 .set('validate', rh.get('validate').toString()),
+            withCredentials: true,
         });
-
         return next.handle(authReq).pipe(
             mergeMap((event: any) => {
                 if (configInc.app_debug)
