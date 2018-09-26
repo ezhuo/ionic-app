@@ -154,17 +154,13 @@ export class NativeGets {
                 .post(`/ver/check`, { ver: resVer })
                 .subscribe((res: any) => {
                     console.log(res);
-                    const dd = res.data || [];
-                    if (dd.length > 0) {
-                        if (dd[0].url) {
-                            this.ionNativeSrv.noticeSrv
-                                .alertConfirm(dd[0].message, '更新')
-                                .then(() => {
-                                    this.ionNativeSrv.app.openUrlByBrowser(
-                                        dd[0].url,
-                                    );
-                                });
-                        }
+                    const up = res.data || {};
+                    if (up.url) {
+                        this.ionNativeSrv.noticeSrv
+                            .alertConfirm(up.message, '更新')
+                            .then(() => {
+                                this.ionNativeSrv.app.openUrlByBrowser(up.url);
+                            });
                     }
                 });
         });

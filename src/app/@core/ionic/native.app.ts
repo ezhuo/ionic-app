@@ -20,6 +20,13 @@ export class NativeApp {
     }
 
     /**
+     * 是否运行到真机上
+     */
+    get isRealDevice() {
+        return window['cordova'] || false;
+    }
+
+    /**
      * 是否真机环境
      */
     isMobile(): boolean {
@@ -138,9 +145,7 @@ export class NativeApp {
 
     public assertNetwork() {
         if (!this.ionNativeSrv.app.isConnecting()) {
-            this.ionNativeSrv.noticeSrv.alertInfo(
-                '未检测到网络,请连接网络',
-            );
+            this.ionNativeSrv.noticeSrv.alertInfo('未检测到网络,请连接网络');
         }
     }
 }

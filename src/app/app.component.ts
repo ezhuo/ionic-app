@@ -39,10 +39,8 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     initializeApp() {
-        // this.checkVer();
         this.ionNativeSrv.platform.ready().then(() => {
             this.ionNativeSrv.app.statusBarStyle();
-            // this.ionNativeSrv.statusBar.styleDefault();
             this.ionNativeSrv.splashScreen.hide();
             this.checkVer();
         });
@@ -145,7 +143,7 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     checkVer() {
-        // this.ionNativeSrv.gets.getCheckVersion();
+        this.ionNativeSrv.gets.getCheckVersion();
         this.httpSrv.post(`/ver/check`, { ver: '1' }).subscribe((res: any) => {
             console.log(res);
             const dd = res.data || [];
