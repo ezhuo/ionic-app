@@ -160,6 +160,9 @@ export class NativeGets {
                             .alertConfirm(up.message, '更新')
                             .then(() => {
                                 this.ionNativeSrv.app.openUrlByBrowser(up.url);
+                            })
+                            .catch(() => {
+                                console.log('no update');
                             });
                     }
                 });

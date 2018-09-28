@@ -26,6 +26,10 @@ export class NativeApp {
         return window['cordova'] || false;
     }
 
+    isCordova() {
+        return this.ionNativeSrv.platform.is('cordova');
+    }
+
     /**
      * 是否真机环境
      */
@@ -114,17 +118,6 @@ export class NativeApp {
         });
     }
 
-    /**
-     * 拨打电话
-     * @param number
-     */
-    /*    callNumber(number: string): void {
-        this.cn
-            .callNumber(number, true)
-            .then(() => console.log('成功拨打电话:' + number))
-            .catch(err => this.logger.err(err, '拨打电话失败'));
-    }
-*/
     /**
      * 扫描二维码
      * @returns {any}

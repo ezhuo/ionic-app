@@ -1,14 +1,14 @@
-<ion-tabs #tabs (ionChange)="ionChange($event)" (ionNavDidChange)="ionNavDidChange($event)">
-    <ion-tab #tab0 label="Schedule" (ionSelect)="ionSelect($event)" index=0 icon="calendar" href="/app/tabs/(schedule:schedule)">
+<ion-tabs (ionChange)="ionChange($event)">
+    <ion-tab label="Schedule" icon="calendar" href="/app/tabs/(schedule:schedule)">
         <ion-router-outlet stack name="schedule"></ion-router-outlet>
     </ion-tab>
-    <ion-tab #tab1 label="Speakers" (ionSelect)="ionSelect($event)" index=1 icon="contacts" href="/app/tabs/(speakers:speakers)">
+    <ion-tab label="Speakers" icon="contacts" href="/app/tabs/(speakers:speakers)">
         <ion-router-outlet stack name="speakers"></ion-router-outlet>
     </ion-tab>
-    <ion-tab label="demo" (ionSelect)="ionSelect($event)" index=2 icon="contacts" href="/app/tabs/(demo:demo)">
+    <ion-tab label="demo" icon="contacts" href="/app/tabs/(demo:demo)">
         <ion-router-outlet stack name="demo"></ion-router-outlet>
     </ion-tab>
-    <ion-tab label="我的" (ionSelect)="ionSelect($event)" index=3 icon="information-circle" href="/app/tabs/(mine:mine)">
+    <ion-tab label="我的" icon="information-circle" href="/app/tabs/(mine:mine)">
         <ion-router-outlet stack name="mine"></ion-router-outlet>
     </ion-tab>
 </ion-tabs>

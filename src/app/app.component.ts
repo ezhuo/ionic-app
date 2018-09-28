@@ -7,7 +7,7 @@ import {
     QueryList,
 } from '@angular/core';
 import { IndexControl } from '@core';
-import { IonRouterOutlet, StackController } from '@ionic/angular';
+import { IonRouterOutlet } from '@ionic/angular';
 import { UserData } from './providers/user-data';
 
 @Component({
@@ -30,10 +30,10 @@ export class AppComponent extends IndexControl implements OnInit {
     constructor(protected injector: Injector) {
         super(injector);
         this.initializeApp();
-        this.backButtonEvent();
     }
 
     ngOnInit() {
+        this.listenBackButtonEvent();
         this.checkLoginStatus();
         this.listenForLoginEvents();
     }
@@ -42,52 +42,62 @@ export class AppComponent extends IndexControl implements OnInit {
         const init = () => {
             this.ionNativeSrv.app.statusBarStyle();
             this.ionNativeSrv.splashScreen.hide();
-            this.checkVer();
         };
+        // if (this.ionNativeSrv.app.isCordova())
         this.ionNativeSrv.platform.ready().then(() => {
-            setTimeout(init, 500);
+            this.checkVer();
+            this.freeTimeOut.to = setTimeout(init, 800);
         });
     }
 
-    backButtonEvent() {
+    listenBackButtonEvent() {
         const tabsUrl = [
             '/app/tabs/(speakers:speakers)',
             '/app/tabs/(demo:demo)',
             '/app/tabs/(mine:mine)',
         ];
-        const subscribe = async () => {
-            // try {
-            //     const isClose =
-            //         (await this.noticeSrv.closeActionSheet()) ||
-            //         (await this.noticeSrv.closeAlert()) ||
-            //         (await this.modalSrv.closePopover()) ||
-            //         (await this.modalSrv.closeModal()) ||
-            //         (await this.ionSrv.closeMenu());
-            //     if (isClose) return false;
-            // } catch (e) {}
-
-            this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
-                if (this.route.url == this.configSrv.router.default) {
-                    if (
-                        new Date().getTime() - this.lastTimeBackPress <
-                        this.timePeriodToExit
-                    ) {
-                        this.ionNativeSrv.exitApp();
-                    } else {
-                        this.ionSrv.nav.this.noticeSrv.msgSuccess(
-                            `再按一次退出系统`,
-                        );
-                        this.lastTimeBackPress = new Date().getTime();
-                        this.navigateByUrl(this.configSrv.router.default);
-                    }
-                } else if (tabsUrl.indexOf(this.route.url) > -1) {
-                    this.navigateByUrl(this.configSrv.router.default);
+        const isClose = async () => {
+            let result: any = null;
+            result = await this.modalSrv.modalCtrl.getTop();
+            if (!result) result = await this.modalSrv.popoverCtrl.getTop();
+            if (!result) result = await this.noticeSrv.actionSheetCtrl.getTop();
+            if (!result) result = await this.noticeSrv.alertCtrl.getTop();
+            if (!result) {
+                result = await this.ionSrv.menu.getOpen();
+                if (result) {
+                    this.ionSrv.closeMenu();
                 }
+            }
+            return result;
+        };
+        const subscribe = async () => {
+            const is = await isClose();
+            // console.log(is);
+            // 说明有overlay 组件，不在继续
+            if (is) return false;
 
-                // else if (outlet && outlet.canGoBack()) {
-                //     outlet.pop();
-                // }
-            });
+            if (this.routerOutlets)
+                this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
+                    if (this.route.url == this.configSrv.router.default) {
+                        if (
+                            new Date().getTime() - this.lastTimeBackPress <
+                            this.timePeriodToExit
+                        ) {
+                            this.ionNativeSrv.exitApp();
+                        } else {
+                            this.noticeSrv.msgSuccess(`再按一次退出系统`);
+                            this.lastTimeBackPress = new Date().getTime();
+                            this.navigateByUrl(this.configSrv.router.default);
+                        }
+                    } else if (tabsUrl.indexOf(this.route.url) > -1) {
+                        this.navigateByUrl(this.configSrv.router.default);
+                    } else if (outlet && outlet.canGoBack()) {
+                        debugger;
+                        outlet.pop();
+                    }
+                });
+
+            this.ionSrv.events.publish('router-pop');
         };
 
         // setTimeout(() => {
@@ -135,18 +145,5 @@ export class AppComponent extends IndexControl implements OnInit {
 
     checkVer() {
         this.ionNativeSrv.gets.getCheckVersion();
-        this.httpSrv.post(`/ver/check`, { ver: '1' }).subscribe((res: any) => {
-            console.log(res);
-            const dd = res.data || [];
-            if (dd.length > 0) {
-                if (dd[0].url) {
-                    this.ionNativeSrv.noticeSrv
-                        .alertConfirm(dd[0].message, '更新')
-                        .then(() => {
-                            this.ionNativeSrv.app.openUrlByBrowser(dd[0].url);
-                        });
-                }
-            }
-        });
     }
 }

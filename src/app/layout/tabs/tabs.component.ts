@@ -5,6 +5,8 @@ import {
     OnDestroy,
     ViewChild,
     ViewEncapsulation,
+    ViewChildren,
+    QueryList,
 } from '@angular/core';
 import {
     NavigationEnd,
@@ -12,9 +14,8 @@ import {
     NavigationError,
     NavigationCancel,
 } from '@angular/router';
+import { IonRouterOutlet } from '@ionic/angular';
 import { IndexControl } from '@core';
-
-import { Tabs, Tab } from '@ionic/angular';
 
 @Component({
     selector: 'layout-tabs',
@@ -26,11 +27,8 @@ export class LayoutTabsComponent extends IndexControl
     implements OnInit, OnDestroy {
     isFetching = false;
 
-    @ViewChild('tabs')
-    tabs: Tabs;
-
-    @ViewChild('tab1')
-    tab1: Tab;
+    @ViewChildren(IonRouterOutlet)
+    routerOutlets: QueryList<IonRouterOutlet>;
 
     constructor(protected injector: Injector) {
         super(injector);
@@ -58,6 +56,7 @@ export class LayoutTabsComponent extends IndexControl
     ngOnInit() {
         super.ngOnInit();
         this.listenForSelectEvents();
+        this.listenBackButtonEvent();
     }
 
     ngOnDestory() {
@@ -79,7 +78,36 @@ export class LayoutTabsComponent extends IndexControl
     ionSelect($event) {
         // console.log('ionSelect', $event);
     }
-    ionChange($event: any) {}
+    async ionChange($event: any) {
+        // const tabElm: HTMLIonTabElement = $event.detail
+        //     .tab as HTMLIonTabElement;
+        // tabElm.forceUpdate();
+        // console.log(tabElm.href);
+        // await tabElm.setActive();
+        // await tabElm.componentOnReady();
+        // const tabs = tabElm.closest('ion-tabs');
+        // if (tabs) {
+        //     await tabs.componentOnReady();
+        //     await tabs.select(tabElm);
+        //     tabs.forceUpdate();
+        // }
+    }
 
     listenForSelectEvents() {}
+
+    /**
+     * 监听这一级别的路由
+     */
+    listenBackButtonEvent() {
+        const event = () => {
+            if (this.routerOutlets)
+                this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
+                    if (outlet && outlet.canGoBack()) {
+                        debugger;
+                        outlet.pop();
+                    }
+                });
+        };
+        this.ionSrv.events.subscribe('router-pop', event);
+    }
 }

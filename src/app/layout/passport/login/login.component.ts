@@ -9,7 +9,7 @@ import { FormGroup, Validators, NgForm } from '@angular/forms';
 
 import { IndexControl } from '@core';
 import { UserData } from '../../../providers/user-data';
-import { UserOptions } from '../../../interfaces/user-options';
+import { UserOptions } from '@core/model/user-options';
 
 @Component({
     selector: 'app-passport-login',
