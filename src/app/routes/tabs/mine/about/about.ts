@@ -45,7 +45,7 @@ export class TabsMineAbout extends IndexControl implements OnInit, OnDestroy {
     }
 
     loadVersionInfo() {
-        if (this.ionNativeSrv.app.isMobile()) {
+        if (this.ionSrv.app.isMobile()) {
             // this.currentVersionNo = this.versionService.getCurrentVersionNo();
             // this.latestVersionNo = this.versionService.getLatestVersionNo();
             // this.lastVersionInfo = this.versionService.getLastVersionInfo();

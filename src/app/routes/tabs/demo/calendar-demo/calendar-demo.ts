@@ -59,6 +59,6 @@ export class CalendarDemoPage extends IndexControl {
     }
 
     details(url) {
-        this.ionNativeSrv.app.openUrlByBrowser(url);
+        this.ionSrv.app.openUrlByBrowser(url);
     }
 }

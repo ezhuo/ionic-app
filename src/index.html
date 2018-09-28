@@ -2,39 +2,61 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Ionic-App</title>
+    <meta charset="UTF-8">
+    <title>Ionic-App</title>
 
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
 
-  <meta name="theme-color" content="#387ef5">
+    <meta name="theme-color" content="#387ef5">
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <base href="/">
+    <base href="/">
 
-  <link rel="icon" type="image/x-icon" href="assets/img/appicon.png">
-  <link rel="manifest" href="assets/manifest.json">
+    <link rel="icon" type="image/x-icon" href="assets/img/appicon.png">
+    <link rel="manifest" href="assets/manifest.json">
 
-  <link rel="apple-touch-icon" href="assets/img/appicon.png">
+    <link rel="apple-touch-icon" href="assets/img/appicon.png">
 
-  <script>
-    /*
-     * if ('serviceWorker' in navigator) {
-     *   navigator.serviceWorker.register('service-worker.js')
-     *     .then(() => console.log('service worker installed'))
-     *     .catch(err => console.log('Error', err));
-     * }
-     */
-  </script>
+    <!--高德地图 http://lbs.amap.com/api/javascript-api/summary/ -->
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=53f28c08321eafa09dd262f7f02db718&plugin=AMap.Geocoder"></script>
+
+    <!--字符串加密-->
+    <script src="./assets/vendor/myjs.min.js"></script>
+
+    <!--生成二维码 https://github.com/davidshimjs/qrcodejs -->
+    <script src="./assets/vendor/qrcode.min.js"></script>
+
+    <!--AlloyLever https://github.com/AlloyTeam/AlloyLever -->
+    <script src="./assets/vendor/alloy-lever.js"></script>
+
+    <!--图片预览 swiper http://www.swiper.com.cn/api/index.html -->
+    <link rel="stylesheet" href="./assets/vendor/swiper/swiper-3.4.2.min.css">
+    <script src="./assets/vendor/swiper/swiper-3.4.2.min.js"></script>
+
+    <!--图片裁剪 AlloyCrop https://github.com/AlloyTeam/AlloyCrop -->
+    <script src="./assets/vendor/alloycrop/alloy-finger.js"></script>
+    <script src="./assets/vendor/alloycrop/transform.js"></script>
+    <script src="./assets/vendor/alloycrop/alloy-crop.js"></script>
+
+    <script>
+        /*
+         * if ('serviceWorker' in navigator) {
+         *   navigator.serviceWorker.register('service-worker.js')
+         *     .then(() => console.log('service worker installed'))
+         *     .catch(err => console.log('Error', err));
+         * }
+         */
+
+    </script>
 </head>
 
 <body>
 
-  <app-root></app-root>
+    <app-root></app-root>
 
 </body>
 

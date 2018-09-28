@@ -4,9 +4,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
-export const pipes = [];
 import { ModalService } from '@core';
+import { AutosizeDirective } from './directives';
+import {
+    FileCachePage,
+    PagingPage,
+    PreviewPicturePage,
+    SelectPicturePage,
+} from './component';
 
 const MODULES = [
     CommonModule,
@@ -16,14 +21,22 @@ const MODULES = [
     IonicModule,
     IonicStorageModule,
 ];
-const COMPONENTS = [];
-const DIRECTIVES = [];
-const PROVIDERS = [ModalService];
+export const COMPONENTS = [
+    FileCachePage,
+    PagingPage,
+    PreviewPicturePage,
+    SelectPicturePage,
+];
+export const DIRECTIVES = [AutosizeDirective];
+export const PROVIDERS = [ModalService];
+export const entryComponents = [];
+export const pipes = [];
 
 @NgModule({
     imports: [...MODULES],
     exports: [...MODULES],
-    declarations: [...COMPONENTS, ...DIRECTIVES],
+    declarations: [...COMPONENTS, ...DIRECTIVES, ...entryComponents, ...pipes],
     providers: [...PROVIDERS],
+    entryComponents: [...entryComponents],
 })
 export class SharedModule {}

@@ -2,8 +2,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { IonicModule, Config } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { NativeService } from './native.service';
-import { LoggerService } from './logger.service';
 import { IonicService } from './ionic.service';
 
 import { platformConfig } from '../config.inc';
@@ -50,7 +48,7 @@ const NativeSERVICES = [
     Toast,
 ];
 
-const DefineSERVICES = [NativeService, IonicService, LoggerService];
+const DefineSERVICES = [IonicService];
 
 /**
  * IonicModule.forRoot 请参考：https://ionicframework.com/docs/api/config/Config

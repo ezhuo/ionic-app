@@ -1,8 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { NoticeService } from './notice.service';
 import { ModalService } from './modal.service';
+import { LoggerService } from './logger.service';
 
-const SERVICES = [NoticeService, ModalService];
+const SERVICES = [NoticeService, ModalService, LoggerService];
 
 @NgModule({
     imports: [],

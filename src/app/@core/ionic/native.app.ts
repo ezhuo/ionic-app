@@ -1,47 +1,43 @@
-import { NativeService } from './native.service';
-import { Observable, zip } from 'rxjs';
+import { IonicService } from './ionic.service';
+import { Observable } from 'rxjs';
 import { FileEntry } from './native.plugins';
 
 export class NativeApp {
-    private __nativeSrv: NativeService;
-    get ionNativeSrv() {
-        return this.__nativeSrv;
+    private __ionicSrv: IonicService;
+    get ionSrv() {
+        return this.__ionicSrv;
     }
 
-    constructor(nativeService: NativeService) {
-        this.__nativeSrv = nativeService;
+    constructor(ionicService: IonicService) {
+        this.__ionicSrv = ionicService;
     }
 
     /**
      * 判断是否有网络
      */
     isConnecting(): boolean {
-        return this.ionNativeSrv.gets.getNetworkType() != 'none';
+        return this.ionSrv.gets.getNetworkType() != 'none';
     }
 
     /**
      * 是否运行到真机上
      */
-    get isRealDevice() {
-        return window['cordova'] || false;
-    }
-
     isCordova() {
-        return this.ionNativeSrv.platform.is('cordova');
+        return this.ionSrv.platform.is('cordova');
     }
 
     /**
      * 是否真机环境
      */
     isMobile(): boolean {
-        return this.ionNativeSrv.platform.is('mobile');
+        return this.ionSrv.platform.is('mobile');
     }
 
     /**
      * 是否android真机环境
      */
     isAndroid(): boolean {
-        return this.isMobile() && this.ionNativeSrv.platform.is('android');
+        return this.isMobile() && this.ionSrv.platform.is('android');
     }
 
     /**
@@ -50,9 +46,9 @@ export class NativeApp {
     isIos(): boolean {
         return (
             this.isMobile() &&
-            (this.ionNativeSrv.platform.is('ios') ||
-                this.ionNativeSrv.platform.is('ipad') ||
-                this.ionNativeSrv.platform.is('iphone'))
+            (this.ionSrv.platform.is('ios') ||
+                this.ionSrv.platform.is('ipad') ||
+                this.ionSrv.platform.is('iphone'))
         );
     }
 
@@ -60,10 +56,10 @@ export class NativeApp {
      * 状态栏
      */
     statusBarStyle(): void {
-        if (this.ionNativeSrv.app.isMobile()) {
-            this.ionNativeSrv.statusBar.overlaysWebView(false);
-            this.ionNativeSrv.statusBar.styleLightContent();
-            this.ionNativeSrv.statusBar.backgroundColorByHexString('#488aff'); //3261b3
+        if (this.ionSrv.app.isMobile()) {
+            this.ionSrv.statusBar.overlaysWebView(false);
+            this.ionSrv.statusBar.styleLightContent();
+            this.ionSrv.statusBar.backgroundColorByHexString('#488aff'); //3261b3
         }
     }
 
@@ -71,24 +67,21 @@ export class NativeApp {
      * 隐藏启动页面
      */
     splashScreenHide(): void {
-        return (
-            this.ionNativeSrv.app.isMobile() &&
-            this.ionNativeSrv.splashScreen.hide()
-        );
+        return this.ionSrv.app.isMobile() && this.ionSrv.splashScreen.hide();
     }
 
     /**
      * 调用最小化app插件
      */
     minimize(): void {
-        this.ionNativeSrv.appMinimize.minimize();
+        this.ionSrv.appMinimize.minimize();
     }
 
     /**
      * 通过浏览器打开url
      */
     openUrlByBrowser(url: string): void {
-        this.ionNativeSrv.inAppBrowser.create(url, '_system');
+        this.ionSrv.inAppBrowser.create(url, '_system');
     }
 
     /**
@@ -97,11 +90,11 @@ export class NativeApp {
      */
     convertImgToBase64(path: string): Observable<string> {
         return Observable.create(observer => {
-            this.ionNativeSrv.file
+            this.ionSrv.file
                 .resolveLocalFilesystemUrl(path)
                 .then((fileEnter: FileEntry) => {
                     fileEnter.file(file => {
-                        let reader = new FileReader();
+                        const reader = new FileReader();
                         reader.onloadend = function(e) {
                             observer.next(this.result);
                         };
@@ -109,7 +102,7 @@ export class NativeApp {
                     });
                 })
                 .catch(err => {
-                    this.ionNativeSrv.logger.err(
+                    this.ionSrv.logger.log(
                         err,
                         '根据图片绝对路径转化为base64字符串失败',
                     );
@@ -124,21 +117,22 @@ export class NativeApp {
      */
     scan() {
         return Observable.create(observer => {
-            this.ionNativeSrv.barcodeScanner
+            this.ionSrv.barcodeScanner
                 .scan()
                 .then(barcodeData => {
                     observer.next(barcodeData.text);
                 })
                 .catch(err => {
-                    this.ionNativeSrv.logger.err(err, '扫描二维码失败');
+                    this.ionSrv.logger.log(err, '扫描二维码失败');
                     observer.error(false);
                 });
         });
     }
 
-    public assertNetwork() {
-        if (!this.ionNativeSrv.app.isConnecting()) {
-            this.ionNativeSrv.noticeSrv.alertInfo('未检测到网络,请连接网络');
+    // 检测网络
+    assertNetwork() {
+        if (!this.isConnecting()) {
+            this.ionSrv.noticeSrv.alert('未检测到网络,请连接网络');
         }
     }
 }

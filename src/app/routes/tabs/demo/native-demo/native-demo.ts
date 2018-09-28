@@ -19,39 +19,39 @@ export class NativeDemoPage extends IndexControl {
     }
 
     ionViewWillEnter() {
-        if (!this.ionNativeSrv.app.isMobile()) {
+        if (!this.ionSrv.app.isMobile()) {
             this.noticeSrv.alertInfo('请使用真机调试');
         }
     }
 
     getNetworkType() {
-        this.networkType = this.ionNativeSrv.gets.getNetworkType();
+        this.networkType = this.ionSrv.gets.getNetworkType();
     }
 
     getVersionNumber() {
-        if (this.ionNativeSrv.app.isMobile()) {
-            this.ionNativeSrv.gets.getVersionNumber().subscribe(res => {
+        if (this.ionSrv.app.isMobile()) {
+            this.ionSrv.gets.getVersionNumber().subscribe(res => {
                 this.currentVersionNo = res;
             });
         }
     }
 
     callNumber(number) {
-        // this.ionNativeSrv.isMobile() && this.noticeSrv.callNumber(number);
+        // this.ionSrv.isMobile() && this.noticeSrv.callNumber(number);
     }
 
     scan() {
-        if (this.ionNativeSrv.app.isMobile()) {
-            this.ionNativeSrv.app.scan().subscribe(res => {
+        if (this.ionSrv.app.isMobile()) {
+            this.ionSrv.app.scan().subscribe(res => {
                 this.scanText = res;
             });
         }
     }
 
     getPictureByCamera() {
-        if (this.ionNativeSrv.app.isMobile()) {
-            this.ionNativeSrv.gets
-                .getPictureByCamera({
+        if (this.ionSrv.app.isMobile()) {
+            this.ionSrv.gets
+                .getPicture({
                     destinationType: 1, //期望返回的图片格式,1图片路径
                 })
                 .subscribe(img => {
@@ -61,9 +61,9 @@ export class NativeDemoPage extends IndexControl {
     }
 
     getUserLocation() {
-        // this.noticeSrv.getUserLocation().subscribe(res => {
-        //     this.location = res;
-        // });
+        this.ionSrv.gets.getUserLocation().subscribe(res => {
+            this.location = res;
+        });
     }
 
     navigation() {

@@ -18,7 +18,7 @@ export class PaginationDemoPage extends IndexControl {
     }
 
     details(url) {
-        this.ionNativeSrv.app.openUrlByBrowser(url);
+        this.ionSrv.app.openUrlByBrowser(url);
     }
 
     doSearch(pageNum) {

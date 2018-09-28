@@ -22,7 +22,7 @@ export class FileCacheDemoPage extends IndexControl {
     }
 
     ionViewWillEnter() {
-        if (!this.ionNativeSrv.app.isMobile()) {
+        if (!this.ionSrv.app.isMobile()) {
             this.noticeSrv.alertInfo('请使用真机调试');
         }
     }
@@ -36,7 +36,7 @@ export class FileCacheDemoPage extends IndexControl {
         //     .uploadMultiByFilePath(this.fileObjList)
         //     .subscribe(res => {
         //         this.fileObjList = [];
-        //         this.ionNativeSrv.alert(
+        //         this.ionSrv.alert(
         //             '文件已缓存',
         //             '重启app在"我的-图片缓存"功能查看',
         //         );

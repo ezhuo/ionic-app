@@ -40,7 +40,7 @@ export class TabsMineEditAvatarModal extends ModalControl
                 sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
                 destinationType: this.camera.DestinationType.FILE_URI,
             };
-            // this.ionNativeSrv.getPicture(options).subscribe(fileUrl => {
+            // this.ionSrv.getPicture(options).subscribe(fileUrl => {
             //     this.getPictureSuccess(fileUrl);
             // });
         }
@@ -50,7 +50,7 @@ export class TabsMineEditAvatarModal extends ModalControl
                 sourceType: this.camera.PictureSourceType.CAMERA,
                 destinationType: this.camera.DestinationType.FILE_URI,
             };
-            // this.ionNativeSrv.getPicture(options).subscribe(fileUrl => {
+            // this.ionSrv.getPicture(options).subscribe(fileUrl => {
             //     this.getPictureSuccess(fileUrl);
             // });
         }
@@ -62,7 +62,7 @@ export class TabsMineEditAvatarModal extends ModalControl
                 targetWidth: 400,
                 targetHeight: 400,
             };
-            // this.ionNativeSrv.getPicture(options).subscribe(base64 => {
+            // this.ionSrv.getPicture(options).subscribe(base64 => {
             //     this.saveAvatar(base64);
             // });
         }

@@ -139,6 +139,9 @@ export class NoticeService {
         this.clearLoading(data, role, id);
     }
 
+    alert(msg: any, title = '信息') {
+        return this.alert(msg, title);
+    }
     alertInfo(msg: any, title = '信息') {
         return this.showAlert(this.types[1], title, msg);
     }
@@ -155,14 +158,19 @@ export class NoticeService {
         return this.showAlert(this.types[4], title, msg);
     }
 
-    alertConfirm(msg: any, title = '询问？') {
+    alertConfirm(
+        msg: any,
+        title = '询问？',
+        okText = '确定',
+        cancelText = '取消',
+    ) {
         return new Promise(async (resolve, reject) => {
             const alert = await this.alertCtrl.create({
                 header: title,
                 message: msg,
                 buttons: [
                     {
-                        text: '取消',
+                        text: cancelText,
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah?: any) => {
@@ -170,7 +178,7 @@ export class NoticeService {
                         },
                     },
                     {
-                        text: '确定',
+                        text: okText,
                         handler: (res?: any) => {
                             resolve(res || 'ok');
                         },

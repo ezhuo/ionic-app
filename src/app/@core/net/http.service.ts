@@ -11,6 +11,7 @@ import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError, switchMap } from 'rxjs/operators';
 import { api, app_debug } from '../config.inc';
 import { UserService } from './../data/users.service';
+import { Platform } from '@ionic/angular';
 
 /**
  * 封装HttpClient，主要解决：
@@ -40,8 +41,8 @@ export class HttpService {
     set loading(value: boolean) {
         this._loading = value;
     }
-    get isRealDevice() {
-        return window['cordova'] || false;
+    get isCordova() {
+        return this.injector.get(Platform).is('cordova');
     }
 
     parseParams(params: any): HttpParams {
@@ -82,7 +83,7 @@ export class HttpService {
 
     /** 服务端URL地址 */
     get SERVER_URL(): string {
-        if (this.isRealDevice) {
+        if (this.isCordova) {
             return api.host;
         }
         return api.base;

@@ -80,6 +80,7 @@
         "core-js": "^2.5.7",
         "date-fns": "^1.29.0",
         "extend": "^3.0.2",
+        "fundebug-javascript": "^1.2.3",
         "inflight": "^1.0.6",
         "inherits": "^2.0.3",
         "once": "^1.4.0",
@@ -112,9 +113,9 @@
         "karma-coverage-istanbul-reporter": "~2.0.0",
         "karma-jasmine": "~1.1.1",
         "karma-jasmine-html-reporter": "^0.2.2",
-        "webpack-bundle-analyzer": "^2.11.2",
         "tslint": "^5.11.0",
-        "typescript": "~2.9.2"
+        "typescript": "~2.9.2",
+        "webpack-bundle-analyzer": "^2.11.2"
     },
     "cordova": {
         "platforms": [

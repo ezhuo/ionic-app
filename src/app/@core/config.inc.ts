@@ -45,6 +45,10 @@ export const api = deepExtend(
     env.api,
 );
 
+export const fundebug = {
+    api: 'bdd622a941f6a247afdd11a6c83a1297ea8d06b4158325080b089b6421a33a83',
+};
+
 /**
  * 富文本编辑器
  */

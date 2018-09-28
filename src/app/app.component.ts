@@ -40,11 +40,12 @@ export class AppComponent extends IndexControl implements OnInit {
 
     initializeApp() {
         const init = () => {
-            this.ionNativeSrv.app.statusBarStyle();
-            this.ionNativeSrv.splashScreen.hide();
+            this.ionSrv.app.statusBarStyle();
+            this.ionSrv.splashScreen.hide();
         };
-        // if (this.ionNativeSrv.app.isCordova())
-        this.ionNativeSrv.platform.ready().then(() => {
+        // if (this.ionSrv.app.isCordova())
+        this.ionSrv.platform.ready().then(() => {
+            this.ionSrv.app.assertNetwork();
             this.checkVer();
             this.freeTimeOut.to = setTimeout(init, 800);
         });
@@ -83,7 +84,7 @@ export class AppComponent extends IndexControl implements OnInit {
                             new Date().getTime() - this.lastTimeBackPress <
                             this.timePeriodToExit
                         ) {
-                            this.ionNativeSrv.exitApp();
+                            this.ionSrv.exitApp();
                         } else {
                             this.noticeSrv.msgSuccess(`再按一次退出系统`);
                             this.lastTimeBackPress = new Date().getTime();
@@ -103,7 +104,7 @@ export class AppComponent extends IndexControl implements OnInit {
         // setTimeout(() => {
         //     subscribe();
         // }, 5000);
-        this.ionNativeSrv.platform.backButton.subscribe(subscribe);
+        this.ionSrv.platform.backButton.subscribe(subscribe);
     }
 
     logout() {
@@ -144,6 +145,6 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     checkVer() {
-        this.ionNativeSrv.gets.getCheckVersion();
+        this.ionSrv.gets.getCheckVersion();
     }
 }

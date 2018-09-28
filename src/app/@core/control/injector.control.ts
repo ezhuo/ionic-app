@@ -15,8 +15,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ModalService } from '../utils/modal.service';
 import { NoticeService } from '../utils/notice.service';
+import { LoggerService } from '../utils/logger.service';
 
-import { NativeService, IonicService } from '../ionic';
+import { IonicService } from '../ionic';
 
 import { AuthService } from '../data/auth.service';
 import { TokenService } from '../data/token.service';
@@ -93,6 +94,10 @@ export class InjectorControl implements OnInit, OnDestroy {
         return this.injector.get(NoticeService);
     }
 
+    get loggerSrv() {
+        return this.injector.get(LoggerService);
+    }
+
     get msgSrv() {
         return this.injector.get(NoticeService);
     }
@@ -143,12 +148,6 @@ export class InjectorControl implements OnInit, OnDestroy {
 
     get helpers() {
         return helpers;
-    }
-
-    // -------------------
-
-    get ionNativeSrv() {
-        return this.injector.get(NativeService);
     }
 
     get ionSrv() {
