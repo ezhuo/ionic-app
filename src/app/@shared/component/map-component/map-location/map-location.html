@@ -1,14 +1,22 @@
 <div *ngIf="showIonFab">
-    <ion-fab center bottom>
-        <button ion-fab>导航</button>
-        <ion-fab-list side="left">
-            <button ion-fab color="danger" (click)="mapNavigation(1)">驾车</button>
-        </ion-fab-list>
-        <ion-fab-list side="right">
-            <button ion-fab color="dark" (click)="mapNavigation(2)"> 公交</button>
-        </ion-fab-list>
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button>
+            导航
+        </ion-fab-button>
         <ion-fab-list side="top">
-            <button ion-fab color="secondary" (click)="mapNavigation(3)">步行</button>
+            <ion-fab-button (click)="mapNavigation(1)">
+                驾车
+            </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+            <ion-fab-button (click)="mapNavigation(2)">
+                公交
+            </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+            <ion-fab-button (click)="mapNavigation(3)">
+                步行
+            </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
 </div>

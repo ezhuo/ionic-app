@@ -3,6 +3,7 @@ import {
     Injector,
     OnInit,
     OnDestroy,
+    AfterContentInit,
     ViewEncapsulation,
     Input,
     ElementRef,
@@ -16,7 +17,8 @@ import { ModalControl } from '@core';
     styleUrls: [`./navigation.scss`],
     encapsulation: ViewEncapsulation.None,
 })
-export class Navigation extends ModalControl implements OnInit, OnDestroy {
+export class Navigation extends ModalControl
+    implements OnInit, OnDestroy, AfterContentInit {
     @ViewChild('panel')
     panel: ElementRef;
     navigationType: number;
@@ -25,18 +27,16 @@ export class Navigation extends ModalControl implements OnInit, OnDestroy {
     map;
     startPoint;
     endPoint;
+    markerLocation;
 
     constructor(protected injector: Injector) {
         super(injector);
-        this.navigationType = this.activeRoute.snapshot.params.get(
-            'navigationType',
-        );
-        this.endPoint = this.activeRoute.snapshot.params.get('markerLocation');
         this.map = window['HomeAMap'];
     }
 
     ngOnInit() {
         super.ngOnInit();
+        this.endPoint = this.markerLocation;
     }
 
     ngOnDestory() {

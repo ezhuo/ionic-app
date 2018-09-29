@@ -3,6 +3,7 @@ import {
     Injector,
     OnInit,
     OnDestroy,
+    AfterContentInit,
     ViewEncapsulation,
     Input,
     ViewChild,
@@ -18,7 +19,8 @@ import { Searchbar } from '@ionic/angular';
     styleUrls: [`./search-address.scss`],
     encapsulation: ViewEncapsulation.None,
 })
-export class SearchAddress extends ModalControl implements OnInit, OnDestroy {
+export class SearchAddress extends ModalControl
+    implements OnInit, OnDestroy, AfterContentInit {
     @ViewChild('searchBar')
     searchBar: Searchbar;
     address: any = '';
@@ -29,19 +31,18 @@ export class SearchAddress extends ModalControl implements OnInit, OnDestroy {
 
     constructor(protected injector: Injector) {
         super(injector);
-        this.address = this.activeRoute.snapshot.params.get('address');
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
         AMap.service('AMap.PlaceSearch', () => {
             // 地点查询插件
             this.placeSearch = new AMap.PlaceSearch({
                 pageSize: 10,
                 pageIndex: 1,
-                city: '广州市',
+                city: '郑州市',
             });
         });
-    }
-
-    ngOnInit() {
-        super.ngOnInit();
     }
 
     ngOnDestory() {
@@ -78,7 +79,7 @@ export class SearchAddress extends ModalControl implements OnInit, OnDestroy {
             if (items) {
                 let isExist = false;
                 for (const value of items) {
-                    if (value.id === item.id) {
+                    if (value && value.id === item.id) {
                         isExist = true;
                     }
                 }

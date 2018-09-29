@@ -15,8 +15,8 @@ export class ModalControl extends AppControl implements OnInit, OnDestroy {
         super.ngOnDestroy();
     }
 
-    modalClose(result?: any) {
-        this.modalSrv.close();
+    modalClose(data?: any, role?: string, id?: string) {
+        this.modalSrv.close(data, role, id);
     }
 
     get modalTitle() {
