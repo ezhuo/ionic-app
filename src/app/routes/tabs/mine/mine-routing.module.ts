@@ -19,6 +19,7 @@ import { TabsMineEditModal } from './mine-edit/mine-edit-modal/mine-edit-modal';
 import { TabsMineEditAvatarModal } from './mine-edit/mine-edit-avatar-modal/mine-edit-avatar-modal';
 
 import { PopoverPage } from './about-popover/about-popover';
+import { FileCachePage } from '@shared';
 
 export const routes: Routes = [
     {
@@ -41,7 +42,11 @@ export const routes: Routes = [
         component: TabsMineFeedBackList,
         outlet: 'mine',
     },
-
+    {
+        path: 'mine/about/feed-back-list',
+        component: TabsMineFeedBackList,
+        outlet: 'mine',
+    },
     {
         path: 'mine/setting',
         component: TabsMineSetting,
@@ -56,6 +61,11 @@ export const routes: Routes = [
     {
         path: 'mine/map',
         component: TabsMineWorkMap,
+        outlet: 'mine',
+    },
+    {
+        path: 'mine/file',
+        component: FileCachePage,
         outlet: 'mine',
     },
     {

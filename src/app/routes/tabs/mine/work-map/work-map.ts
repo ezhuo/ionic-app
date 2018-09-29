@@ -6,7 +6,7 @@ import {
     Injector,
 } from '@angular/core';
 import { IndexControl } from '@core';
-// import { MapLocation } from '../../../shared/map-component/map-location/map-location';
+import { MapLocation } from '@shared/component/map-component/map-location/map-location';
 
 @Component({
     selector: 'tabs-mine-work-map',
@@ -15,7 +15,7 @@ import { IndexControl } from '@core';
     encapsulation: ViewEncapsulation.None,
 })
 export class TabsMineWorkMap extends IndexControl implements OnInit, OnDestroy {
-    // params = { ...MapLocation.defaultParams, draggable: false };
+    params = { ...MapLocation.defaultParams, draggable: false };
 
     constructor(protected injector: Injector) {
         super(injector);

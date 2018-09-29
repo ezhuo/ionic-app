@@ -1,8 +1,6 @@
 import { Component, Injector ,ViewEncapsulation} from '@angular/core';
 import { IndexControl } from '@core';
 
-declare var AlloyCrop;
-
 /**
  * Generated class for the CropPicDemoPage page.
  *

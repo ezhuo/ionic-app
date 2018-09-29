@@ -11,7 +11,7 @@
 <ion-content>
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="getNetworkType();">获取网络类型</button>
+            <ion-button (click)="getNetworkType();">获取网络类型</ion-button>
         </ion-item-divider>
         <ion-item>
             {{networkType}}
@@ -20,7 +20,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="getVersionNumber();">获取app当前版本号</button>
+            <ion-button (click)="getVersionNumber();">获取app当前版本号</ion-button>
         </ion-item-divider>
         <ion-item>
             {{currentVersionNo}}
@@ -29,7 +29,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="callNumber(number.value);">拨打电话</button>
+            <ion-button (click)="callNumber(number.value);">拨打电话</ion-button>
         </ion-item-divider>
         <ion-item>
             <ion-input type="number" #number value="18688499999"></ion-input>
@@ -38,7 +38,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="scan();">扫描二维码</button>
+            <ion-button (click)="scan();">扫描二维码</ion-button>
         </ion-item-divider>
         <ion-item>
             {{scanText}}
@@ -48,7 +48,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="getPictureByCamera();">拍照</button>
+            <ion-button (click)="getPictureByCamera();">拍照</ion-button>
         </ion-item-divider>
         <ion-item *ngIf="imgPath">
             <img src="{{imgPath}}">
@@ -57,7 +57,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="getUserLocation();">获得当前坐标</button>
+            <ion-button (click)="getUserLocation();">获得当前坐标</ion-button>
         </ion-item-divider>
         <ion-item>
             {{location|json}}
@@ -66,7 +66,7 @@
 
     <ion-item-group>
         <ion-item-divider color="light">
-            <button ion-button (click)="navigation();">导航</button>
+            <ion-button (click)="navigation();">导航</ion-button>
         </ion-item-divider>
     </ion-item-group>
 

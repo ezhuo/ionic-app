@@ -1,0 +1,28 @@
+<ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+    <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="/app/tabs/(mine:mine)"></ion-back-button>
+    </ion-buttons>
+    <ion-title>图片缓存</ion-title>
+</ion-toolbar>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            1.app默认开启图片缓存,可以在app设置中更改.
+            <br>
+            2.开启图片缓存后,所有图片上传后均缓存到本地.需要点击本页面"开始上传"按钮才会真正上传到服务端.
+        </ion-card-content>
+    </ion-card>
+    <div padding *ngIf="fileObjList.length==0" text-center>
+        暂无缓存
+    </div>
+    <div padding>
+        <page-select-picture [(fileObjList)]="fileObjList" [allowAdd]="false" class="page-select-picture"></page-select-picture>
+    </div>
+</ion-content>
+
+<ion-footer padding>
+    <ion-button [disabled]="uploading||fileObjList.length==0" block class="footer-btn" (click)="upload()">
+        开始上传
+    </ion-button>
+</ion-footer>

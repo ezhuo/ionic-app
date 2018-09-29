@@ -11,6 +11,11 @@ import {
     PagingPage,
     PreviewPicturePage,
     SelectPicturePage,
+    GetLocationPage,
+    MapLocation,
+    Navigation,
+    SearchAddress,
+    WorkMapPage,
 } from './component';
 
 const MODULES = [
@@ -26,15 +31,24 @@ export const COMPONENTS = [
     PagingPage,
     PreviewPicturePage,
     SelectPicturePage,
+    WorkMapPage,
+    MapLocation,
+    GetLocationPage,
 ];
 export const DIRECTIVES = [AutosizeDirective];
 export const PROVIDERS = [ModalService];
-export const entryComponents = [];
+export const entryComponents = [Navigation, SearchAddress];
 export const pipes = [];
 
 @NgModule({
     imports: [...MODULES],
-    exports: [...MODULES],
+    exports: [
+        ...MODULES,
+        ...COMPONENTS,
+        ...DIRECTIVES,
+        ...entryComponents,
+        ...pipes,
+    ],
     declarations: [...COMPONENTS, ...DIRECTIVES, ...entryComponents, ...pipes],
     providers: [...PROVIDERS],
     entryComponents: [...entryComponents],

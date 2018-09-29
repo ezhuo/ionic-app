@@ -27,10 +27,10 @@
         </ion-item>
         <div *ngIf="verifyMessages.content.errorMsg" class="validation-failed">{{verifyMessages.content.errorMsg}}</div>
         <ion-item>
-            <!-- <page-select-picture [(fileObjList)]="fileObjList"></page-select-picture> -->
+            <page-select-picture [(fileObjList)]="fileObjList"></page-select-picture>
         </ion-item>
         <div padding>
-            <button ion-button type="submit" block [disabled]="!form.valid">提交反馈</button>
+            <ion-button type="submit" block [disabled]="!form.valid">提交反馈</ion-button>
         </div>
     </form>
 </ion-content>

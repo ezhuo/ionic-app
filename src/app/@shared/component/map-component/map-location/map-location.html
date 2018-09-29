@@ -1,0 +1,21 @@
+<div *ngIf="showIonFab">
+    <ion-fab center bottom>
+        <button ion-fab>导航</button>
+        <ion-fab-list side="left">
+            <button ion-fab color="danger" (click)="mapNavigation(1)">驾车</button>
+        </ion-fab-list>
+        <ion-fab-list side="right">
+            <button ion-fab color="dark" (click)="mapNavigation(2)"> 公交</button>
+        </ion-fab-list>
+        <ion-fab-list side="top">
+            <button ion-fab color="secondary" (click)="mapNavigation(3)">步行</button>
+        </ion-fab-list>
+    </ion-fab>
+</div>
+
+<div *ngIf="mapIsComplete&&!isPositioning">
+    <ion-icon name="radio-button-on" class="position-btn" tappable (click)="mapLocation()"></ion-icon>
+</div>
+<ion-searchbar *ngIf="params.address||params.searchBar!==false" class="search" placeholder="搜索地址" [(ngModel)]="params.address" debounce="600" (ionFocus)="locationSearch()">
+</ion-searchbar>
+<div id="map-share" class="map-share"></div>

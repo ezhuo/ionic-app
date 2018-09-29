@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            <ion-searchbar #searchBar mode="ios" placeholder="搜索" debounce="600" [(ngModel)]="address" (ionInput)="getItems($event)">
+            </ion-searchbar>
+        </ion-title>
+        <ion-buttons>
+            <button ion-button (click)="dismiss()">关闭</button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+        <ion-item *ngFor="let item of items" tappable (click)="selectItem(item)">
+            {{ item.name }}<br />
+            <span *ngFor="let add of item.address.split(';')">
+                <span class="address">{{add}}</span>
+            </span>
+        </ion-item>
+        <button *ngIf="items.length>0&&historyButton" ion-button full clear (click)="clearHistory()">清空搜索历史</button>
+    </ion-list>
+</ion-content>

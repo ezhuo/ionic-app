@@ -30,12 +30,12 @@
             <ion-icon name="settings" slot="start" color="primary"></ion-icon>
             <ion-label>设置</ion-label>
         </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(mine:map)')">
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/map)')">
             <ion-icon name="map" slot="start" color="primary"></ion-icon>
             <ion-label>工作地图</ion-label>
         </ion-item>
-        <ion-item button>
-            <ion-icon class="cloud-upload" slot="start" style="color: #6fc572;"></ion-icon>
+        <ion-item button (click)="navigateByUrl('app/tabs/(mine:mine/file)')">
+            <ion-icon class="cloud-upload" slot="start"></ion-icon>
             <ion-label>图片缓存</ion-label>
         </ion-item>
     </ion-list>

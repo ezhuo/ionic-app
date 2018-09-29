@@ -5,9 +5,6 @@ import { CameraOptions } from './native.plugins';
 import { define } from '../config.inc';
 import { Position } from '../model';
 
-declare var LocationPlugin;
-declare var AMapNavigation;
-
 export class NativeGets {
     private __ionicSrv: IonicService;
     get ionSrv() {

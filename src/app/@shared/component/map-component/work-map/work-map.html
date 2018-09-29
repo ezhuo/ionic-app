@@ -1,0 +1,11 @@
+<ion-toolbar [color]="configSrv.platformConfig.toolbarColor" *ngIf="toolbar">
+    <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="/app/tabs/(mine:mine)"></ion-back-button>
+    </ion-buttons>
+    <ion-title>工作地图</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+    <page-map-location [(params)]="params"></page-map-location>
+</ion-content>

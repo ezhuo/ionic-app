@@ -189,6 +189,10 @@ export class NoticeService {
         });
     }
 
+    msg(msg: any, title = '信息') {
+        return this.msgInfo(msg, title);
+    }
+
     msgInfo(msg: any, title = '信息') {
         return this.showToast(this.types[1], msg);
     }

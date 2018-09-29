@@ -2,8 +2,6 @@ import { Component, Injector, ElementRef, ViewChild ,ViewEncapsulation} from '@a
 import { IndexControl } from '@core';
 import { Subject } from 'rxjs';
 
-declare var QRCode;
-
 @Component({
     selector: 'page-qrcode-demo',
     templateUrl: 'qrcode-demo.html',

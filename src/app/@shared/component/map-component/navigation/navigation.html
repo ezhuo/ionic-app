@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            路线查看或导航
+        </ion-title>
+        <ion-buttons>
+            <button ion-button (click)="dismiss()">关闭</button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid *ngIf="navigationIsReady">
+        <ion-row class="align-center">
+            <ion-col width-50>
+                <button ion-button outline small (click)="doNavigation(0)">驾车实时导航</button>
+            </ion-col>
+            <ion-col width-50>
+                <button ion-button color="secondary" outline small (click)="doNavigation(1)">驾车模拟导航</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="walkNavigationIsReady">
+        <ion-row class="align-center">
+            <ion-col width-50>
+                <button ion-button outline small (click)="doNavigation(2)">步行实时导航</button>
+            </ion-col>
+            <ion-col width-50>
+                <button ion-button color="secondary" outline small (click)="doNavigation(3)">步行模拟导航</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div #panel></div>
+</ion-content>

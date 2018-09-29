@@ -13,7 +13,6 @@ import { ModalControl } from '@core';
 // import { GlobalData } from '../../../providers/GlobalData';
 import { Camera } from '@ionic-native/camera/ngx';
 
-declare var AlloyCrop;
 
 @Component({
     selector: 'tabs-mine-edit-avatar-modal',

@@ -1,6 +1,5 @@
 import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { IndexControl } from '@core';
-declare var AlloyLever;
 
 @Component({
     selector: 'page-allowlever-demo',

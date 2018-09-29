@@ -10,15 +10,15 @@
             <ion-back-button text=""></ion-back-button>
         </ion-buttons>
         <ion-buttons end>
-            <button ion-button (click)="click()">
+            <ion-button (click)="click()">
                 <ion-icon name="md-create"></ion-icon>
-            </button>
-            <button ion-button (click)="click()" padding-horizontal *ngIf="assertButtonPermission('button_patrol_add')">
+            </ion-button>
+            <ion-button (click)="click()" padding-horizontal *ngIf="assertButtonPermission('button_patrol_add')">
                 <ion-icon name="md-add"></ion-icon>
-            </button>
-            <button ion-button (click)="click()" *ngIf="assertButtonPermission('button_patrol_scan')">
+            </ion-button>
+            <ion-button (click)="click()" *ngIf="assertButtonPermission('button_patrol_scan')">
                 <ion-icon name="md-qr-scanner"></ion-icon>
-            </button>
+            </ion-button>
         </ion-buttons>
         <ion-title>按钮权限演示</ion-title>
     </ion-toolbar>

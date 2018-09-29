@@ -6,7 +6,6 @@ import {
     Injector,
 } from '@angular/core';
 import { IndexControl } from '@core';
-// declare var AlloyLever;
 
 @Component({
     selector: 'tabs-mine-about',

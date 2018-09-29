@@ -5,6 +5,7 @@ import {
     ModuleWithProviders,
     LOCALE_ID,
     APP_INITIALIZER,
+    ErrorHandler,
 } from '@angular/core';
 
 import { UtilsModule } from './utils/utils.module';
@@ -17,6 +18,8 @@ import { StartupService } from './startup/startup.service';
 
 // 中文设置
 import './i18n/zh_CN';
+
+// import { FunDebugErrorHandler } from '@core/helpers/init';
 
 export function StartupServiceFactory(
     startupService: StartupService,

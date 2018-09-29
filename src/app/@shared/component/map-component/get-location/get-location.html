@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>定位或导航</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="save()">保存坐标</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <page-map-location [(params)]="params"></page-map-location>
+</ion-content>
