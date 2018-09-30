@@ -16,6 +16,7 @@ export const api = {
 export const platformConfig: PlatformConfig = {
     mode: 'ios',
     toolbarColor: 'primary',
+    statusBarColor: '#3880ff', //'#488aff'
 };
 
 export const define = {

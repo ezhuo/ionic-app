@@ -13,7 +13,7 @@ import { PopoverPage } from '../about-popover/about-popover';
     selector: 'tabs-mine',
     templateUrl: 'mine.html',
     styleUrls: [`./mine.scss`],
-    encapsulation: ViewEncapsulation.None,
+    // encapsulation: ViewEncapsulation.None,
 })
 export class TabsMine extends IndexControl implements OnInit, OnDestroy {
     userInfo;

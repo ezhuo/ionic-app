@@ -84,7 +84,7 @@
 *  cordova plugin add --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information
 *  cordova plugin add --save cordova-plugin-file  cordova-plugin-file-transfer cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
 --other----------
-*  cordova plugin add --save cordova-hot-code-push-plugin cordova-plugin-app-version  cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
+*  cordova plugin add --save cordova-hot-code-push-plugin cordova-plugin-app-version cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
 *  cordova plugin add --save cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="请允许使用图库"
 ```
 
@@ -100,9 +100,14 @@
 
 ## 编译不通的组件
 ``` 
-* cordova plugin add --save https://github.com/DaiHuaXieHuaKai/GaoDeLocation.git --variable API_KEY=dbea1b5c1f8c451320ab32b293a0b8d7
-* cordova plugin add --save cordova-plugin-file-opener2
-cordova plugin add --save call-number
+* cordova plugin add --save https://github.com/namedjw/com.kit.cordova.amaplocation.git --variable KEY=418d3ef19c3b375b61c6e7c38e3794e8
+这个plugin 有可能引起编译不通过，需要降到6.4
+
+* cordova plugin add --save cordova-plugin-file-opener2 call-number
+
+* cordova plugin add --save https://github.com/DaiHuaXieHuaKai/GaoDeLocation.git --variable API_KEY=418d3ef19c3b375b61c6e7c38e3794e8
+
+cordova-plugin-compat 这个plugins 是为解决兼容性问题，但已经不再使用了，一用就编译就会有问题
 ```
 
 ## 闪退

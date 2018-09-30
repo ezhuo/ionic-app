@@ -42,7 +42,7 @@ export class NativeDemoPage extends IndexControl {
 
     scan() {
         if (this.ionSrv.app.isMobile()) {
-            this.ionSrv.app.scan().subscribe(res => {
+            this.ionSrv.gets.getScan().subscribe(res => {
                 this.scanText = res;
             });
         }

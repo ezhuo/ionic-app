@@ -81,9 +81,8 @@ export class NoticeService {
         const __create = await this.loadingCtrl.create(
             Object.assign(
                 {
-                    duration: 10000,
-                    translucent: true,
-                    cssClass: 'custom-class custom-loading',
+                    duration: 8000,
+                    translucent: false,
                 },
                 opts,
             ),
@@ -140,7 +139,7 @@ export class NoticeService {
     }
 
     alert(msg: any, title = '信息') {
-        return this.alert(msg, title);
+        return this.alertInfo(msg, title);
     }
     alertInfo(msg: any, title = '信息') {
         return this.showAlert(this.types[1], title, msg);

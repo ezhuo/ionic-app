@@ -129,14 +129,14 @@
     yargs-parser "^10.0.0"
 
 "@angular/common@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/common/download/@angular/common-6.1.8.tgz#e9106cecd448f24e3a553a6ea9431e113fe3becd"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/common/download/@angular/common-6.1.9.tgz#638fa8e8e30626116ea9ea36e6f2f00fed971f77"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/compiler-cli@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/compiler-cli/download/@angular/compiler-cli-6.1.8.tgz#b31842b42a6cee90d0f61f3849fbd15fc6f5ddbf"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/compiler-cli/download/@angular/compiler-cli-6.1.9.tgz#9ac56fc3ea274c897ccbb3c3fe0aaa100c01137d"
   dependencies:
     chokidar "^1.4.2"
     minimist "^1.2.0"
@@ -144,48 +144,48 @@
     tsickle "^0.32.1"
 
 "@angular/compiler@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/compiler/download/@angular/compiler-6.1.8.tgz#bbbb70961724c6e5755e05fc5d7f4b39d3bb4a0c"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/compiler/download/@angular/compiler-6.1.9.tgz#3696659f752b5e239f5186cea72cf17965b59cb8"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/core@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/core/download/@angular/core-6.1.8.tgz#2de584e184dc148a55ec153f8125acdf3e88eae6"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/core/download/@angular/core-6.1.9.tgz#a21a35de551c95f276ecbb1f314949cc69326950"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/forms@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/forms/download/@angular/forms-6.1.8.tgz#058429b99fc4c6554fe4943a23d4d6221cb1d9ac"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/forms/download/@angular/forms-6.1.9.tgz#d9d8591f4c74270e53e3184eb45e19ba490fdf32"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/http@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/http/download/@angular/http-6.1.8.tgz#8c627a879285a366e960edc15522006474f4ec6f"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/http/download/@angular/http-6.1.9.tgz#241f35207d62f86bc155feb124a1e73515d66fb6"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/language-service@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/language-service/download/@angular/language-service-6.1.8.tgz#2b076eca1e415204a4e2e8e4b066d258a7fe16fd"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/language-service/download/@angular/language-service-6.1.9.tgz#ca82f51775bcf9ccf56421229ac9016bb63b9885"
 
 "@angular/platform-browser-dynamic@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/platform-browser-dynamic/download/@angular/platform-browser-dynamic-6.1.8.tgz#a0c523857e9e55343e6e1747052141d870d4e870"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/platform-browser-dynamic/download/@angular/platform-browser-dynamic-6.1.9.tgz#e00f1a4948b4c299b17c9561d83f7ea588117818"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/platform-browser@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/platform-browser/download/@angular/platform-browser-6.1.8.tgz#2a0340995ee4b67809f10e039a872afb7f228403"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/platform-browser/download/@angular/platform-browser-6.1.9.tgz#6c832e528c660ad880a16531754e65b9b97d4f9f"
   dependencies:
     tslib "^1.9.0"
 
 "@angular/router@~6.1.0":
-  version "6.1.8"
-  resolved "http://registry.npm.taobao.org/@angular/router/download/@angular/router-6.1.8.tgz#7106a55392e9f920358544f431dace2ef3715630"
+  version "6.1.9"
+  resolved "http://registry.npm.taobao.org/@angular/router/download/@angular/router-6.1.9.tgz#29869e53442703c53a943ce375cbb0a0f36927fb"
   dependencies:
     tslib "^1.9.0"
 
@@ -202,10 +202,10 @@
     "@babel/highlight" "^7.0.0"
 
 "@babel/generator@^7.0.0":
-  version "7.0.0"
-  resolved "http://registry.npm.taobao.org/@babel/generator/download/@babel/generator-7.0.0.tgz#1efd58bffa951dc846449e58ce3a1d7f02d393aa"
+  version "7.1.2"
+  resolved "http://registry.npm.taobao.org/@babel/generator/download/@babel/generator-7.1.2.tgz#fde75c072575ce7abbd97322e8fef5bae67e4630"
   dependencies:
-    "@babel/types" "^7.0.0"
+    "@babel/types" "^7.1.2"
     jsesc "^2.5.1"
     lodash "^4.17.10"
     source-map "^0.5.0"
@@ -239,17 +239,17 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.0.0", "@babel/parser@^7.1.0":
-  version "7.1.0"
-  resolved "http://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.1.0.tgz#a7cd42cb3c12aec52e24375189a47b39759b783e"
+"@babel/parser@^7.0.0", "@babel/parser@^7.1.0", "@babel/parser@^7.1.2":
+  version "7.1.2"
+  resolved "http://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.1.2.tgz#85c5c47af6d244fab77bce6b9bd830e38c978409"
 
 "@babel/template@^7.0.0", "@babel/template@^7.1.0":
-  version "7.1.0"
-  resolved "http://registry.npm.taobao.org/@babel/template/download/@babel/template-7.1.0.tgz#58cc9572e1bfe24fe1537fdf99d839d53e517e22"
+  version "7.1.2"
+  resolved "http://registry.npm.taobao.org/@babel/template/download/@babel/template-7.1.2.tgz#090484a574fef5a2d2d7726a674eceda5c5b5644"
   dependencies:
     "@babel/code-frame" "^7.0.0"
-    "@babel/parser" "^7.1.0"
-    "@babel/types" "^7.0.0"
+    "@babel/parser" "^7.1.2"
+    "@babel/types" "^7.1.2"
 
 "@babel/traverse@^7.0.0":
   version "7.1.0"
@@ -265,133 +265,133 @@
     globals "^11.1.0"
     lodash "^4.17.10"
 
-"@babel/types@^7.0.0":
-  version "7.0.0"
-  resolved "http://registry.npm.taobao.org/@babel/types/download/@babel/types-7.0.0.tgz#6e191793d3c854d19c6749989e3bc55f0e962118"
+"@babel/types@^7.0.0", "@babel/types@^7.1.2":
+  version "7.1.2"
+  resolved "http://registry.npm.taobao.org/@babel/types/download/@babel/types-7.1.2.tgz#183e7952cf6691628afdc2e2b90d03240bac80c0"
   dependencies:
     esutils "^2.0.2"
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@ionic-native/app-minimize@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/app-minimize/download/@ionic-native/app-minimize-5.0.0-beta.20.tgz#d5299d8ed2e22124bed1b258c10f71c118020482"
+"@ionic-native/app-minimize@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/app-minimize/download/@ionic-native/app-minimize-5.0.0-beta.21.tgz#8560e1a89ea0610dfef13382cba3fd160ff3b48a"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/app-version@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/app-version/download/@ionic-native/app-version-5.0.0-beta.20.tgz#2e420f78a4d6ef7afd277b5f6e9636221927ebf8"
+"@ionic-native/app-version@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/app-version/download/@ionic-native/app-version-5.0.0-beta.21.tgz#a469f15861a55c3ef82e1a2a26751cda4a4a71fc"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/barcode-scanner@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/barcode-scanner/download/@ionic-native/barcode-scanner-5.0.0-beta.20.tgz#5aec26acae766cbcaf6f4d102018b923290ad616"
+"@ionic-native/barcode-scanner@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/barcode-scanner/download/@ionic-native/barcode-scanner-5.0.0-beta.21.tgz#fb1e9a487f13e3a4705f7229990cc8d0d3fef4d3"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/camera@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/camera/download/@ionic-native/camera-5.0.0-beta.20.tgz#de82ca7c5d6ad5a7b5c4c5dde11a28c16fd11d7e"
+"@ionic-native/camera@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/camera/download/@ionic-native/camera-5.0.0-beta.21.tgz#41287abed4f98012092ac41284d6a7fd54cc3d73"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/core@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/core/download/@ionic-native/core-5.0.0-beta.20.tgz#3f335e5a41e2d0d233ae492d5af208f351344e97"
+"@ionic-native/core@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/core/download/@ionic-native/core-5.0.0-beta.21.tgz#45f8a3cc0803ae321566f320e42381697ab4271c"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/device@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/device/download/@ionic-native/device-5.0.0-beta.20.tgz#aec4462bc4675baddc7baf290526e25f688eb939"
+"@ionic-native/device@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/device/download/@ionic-native/device-5.0.0-beta.21.tgz#85d773812eb99e7f884b5a510df78e5880def8b2"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/diagnostic@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/diagnostic/download/@ionic-native/diagnostic-5.0.0-beta.20.tgz#2612a56d54a30dcac71ad25d74295440bdfc9559"
+"@ionic-native/diagnostic@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/diagnostic/download/@ionic-native/diagnostic-5.0.0-beta.21.tgz#10b673ed099018813eede4ef9e27a54b1cb45ecf"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/file-opener@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/file-opener/download/@ionic-native/file-opener-5.0.0-beta.20.tgz#4e7b457acff98e5cba8de44281834a2b3bc4a9ca"
+"@ionic-native/file-opener@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/file-opener/download/@ionic-native/file-opener-5.0.0-beta.21.tgz#e5870d766dcf60f892fad8426efd6a0a32cbe763"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/file-transfer@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/file-transfer/download/@ionic-native/file-transfer-5.0.0-beta.20.tgz#2ce3da16c57662454a4f9b763a89c1645ea5d633"
+"@ionic-native/file-transfer@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/file-transfer/download/@ionic-native/file-transfer-5.0.0-beta.21.tgz#b2ad639fad62e0d97bb9c22ee406526db5c01400"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/file@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/file/download/@ionic-native/file-5.0.0-beta.20.tgz#cdeb307d4c93adb68e8880730d285b6e382203c3"
+"@ionic-native/file@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/file/download/@ionic-native/file-5.0.0-beta.21.tgz#02855b848abdd697cd20bb01d3ebca68a1d0495e"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/http@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/http/download/@ionic-native/http-5.0.0-beta.20.tgz#b2d310596163d6802ed1b6130a3f6aa44420c59d"
+"@ionic-native/http@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/http/download/@ionic-native/http-5.0.0-beta.21.tgz#d4d1b54356861f90fc55636969e5e604d88e3679"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/image-picker@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/image-picker/download/@ionic-native/image-picker-5.0.0-beta.20.tgz#a59ab51dd3f128749f2c86e67b6dfe538523dffd"
+"@ionic-native/image-picker@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/image-picker/download/@ionic-native/image-picker-5.0.0-beta.21.tgz#282fd9829bb9f6d0371c98453906e8ca5316a0a0"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/in-app-browser@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/in-app-browser/download/@ionic-native/in-app-browser-5.0.0-beta.20.tgz#ee4d1d5fd62f439ff075fc49b1995522995e53a3"
+"@ionic-native/in-app-browser@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/in-app-browser/download/@ionic-native/in-app-browser-5.0.0-beta.21.tgz#38581bd5900d02c235c94c8513f9ecbcae2b6f71"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/ionic-webview@^5.0.0-beta.11":
+"@ionic-native/ionic-webview@5.0.0-beta.11":
   version "5.0.0-beta.11"
   resolved "http://registry.npm.taobao.org/@ionic-native/ionic-webview/download/@ionic-native/ionic-webview-5.0.0-beta.11.tgz#ae8f52826523192bbdb984a2801399a3e20169ec"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/keyboard@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/keyboard/download/@ionic-native/keyboard-5.0.0-beta.20.tgz#08c9dd963e5a6f2763373ae5e24d18f8f095a10d"
+"@ionic-native/keyboard@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/keyboard/download/@ionic-native/keyboard-5.0.0-beta.21.tgz#530b5d6bd2435c61554a227ca8e718f5db621cc0"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/network@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/network/download/@ionic-native/network-5.0.0-beta.20.tgz#1580cc3e506c2247615ca6c22ea62ae16f8bc83a"
+"@ionic-native/network@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/network/download/@ionic-native/network-5.0.0-beta.21.tgz#01ce06d80179fda5129afb9771b0942ae8f1db70"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/splash-screen@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/splash-screen/download/@ionic-native/splash-screen-5.0.0-beta.20.tgz#fec7a2441ecd2d19ceefbb3def9233553733b034"
+"@ionic-native/splash-screen@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/splash-screen/download/@ionic-native/splash-screen-5.0.0-beta.21.tgz#4cd961351e6cd60320ece1ecfd83d629b00d234d"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/status-bar@v5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/status-bar/download/@ionic-native/status-bar-5.0.0-beta.20.tgz#eba93601f8825bcb3537149da65da82cccff022d"
+"@ionic-native/status-bar@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/status-bar/download/@ionic-native/status-bar-5.0.0-beta.21.tgz#496b1172fb43a919af2825f0167d27048e62f7fd"
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/toast@^5.0.0-beta.20":
-  version "5.0.0-beta.20"
-  resolved "http://registry.npm.taobao.org/@ionic-native/toast/download/@ionic-native/toast-5.0.0-beta.20.tgz#149cf61269b8c3e23513dd18e3b595698e54fac7"
+"@ionic-native/toast@5.0.0-beta.21":
+  version "5.0.0-beta.21"
+  resolved "http://registry.npm.taobao.org/@ionic-native/toast/download/@ionic-native/toast-5.0.0-beta.21.tgz#e8fe0ccf3cc007e94005c0ea395ab9420fd956b5"
   dependencies:
     "@types/cordova" latest
 
-"@ionic/angular@4.0.0-beta.11":
-  version "4.0.0-beta.11"
-  resolved "http://registry.npm.taobao.org/@ionic/angular/download/@ionic/angular-4.0.0-beta.11.tgz#2307363f97faee5a792d740a7a644677957d4ba4"
+"@ionic/angular@4.0.0-beta.12":
+  version "4.0.0-beta.12"
+  resolved "http://registry.npm.taobao.org/@ionic/angular/download/@ionic/angular-4.0.0-beta.12.tgz#56c3163e5ce09024d53feefcc8ad2f501e60d69a"
   dependencies:
-    "@ionic/core" "4.0.0-beta.11"
+    "@ionic/core" "4.0.0-beta.12"
 
 "@ionic/cli-framework@1.0.7":
   version "1.0.7"
@@ -414,11 +414,11 @@
     wrap-ansi "^4.0.0"
     write-file-atomic "^2.3.0"
 
-"@ionic/core@4.0.0-beta.11":
-  version "4.0.0-beta.11"
-  resolved "http://registry.npm.taobao.org/@ionic/core/download/@ionic/core-4.0.0-beta.11.tgz#175e4cc5aae2484d82a456a9e159680f1fc2f9fd"
+"@ionic/core@4.0.0-beta.12":
+  version "4.0.0-beta.12"
+  resolved "http://registry.npm.taobao.org/@ionic/core/download/@ionic/core-4.0.0-beta.12.tgz#2568f111899b8e2faf03b62d28ead4a6c6c8d09d"
   dependencies:
-    ionicons "4.4.3"
+    ionicons "4.4.4"
 
 "@ionic/lab@^1.0.0":
   version "1.0.9"
@@ -511,8 +511,8 @@
   resolved "http://registry.npm.taobao.org/@types/jasmine/download/@types/jasmine-2.8.8.tgz#bf53a7d193ea8b03867a38bfdb4fbb0e0bf066c9"
 
 "@types/jasminewd2@~2.0.3":
-  version "2.0.3"
-  resolved "http://registry.npm.taobao.org/@types/jasminewd2/download/@types/jasminewd2-2.0.3.tgz#0d2886b0cbdae4c0eeba55e30792f584bf040a95"
+  version "2.0.4"
+  resolved "http://registry.npm.taobao.org/@types/jasminewd2/download/@types/jasminewd2-2.0.4.tgz#12422ee719f372d30c3cc7d99cc72dadba6ace01"
   dependencies:
     "@types/jasmine" "*"
 
@@ -679,8 +679,8 @@ ajv@^5.0.0, ajv@^5.1.0, ajv@^5.3.0:
     json-schema-traverse "^0.3.0"
 
 ajv@^6.1.0:
-  version "6.5.3"
-  resolved "http://registry.npm.taobao.org/ajv/download/ajv-6.5.3.tgz#71a569d189ecf4f4f321224fecb166f071dd90f9"
+  version "6.5.4"
+  resolved "http://registry.npm.taobao.org/ajv/download/ajv-6.5.4.tgz#247d5274110db653706b550fcc2b797ca28cfc59"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -707,8 +707,8 @@ android-versions@^1.2.1:
     semver "^5.4.1"
 
 ansi-colors@^3.0.0:
-  version "3.0.5"
-  resolved "http://registry.npm.taobao.org/ansi-colors/download/ansi-colors-3.0.5.tgz#cb9dc64993b64fd6945485f797fc3853137d9a7b"
+  version "3.1.0"
+  resolved "http://registry.npm.taobao.org/ansi-colors/download/ansi-colors-3.1.0.tgz#dcfaacc90ef9187de413ec3ef8d5eb981a98808f"
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
@@ -1352,8 +1352,8 @@ camelcase@^4.1.0:
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864:
-  version "1.0.30000885"
-  resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000885.tgz#e889e9f8e7e50e769f2a49634c932b8aee622984"
+  version "1.0.30000888"
+  resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000888.tgz#22edb50d91dd70612b5898e3b36f460600c6492f"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1428,8 +1428,8 @@ chrome-trace-event@^0.1.1:
   resolved "http://registry.npm.taobao.org/chrome-trace-event/download/chrome-trace-event-0.1.3.tgz#d395af2d31c87b90a716c831fe326f69768ec084"
 
 ci-info@^1.5.0:
-  version "1.5.1"
-  resolved "http://registry.npm.taobao.org/ci-info/download/ci-info-1.5.1.tgz#17e8eb5de6f8b2b6038f0cbb714d410bfa9f3030"
+  version "1.6.0"
+  resolved "http://registry.npm.taobao.org/ci-info/download/ci-info-1.6.0.tgz#2ca20dbb9ceb32d4524a683303313f0304b1e497"
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -1543,6 +1543,10 @@ colors@1.1.2:
 colors@^1.1.0, colors@^1.1.2:
   version "1.3.2"
   resolved "http://registry.npm.taobao.org/colors/download/colors-1.3.2.tgz#2df8ff573dfbf255af562f8ce7181d6b971a359b"
+
+"com.kit.cordova.amaplocation@git+https://github.com/namedjw/com.kit.cordova.amaplocation.git":
+  version "1.0.0"
+  resolved "git+https://github.com/namedjw/com.kit.cordova.amaplocation.git#3df9e24bba7f8336270c77f8b6e5be0488ad77d8"
 
 combine-lists@^1.0.0:
   version "1.0.1"
@@ -1702,19 +1706,19 @@ copy-webpack-plugin@^4.5.2:
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
 
-cordova-android@7.0.0:
-  version "7.0.0"
-  resolved "http://registry.npm.taobao.org/cordova-android/download/cordova-android-7.0.0.tgz#c95bedfcfbc3863b180c4d29effec4f79361d19d"
+cordova-android@6.4.0:
+  version "6.4.0"
+  resolved "http://registry.npm.taobao.org/cordova-android/download/cordova-android-6.4.0.tgz#54ae8da5728a8d7e5efcc6172d3dcca17bc7fe7d"
   dependencies:
     android-versions "^1.2.1"
-    cordova-common "^2.2.0"
+    cordova-common "^2.1.0"
     elementtree "0.1.6"
     nopt "^3.0.1"
     properties-parser "^0.2.3"
     q "^1.4.1"
     shelljs "^0.5.3"
 
-cordova-common@^2.2.0:
+cordova-common@^2.1.0:
   version "2.2.5"
   resolved "http://registry.npm.taobao.org/cordova-common/download/cordova-common-2.2.5.tgz#f93cef2ad494cfcbf56c46e3d612aaa9cb5fcc32"
   dependencies:
@@ -1748,6 +1752,10 @@ cordova-plugin-camera@^4.0.3:
   version "4.0.3"
   resolved "http://registry.npm.taobao.org/cordova-plugin-camera/download/cordova-plugin-camera-4.0.3.tgz#7373a5938318c86ccfd84e3713e2382d10fe076b"
 
+cordova-plugin-compat@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/cordova-plugin-compat/download/cordova-plugin-compat-1.2.0.tgz#0bc65757276ebd920c012ce920e274177576373e"
+
 cordova-plugin-datepicker@^0.9.3:
   version "0.9.3"
   resolved "http://registry.npm.taobao.org/cordova-plugin-datepicker/download/cordova-plugin-datepicker-0.9.3.tgz#2558a9ce5998f6d6dc06cf92fd8bbb9d0901f16a"
@@ -1776,9 +1784,9 @@ cordova-plugin-inappbrowser@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/cordova-plugin-inappbrowser/download/cordova-plugin-inappbrowser-3.0.0.tgz#d4ae00d36676210751057ad258ae4ad4a9161ada"
 
-cordova-plugin-ionic-keyboard@^2.1.2:
-  version "2.1.2"
-  resolved "http://registry.npm.taobao.org/cordova-plugin-ionic-keyboard/download/cordova-plugin-ionic-keyboard-2.1.2.tgz#6d91bac2b5aba578dcccfd63e61b0960c33f9e4a"
+cordova-plugin-ionic-keyboard@^2.1.3:
+  version "2.1.3"
+  resolved "http://registry.npm.taobao.org/cordova-plugin-ionic-keyboard/download/cordova-plugin-ionic-keyboard-2.1.3.tgz#6b050d5b7cb4393d5758b55f45a46372f25178fe"
 
 cordova-plugin-ionic-webview@^2.1.4:
   version "2.1.4"
@@ -2237,8 +2245,8 @@ ejs@^2.5.7:
   resolved "http://registry.npm.taobao.org/ejs/download/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
 
 electron-to-chromium@^1.3.47:
-  version "1.3.70"
-  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.70.tgz#ded377256d92d81b4257d36c65aa890274afcfd2"
+  version "1.3.72"
+  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.72.tgz#b69683081d5b7eee6e1ea07b2f5fa30b3c72252d"
 
 elementtree@0.1.6:
   version "0.1.6"
@@ -2354,12 +2362,12 @@ es-abstract@^1.5.1:
     is-regex "^1.0.4"
 
 es-to-primitive@^1.1.1:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/es-to-primitive/download/es-to-primitive-1.1.1.tgz#45355248a88979034b6792e19bb81f2b7975dd0d"
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/es-to-primitive/download/es-to-primitive-1.2.0.tgz#edf72478033456e8dda8ef09e00ad9650707f377"
   dependencies:
-    is-callable "^1.1.1"
+    is-callable "^1.1.4"
     is-date-object "^1.0.1"
-    is-symbol "^1.0.1"
+    is-symbol "^1.0.2"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -3018,6 +3026,10 @@ has-flag@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/has-flag/download/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
 
+has-symbols@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/has-symbols/download/has-symbols-1.0.0.tgz#ba1a8f1af2a0fc39650f5c850367704122063b44"
+
 has-unicode@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/has-unicode/download/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
@@ -3331,9 +3343,9 @@ invert-kv@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/invert-kv/download/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
 
-ionicons@4.4.3:
-  version "4.4.3"
-  resolved "http://registry.npm.taobao.org/ionicons/download/ionicons-4.4.3.tgz#18f09b8277757721ceeb59b0ffb9d35e32c6fbb8"
+ionicons@4.4.4:
+  version "4.4.4"
+  resolved "http://registry.npm.taobao.org/ionicons/download/ionicons-4.4.4.tgz#d2b2dfe240e4c8686f59acd91c9c8c1dd13931c1"
 
 ip-regex@^2.1.0:
   version "2.1.0"
@@ -3383,7 +3395,7 @@ is-builtin-module@^1.0.0:
   dependencies:
     builtin-modules "^1.0.0"
 
-is-callable@^1.1.1, is-callable@^1.1.3:
+is-callable@^1.1.3, is-callable@^1.1.4:
   version "1.1.4"
   resolved "http://registry.npm.taobao.org/is-callable/download/is-callable-1.1.4.tgz#1e1adf219e1eeb684d691f9d6a05ff0d30a24d75"
 
@@ -3555,9 +3567,11 @@ is-stream@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/is-stream/download/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
-is-symbol@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/is-symbol/download/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
+is-symbol@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/is-symbol/download/is-symbol-1.0.2.tgz#a055f6ae57192caee329e7a860118b497a950f38"
+  dependencies:
+    has-symbols "^1.0.0"
 
 is-typedarray@~1.0.0:
   version "1.0.0"
@@ -3939,8 +3953,8 @@ levn@~0.3.0:
     type-check "~0.3.2"
 
 license-webpack-plugin@^1.3.1:
-  version "1.4.0"
-  resolved "http://registry.npm.taobao.org/license-webpack-plugin/download/license-webpack-plugin-1.4.0.tgz#be504a849ba7d736f1a6da4b133864f30af885fa"
+  version "1.5.0"
+  resolved "http://registry.npm.taobao.org/license-webpack-plugin/download/license-webpack-plugin-1.5.0.tgz#22ca0f12a884aee35bb61dfd8eab45fe36a04523"
   dependencies:
     ejs "^2.5.7"
 
@@ -3961,8 +3975,8 @@ load-json-file@^1.0.0:
     strip-bom "^2.0.0"
 
 loader-runner@^2.3.0:
-  version "2.3.0"
-  resolved "http://registry.npm.taobao.org/loader-runner/download/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
+  version "2.3.1"
+  resolved "http://registry.npm.taobao.org/loader-runner/download/loader-runner-2.3.1.tgz#026f12fe7c3115992896ac02ba022ba92971b979"
 
 loader-utils@^0.2.16:
   version "0.2.17"
@@ -4061,7 +4075,7 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-loud-rejection@^1.0.0, loud-rejection@^1.6.0:
+loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/loud-rejection/download/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
   dependencies:
@@ -4348,8 +4362,8 @@ mute-stream@0.0.7:
   resolved "http://registry.npm.taobao.org/mute-stream/download/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
 nan@^2.10.0, nan@^2.9.2:
-  version "2.11.0"
-  resolved "http://registry.npm.taobao.org/nan/download/nan-2.11.0.tgz#574e360e4d954ab16966ec102c0c049fd961a099"
+  version "2.11.1"
+  resolved "http://registry.npm.taobao.org/nan/download/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -4372,8 +4386,8 @@ ncp@^2.0.0:
   resolved "http://registry.npm.taobao.org/ncp/download/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
 
 needle@^2.2.1:
-  version "2.2.3"
-  resolved "http://registry.npm.taobao.org/needle/download/needle-2.2.3.tgz#c1b04da378cd634d8befe2de965dc2cfb0fd65ca"
+  version "2.2.4"
+  resolved "http://registry.npm.taobao.org/needle/download/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
   dependencies:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
@@ -4677,8 +4691,8 @@ opener@^1.4.3:
   resolved "http://registry.npm.taobao.org/opener/download/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
 
 opn@^5.1.0, opn@^5.3.0:
-  version "5.3.0"
-  resolved "http://registry.npm.taobao.org/opn/download/opn-5.3.0.tgz#64871565c863875f052cfdf53d3e3cb5adb53b1c"
+  version "5.4.0"
+  resolved "http://registry.npm.taobao.org/opn/download/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   dependencies:
     is-wsl "^1.1.0"
 
@@ -4920,8 +4934,8 @@ path-type@^3.0.0:
     pify "^3.0.0"
 
 pbkdf2@^3.0.3:
-  version "3.0.16"
-  resolved "http://registry.npm.taobao.org/pbkdf2/download/pbkdf2-3.0.16.tgz#7404208ec6b01b62d85bf83853a8064f8d9c2a5c"
+  version "3.0.17"
+  resolved "http://registry.npm.taobao.org/pbkdf2/download/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
   dependencies:
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
@@ -5488,8 +5502,8 @@ rxjs@6.2.2, rxjs@~6.2.0:
     tslib "^1.9.0"
 
 rxjs@^6.0.0, rxjs@^6.1.0:
-  version "6.3.2"
-  resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-6.3.2.tgz#6a688b16c4e6e980e62ea805ec30648e1c60907f"
+  version "6.3.3"
+  resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   dependencies:
     tslib "^1.9.0"
 
@@ -5882,8 +5896,8 @@ source-map@~0.2.0:
     amdefine ">=0.0.4"
 
 spdx-correct@^3.0.0:
-  version "3.0.0"
-  resolved "http://registry.npm.taobao.org/spdx-correct/download/spdx-correct-3.0.0.tgz#05a5b4d7153a195bc92c3c425b69f3b2a9524c82"
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/spdx-correct/download/spdx-correct-3.0.1.tgz#434434ff9d1726b4d9f4219d1004813d80639e30"
   dependencies:
     spdx-expression-parse "^3.0.0"
     spdx-license-ids "^3.0.0"
@@ -6399,14 +6413,14 @@ union-value@^1.0.0:
     set-value "^0.4.3"
 
 unique-filename@^1.1.0:
-  version "1.1.0"
-  resolved "http://registry.npm.taobao.org/unique-filename/download/unique-filename-1.1.0.tgz#d05f2fe4032560871f30e93cbe735eea201514f3"
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/unique-filename/download/unique-filename-1.1.1.tgz#1d69769369ada0583103a1e6ae87681b56573230"
   dependencies:
     unique-slug "^2.0.0"
 
 unique-slug@^2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/unique-slug/download/unique-slug-2.0.0.tgz#db6676e7c7cc0629878ff196097c78855ae9f4ab"
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/unique-slug/download/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
   dependencies:
     imurmurhash "^0.1.4"
 
@@ -6452,10 +6466,6 @@ uri-js@^4.2.2:
 urix@^0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/urix/download/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
-
-url-join@^4.0.0:
-  version "4.0.0"
-  resolved "http://registry.npm.taobao.org/url-join/download/url-join-4.0.0.tgz#4d3340e807d3773bda9991f8305acdcc2a665d2a"
 
 url-loader@^1.0.1:
   version "1.1.1"
@@ -6612,32 +6622,18 @@ webpack-core@^0.6.8:
     source-list-map "~0.1.7"
     source-map "~0.4.1"
 
-webpack-dev-middleware@3.2.0:
-  version "3.2.0"
-  resolved "http://registry.npm.taobao.org/webpack-dev-middleware/download/webpack-dev-middleware-3.2.0.tgz#a20ceef194873710052da678f3c6ee0aeed92552"
+webpack-dev-middleware@3.4.0, webpack-dev-middleware@^3.1.3:
+  version "3.4.0"
+  resolved "http://registry.npm.taobao.org/webpack-dev-middleware/download/webpack-dev-middleware-3.4.0.tgz#1132fecc9026fd90f0ecedac5cbff75d1fb45890"
   dependencies:
-    loud-rejection "^1.6.0"
-    memory-fs "~0.4.1"
-    mime "^2.3.1"
-    path-is-absolute "^1.0.0"
-    range-parser "^1.0.3"
-    url-join "^4.0.0"
-    webpack-log "^2.0.0"
-
-webpack-dev-middleware@^3.1.3:
-  version "3.3.0"
-  resolved "http://registry.npm.taobao.org/webpack-dev-middleware/download/webpack-dev-middleware-3.3.0.tgz#8104daf4d4f65defe06ee2eaaeea612a7c541462"
-  dependencies:
-    loud-rejection "^1.6.0"
     memory-fs "~0.4.1"
     mime "^2.3.1"
     range-parser "^1.0.3"
-    url-join "^4.0.0"
     webpack-log "^2.0.0"
 
 webpack-dev-server@^3.1.4:
-  version "3.1.8"
-  resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-3.1.8.tgz#eb7a95945d1108170f902604fb3b939533d9daeb"
+  version "3.1.9"
+  resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-3.1.9.tgz#8b32167624d2faff40dcedc2cbce17ed1f34d3e0"
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
@@ -6664,7 +6660,7 @@ webpack-dev-server@^3.1.4:
     spdy "^3.4.1"
     strip-ansi "^3.0.0"
     supports-color "^5.1.0"
-    webpack-dev-middleware "3.2.0"
+    webpack-dev-middleware "3.4.0"
     webpack-log "^2.0.0"
     yargs "12.0.2"
 
@@ -6682,8 +6678,8 @@ webpack-merge@^4.1.2:
     lodash "^4.17.5"
 
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/webpack-sources/download/webpack-sources-1.2.0.tgz#18181e0d013fce096faf6f8e6d41eeffffdceac2"
+  version "1.3.0"
+  resolved "http://registry.npm.taobao.org/webpack-sources/download/webpack-sources-1.3.0.tgz#2a28dcb9f1f45fe960d8f1493252b5ee6530fa85"
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"

@@ -39,15 +39,13 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     initializeApp() {
-        const init = () => {
-            this.ionSrv.app.statusBarStyle();
-            this.ionSrv.splashScreen.hide();
-        };
-        // if (this.ionSrv.app.isCordova())
         this.ionSrv.platform.ready().then(() => {
-            this.ionSrv.app.assertNetwork();
-            this.checkVer();
-            this.freeTimeOut.to = setTimeout(init, 800);
+            this.ionSrv.app.statusBarStyle();
+            this.freeTimeOut.to = setTimeout(() => {
+                this.ionSrv.app.assertNetwork();
+                this.ionSrv.app.assertVersion();
+                this.ionSrv.splashScreen.hide();
+            }, 800);
         });
     }
 
@@ -142,9 +140,5 @@ export class AppComponent extends IndexControl implements OnInit {
         this.ionSrv.events.subscribe('user:logout', () => {
             this.updateLoggedInStatus(false);
         });
-    }
-
-    checkVer() {
-        this.ionSrv.gets.getCheckVersion();
     }
 }

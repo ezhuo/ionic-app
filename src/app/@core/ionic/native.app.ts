@@ -1,6 +1,5 @@
-import { IonicService } from './ionic.service';
 import { Observable } from 'rxjs';
-import { FileEntry } from './native.plugins';
+import { IonicService } from './ionic.service';
 
 export class NativeApp {
     private __ionicSrv: IonicService;
@@ -59,7 +58,9 @@ export class NativeApp {
         if (this.ionSrv.app.isMobile()) {
             this.ionSrv.statusBar.overlaysWebView(false);
             this.ionSrv.statusBar.styleLightContent();
-            this.ionSrv.statusBar.backgroundColorByHexString('#488aff'); //3261b3
+            this.ionSrv.statusBar.backgroundColorByHexString(
+                this.ionSrv.configSrv.platformConfig.statusBarColor,
+            );
         }
     }
 
@@ -84,55 +85,34 @@ export class NativeApp {
         this.ionSrv.inAppBrowser.create(url, '_system');
     }
 
-    /**
-     * 根据图片绝对路径转化为base64字符串
-     * @param path 绝对路径
-     */
-    convertImgToBase64(path: string): Observable<string> {
-        return Observable.create(observer => {
-            this.ionSrv.file
-                .resolveLocalFilesystemUrl(path)
-                .then((fileEnter: FileEntry) => {
-                    fileEnter.file(file => {
-                        const reader = new FileReader();
-                        reader.onloadend = function(e) {
-                            observer.next(this.result);
-                        };
-                        reader.readAsDataURL(file);
-                    });
-                })
-                .catch(err => {
-                    this.ionSrv.logger.log(
-                        err,
-                        '根据图片绝对路径转化为base64字符串失败',
-                    );
-                    observer.error(false);
-                });
-        });
-    }
-
-    /**
-     * 扫描二维码
-     * @returns {any}
-     */
-    scan() {
-        return Observable.create(observer => {
-            this.ionSrv.barcodeScanner
-                .scan()
-                .then(barcodeData => {
-                    observer.next(barcodeData.text);
-                })
-                .catch(err => {
-                    this.ionSrv.logger.log(err, '扫描二维码失败');
-                    observer.error(false);
-                });
-        });
-    }
-
     // 检测网络
     assertNetwork() {
         if (!this.isConnecting()) {
             this.ionSrv.noticeSrv.alert('未检测到网络,请连接网络');
         }
+    }
+
+    /**
+     * 版本升级检查
+     */
+    assertVersion() {
+        this.ionSrv.gets.getVersionNumber().subscribe(resVer => {
+            this.ionSrv.httpSrv
+                .post(`/ver/check`, { ver: resVer })
+                .subscribe((res: any) => {
+                    console.log(res);
+                    const up = res.data || {};
+                    if (up.url) {
+                        this.ionSrv.noticeSrv
+                            .alertConfirm(up.message, '更新')
+                            .then(() => {
+                                this.ionSrv.app.openUrlByBrowser(up.url);
+                            })
+                            .catch(() => {
+                                console.log('no update');
+                            });
+                    }
+                });
+        });
     }
 }

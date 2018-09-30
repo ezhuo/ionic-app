@@ -34,6 +34,7 @@ import { NativeGets } from './native.gets';
 import { LoggerService } from '../utils/logger.service';
 import { HttpService } from '../net';
 import { NoticeService } from '../utils';
+import { ConfigService } from './../data/config.service';
 
 @Injectable()
 export class IonicService {
@@ -99,6 +100,9 @@ export class IonicService {
     }
     get noticeSrv() {
         return this.injector.get(NoticeService);
+    }
+    get configSrv() {
+        return this.injector.get(ConfigService);
     }
     get device() {
         return this.injector.get(Device);

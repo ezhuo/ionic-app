@@ -73,5 +73,8 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="请允许使用图库" />
     </plugin>
-    <engine name="android" spec="7.0.0" />
+    <plugin name="com.kit.cordova.amaplocation" spec="https://github.com/namedjw/com.kit.cordova.amaplocation.git">
+        <variable name="KEY" value="418d3ef19c3b375b61c6e7c38e3794e8" />
+    </plugin>
+    <engine name="android" spec="6.4.0" />
 </widget>

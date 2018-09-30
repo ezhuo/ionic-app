@@ -1,6 +1,6 @@
 import { Observable, zip } from 'rxjs';
 import { IonicService } from './ionic.service';
-import { CameraOptions } from './native.plugins';
+import { CameraOptions, FileEntry } from './native.plugins';
 
 import { define } from '../config.inc';
 import { Position } from '../model';
@@ -13,30 +13,6 @@ export class NativeGets {
 
     constructor(ionicService: IonicService) {
         this.__ionicSrv = ionicService;
-    }
-
-    /**
-     * 版本升级检查
-     */
-    getCheckVersion() {
-        this.getVersionNumber().subscribe(resVer => {
-            this.ionSrv.httpSrv
-                .post(`/ver/check`, { ver: resVer })
-                .subscribe((res: any) => {
-                    console.log(res);
-                    const up = res.data || {};
-                    if (up.url) {
-                        this.ionSrv.noticeSrv
-                            .alertConfirm(up.message, '更新')
-                            .then(() => {
-                                this.ionSrv.app.openUrlByBrowser(up.url);
-                            })
-                            .catch(() => {
-                                console.log('no update');
-                            });
-                    }
-                });
-        });
     }
 
     /**
@@ -121,14 +97,14 @@ export class NativeGets {
                     } else {
                         const imgBase64s = []; // base64字符串数组
                         for (const fileUrl of files) {
-                            that.ionSrv.app
-                                .convertImgToBase64(fileUrl)
-                                .subscribe(base64 => {
+                            that.convertImgToBase64(fileUrl).subscribe(
+                                base64 => {
                                     imgBase64s.push(base64);
                                     if (imgBase64s.length === files.length) {
                                         observer.next(imgBase64s);
                                     }
-                                });
+                                },
+                            );
                         }
                     }
                 })
@@ -198,7 +174,7 @@ export class NativeGets {
      * 拨打电话
      * @param number
      */
-    callNumber(num: string): void {
+    getCallNumber(num: string): void {
         // this.cn
         //     .callNumber(num, true)
         //     .then(() => console.log('成功拨打电话:' + num))
@@ -209,7 +185,7 @@ export class NativeGets {
      * 扫描二维码
      * @returns {any}
      */
-    scan() {
+    getScan() {
         return Observable.create(observer => {
             this.ionSrv.barcodeScanner
                 .scan()
@@ -542,6 +518,33 @@ export class NativeGets {
                 this.ionSrv.noticeSrv.alert('非手机环境不能导航');
                 observer.error(false);
             }
+        });
+    }
+
+    /**
+     * 根据图片绝对路径转化为base64字符串
+     * @param path 绝对路径
+     */
+    convertImgToBase64(path: string): Observable<string> {
+        return Observable.create(observer => {
+            this.ionSrv.file
+                .resolveLocalFilesystemUrl(path)
+                .then((fileEnter: FileEntry) => {
+                    fileEnter.file(file => {
+                        const reader = new FileReader();
+                        reader.onloadend = function(e) {
+                            observer.next(this.result);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                })
+                .catch(err => {
+                    this.ionSrv.logger.log(
+                        err,
+                        '根据图片绝对路径转化为base64字符串失败',
+                    );
+                    observer.error(false);
+                });
         });
     }
 }
