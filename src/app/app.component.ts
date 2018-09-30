@@ -24,18 +24,36 @@ export class AppComponent extends IndexControl implements OnInit {
     @ViewChildren(IonRouterOutlet)
     routerOutlets: QueryList<IonRouterOutlet>;
 
-    get userData() {
-        return this.injector.get(UserData);
-    }
     constructor(protected injector: Injector) {
         super(injector);
         this.initializeApp();
+    }
+
+    get userData() {
+        return this.injector.get(UserData);
     }
 
     ngOnInit() {
         this.listenBackButtonEvent();
         this.checkLoginStatus();
         this.listenForLoginEvents();
+
+        setTimeout(async () => {
+            console.log('abc');
+            this.storageSrv.set('f', { a: 1 });
+            const a = await this.storageSrv.get('f');
+            console.log(a);
+            console.log('abcd');
+            const b = await this.storageSrv.get('f');
+            console.log(b);
+            console.log('abcde');
+        }, 1000);
+
+        // setTimeout(async () => {
+        //     debugger;
+        //     const a = await this.storageSrv.get('f');
+        //     console.log(a);
+        // }, 2000);
     }
 
     initializeApp() {
@@ -106,9 +124,11 @@ export class AppComponent extends IndexControl implements OnInit {
     }
 
     logout() {
-        this.userData.logout().then(() => {
-            return this.navigate('/app/tabs/(schedule:schedule)');
-        });
+        this.tokenSrv.tokenDestory();
+
+        // this.userData.logout().then(() => {
+        //     return this.navigate('/app/tabs/(schedule:schedule)');
+        // });
     }
 
     openTutorial() {

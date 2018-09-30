@@ -16,6 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../utils/modal.service';
 import { NoticeService } from '../utils/notice.service';
 import { LoggerService } from '../utils/logger.service';
+import { StorageService } from './../utils/storage.service';
 
 import { IonicService } from '../ionic';
 
@@ -132,6 +133,10 @@ export class InjectorControl implements OnInit, OnDestroy {
 
     get FormBuilder() {
         return this.injector.get(FormBuilder);
+    }
+
+    get storageSrv() {
+        return this.injector.get(StorageService);
     }
 
     get FormGroup() {

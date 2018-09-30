@@ -83,7 +83,7 @@ export class HttpService {
 
     /** 服务端URL地址 */
     get SERVER_URL(): string {
-        if (this.isCordova) {
+        if (this.isCordova || true) {
             return api.host;
         }
         return api.base;

@@ -72,8 +72,7 @@ export class AccountPage extends IndexControl implements AfterViewInit {
     }
 
     logout() {
-        this.userData.logout();
-        this.route.navigateByUrl('/login');
+        
     }
 
     support() {

@@ -23,10 +23,10 @@ export class AuthService {
                 login_type: 'sys',
                 name: loginData.account,
                 password: loginData.password,
-                captcha: Object.assign(
-                    { value: loginData.captcha },
-                    loginData.captchaParams,
-                ),
+                // captcha: Object.assign(
+                //     { value: loginData.captcha },
+                //     loginData.captchaParams,
+                // ),
             })
             .pipe(
                 switchMap((data: any) => {

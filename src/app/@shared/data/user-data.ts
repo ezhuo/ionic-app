@@ -27,29 +27,11 @@ export class UserData {
         }
     }
 
-    login(username: string): Promise<any> {
-        return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
-            this.setUsername(username);
-            return this.events.publish('user:login');
-        });
-    }
-
     signup(username: string): Promise<any> {
         return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
             this.setUsername(username);
             return this.events.publish('user:signup');
         });
-    }
-
-    logout(): Promise<any> {
-        return this.storage
-            .remove(this.HAS_LOGGED_IN)
-            .then(() => {
-                return this.storage.remove('username');
-            })
-            .then(() => {
-                this.events.publish('user:logout');
-            });
     }
 
     setUsername(username: string): Promise<any> {

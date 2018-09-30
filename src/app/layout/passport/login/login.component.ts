@@ -8,7 +8,6 @@ import {
 import { FormGroup, Validators, NgForm } from '@angular/forms';
 
 import { IndexControl } from '@core';
-import { UserData } from '@shared/data/user-data';
 import { UserOptions } from '@core/model/user-options';
 
 @Component({
@@ -82,10 +81,6 @@ export class UserLoginComponent extends IndexControl
         return this.stateSrv.httpLoading;
     }
 
-    get userData() {
-        return this.injector.get(UserData);
-    }
-
     // endregion
 
     switch(ret: any) {
@@ -121,27 +116,28 @@ export class UserLoginComponent extends IndexControl
 
     submit() {
         this.error = '';
-        if (this.type === 0) {
-            this.account.markAsDirty();
-            this.account.updateValueAndValidity();
-            this.password.markAsDirty();
-            this.password.updateValueAndValidity();
-            this.captcha.markAsDirty();
-            this.captcha.updateValueAndValidity();
-            if (
-                this.account.invalid ||
-                this.password.invalid ||
-                this.captcha.invalid ||
-                !this.captchaData['key']
-            )
-                return;
-        } else {
-            this.mobile.markAsDirty();
-            this.mobile.updateValueAndValidity();
-            this.captcha.markAsDirty();
-            this.captcha.updateValueAndValidity();
-            if (this.mobile.invalid || this.captcha.invalid) return;
-        }
+        this.type = 0;
+        // if (this.type === 0) {
+        //     this.account.markAsDirty();
+        //     this.account.updateValueAndValidity();
+        //     this.password.markAsDirty();
+        //     this.password.updateValueAndValidity();
+        //     this.captcha.markAsDirty();
+        //     this.captcha.updateValueAndValidity();
+        //     if (
+        //         this.account.invalid ||
+        //         this.password.invalid ||
+        //         this.captcha.invalid ||
+        //         !this.captchaData['key']
+        //     )
+        //         return;
+        // } else {
+        //     this.mobile.markAsDirty();
+        //     this.mobile.updateValueAndValidity();
+        //     this.captcha.markAsDirty();
+        //     this.captcha.updateValueAndValidity();
+        //     if (this.mobile.invalid || this.captcha.invalid) return;
+        // }
 
         if (this.type === 0) {
             this.isLoading = true;
@@ -181,8 +177,30 @@ export class UserLoginComponent extends IndexControl
         this.submitted = true;
 
         if (form.valid) {
-            this.userData.login(this.login.username);
-            this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
+            this.login$ = this.authSrv
+                .doLogin({
+                    account: this.login.username,
+                    password: this.login.password,
+                })
+                .subscribe(
+                    (data: any) => {
+                        if (this.configSrv.app_debug)
+                            console.log('login.component:', data);
+                        this.error = '';
+                        // this.noticeSrv.msg_success('登录成功！');
+                        return this.goDefaultURL();
+                    },
+                    error => {
+                        console.error('login.component:', error);
+                        this.getCaptchaPic();
+                        if (error && error.message2) {
+                            return (this.error = error.message2);
+                        }
+                        return (this.error = `账户或密码错误`);
+                    },
+                );
+            // this.userData.login(this.login.username);
+            // this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
         }
     }
 
