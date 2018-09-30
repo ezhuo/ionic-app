@@ -7,8 +7,8 @@ import {
 import { List } from '@ionic/angular';
 import { IndexControl } from '@core';
 import { ScheduleFilterPage } from '.././schedule-filter/schedule-filter';
-import { ConferenceData } from '../../../../providers/conference-data';
-import { UserData } from '../../../../providers/user-data';
+import { ConferenceData } from '@shared/data/conference-data';
+import { UserData } from '@shared/data/user-data';
 
 @Component({
     selector: 'page-schedule',

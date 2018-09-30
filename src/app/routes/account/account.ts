@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { IndexControl } from '@core';
 
-import { UserData } from '../../providers/user-data';
+import { UserData } from '@shared/data/user-data';
 
 @Component({
     selector: 'page-account',

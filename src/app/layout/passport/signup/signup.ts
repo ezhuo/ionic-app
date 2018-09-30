@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IndexControl } from '@core';
-import { UserData } from '../../../providers/user-data';
+import { UserData } from '@shared/data/user-data';
 
 import { UserOptions } from '@core/model/user-options';
 

@@ -8,8 +8,8 @@ import { CoreModule } from './@core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { UserData } from './providers/user-data';
-import { ConferenceData } from './providers/conference-data';
+import { UserData } from '@shared/data/user-data';
+import { ConferenceData } from '@shared/data/conference-data';
 
 @NgModule({
     imports: [

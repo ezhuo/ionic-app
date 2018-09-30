@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Injector } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { IndexControl } from '@core';
-import { ConferenceData } from '../../../../providers/conference-data';
+import { ConferenceData } from '@shared/data/conference-data';
 
 @Component({
     selector: 'page-speaker-list',

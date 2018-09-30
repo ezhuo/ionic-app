@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Injector } from '@angular/core';
-import { ConferenceData } from '../../../../providers/conference-data';
+import { ConferenceData } from '@shared/data/conference-data';
 import { IndexControl } from '@core';
 
 @Component({

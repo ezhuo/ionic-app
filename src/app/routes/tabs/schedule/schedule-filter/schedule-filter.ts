@@ -5,7 +5,7 @@ import {
     Injector,
 } from '@angular/core';
 import { ModalControl } from '@core';
-import { ConferenceData } from '../../../../providers/conference-data';
+import { ConferenceData } from '@shared/data/conference-data';
 
 @Component({
     selector: 'page-schedule-filter',
