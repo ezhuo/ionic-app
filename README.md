@@ -81,7 +81,7 @@
 
 ```
 --apache & ionic----------
-*  cordova plugin add --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information
+*  cordova plugin add --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information cordova-plugin-media-capture cordova-plugin-media
 *  cordova plugin add --save cordova-plugin-file  cordova-plugin-file-transfer cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
 --other----------
 *  cordova plugin add --save cordova-hot-code-push-plugin cordova-plugin-app-version cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
@@ -91,7 +91,7 @@
 ## remove plugin
 
 ```
-*  cordova plugin rm --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information
+*  cordova plugin rm --save cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-device cordova-plugin-splashscreen cordova-plugin-inappbrowser cordova-plugin-camera cordova-plugin-dialogs cordova-plugin-geolocation cordova-plugin-network-information cordova-plugin-media-capture cordova-plugin-media
 *  cordova plugin rm --save cordova-plugin-file  cordova-plugin-file-transfer cordova-plugin-ionic-webview cordova-plugin-ionic-keyboard
 --other----------
 *  cordova plugin rm --save cordova-hot-code-push-plugin cordova-plugin-app-version  cordova-plugin-datepicker   cordova-plugin-x-toast cordova.plugins.diagnostic phonegap-plugin-barcodescanner cordova-plugin-appminimize
@@ -115,5 +115,9 @@ cordova-plugin-compat 这个plugins 是为解决兼容性问题，但已经不�
 * cordova plugin add  --save cordova-plugin-app-update
 ```
 
+## 提醒
+```
+android 版本目前需要是6.4.0，主要原因是由于 com.kit.cordova.amaplocation 不能使用过高版本，所以才降级 
+```
 
 npm i -g ionic@3.20.0

@@ -11,7 +11,7 @@
     <ion-list>
         <ion-item>
             <ion-avatar item-left tappable (click)="viewAvatar();$event.stopPropagation()">
-                <img [src]="userInfo.avatarPath">
+                <img [src]="userInfo?.avatar">
             </ion-avatar>
             <h2>{{userInfo.realname}}</h2>
             <p>一本正经的胡说八道</p>

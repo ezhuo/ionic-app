@@ -51,6 +51,8 @@
     <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
+    <plugin name="cordova-plugin-media" spec="^5.0.2" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.1.4">
@@ -77,4 +79,5 @@
         <variable name="KEY" value="418d3ef19c3b375b61c6e7c38e3794e8" />
     </plugin>
     <engine name="android" spec="6.4.0" />
+   
 </widget>

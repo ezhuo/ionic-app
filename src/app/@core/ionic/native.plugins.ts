@@ -24,3 +24,11 @@ export { StatusBar } from '@ionic-native/status-bar/ngx';
 
 // export { HTTP } from '@ionic-native/http/ngx';
 export { Toast } from '@ionic-native/toast/ngx';
+
+export { Media } from '@ionic-native/media/ngx';
+export {
+    MediaCapture,
+    MediaFile,
+    CaptureError,
+    CaptureImageOptions,
+} from '@ionic-native/media-capture/ngx';
