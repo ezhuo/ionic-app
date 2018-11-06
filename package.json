@@ -55,7 +55,7 @@
         "@ionic-native/toast": "5.0.0-beta.21",
         "@ionic-native/media": "5.0.0-beta.21",
         "@ionic-native/media-capture": "5.0.0-beta.21",
-        "@ionic/angular": "4.0.0-beta.12",
+        "@ionic/angular": "4.0.0-beta.15",
         "@ionic/storage": "^2.1.3",
         "blueimp-md5": "^2.10.0",
         "com.kit.cordova.amaplocation": "git+https://github.com/namedjw/com.kit.cordova.amaplocation.git",

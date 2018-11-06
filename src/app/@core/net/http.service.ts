@@ -19,7 +19,9 @@ import { Platform } from '@ionic/angular';
  * + 统一实现 loading
  * + 统一处理时间格式问题
  */
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 // tslint:disable-next-line:class-name
 export class HttpService {
     constructor(private injector: Injector) {}

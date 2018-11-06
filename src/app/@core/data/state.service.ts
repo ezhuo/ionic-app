@@ -5,7 +5,9 @@ import { ConfigService } from '../data/config.service';
 
 import * as helpers from '../helpers';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class StateService {
     constructor(private injector: Injector) {}
 

@@ -8,13 +8,14 @@ import {
     ErrorHandler,
 } from '@angular/core';
 
-import { UtilsModule } from './utils/utils.module';
-import { DataModule } from './data/data.module';
-import { NetModule } from './net/net.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { IonicDefineModule } from './ionic/ionic.define.module';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { StartupService } from './startup/startup.service';
+
+import { AuthInterceptor } from './net/http.interceptor';
 
 // 中文设置
 import './i18n/zh_CN';
@@ -27,15 +28,11 @@ export function StartupServiceFactory(
     return () => startupService.load();
 }
 
-const CORE_PROVIDERS = [
-    ...DataModule.forRoot().providers,
-    ...UtilsModule.forRoot().providers,
-    ...NetModule.forRoot().providers,
-];
+const CORE_PROVIDERS = [];
 
 @NgModule({
     imports: [IonicDefineModule.forRoot()],
-    exports: [DataModule, UtilsModule, NetModule, IonicDefineModule],
+    exports: [IonicDefineModule],
     providers: [],
 })
 export class CoreModule {
@@ -52,7 +49,11 @@ export class CoreModule {
             providers: [
                 ...CORE_PROVIDERS,
                 { provide: LOCALE_ID, useValue: 'zh-Hans' },
-                StartupService,
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: AuthInterceptor,
+                    multi: true,
+                },
                 {
                     provide: APP_INITIALIZER,
                     useFactory: StartupServiceFactory,

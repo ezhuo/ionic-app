@@ -63,35 +63,14 @@ export class LayoutTabsComponent extends IndexControl
         super.ngOnDestroy();
     }
 
-    ionNavDidChange($event) {
-        // console.log('ionNavDidChange', $event);
-    }
+    ionNavDidChange($event) {}
 
-    ionNavWillChange($event) {
-        // console.log('ionNavWillChange', $event);
-    }
+    ionNavWillChange($event) {}
 
-    ionNavWillLoad() {
-        // console.log('ionNavWillLoad');
-    }
+    ionNavWillLoad() {}
 
-    ionSelect($event) {
-        // console.log('ionSelect', $event);
-    }
-    async ionChange($event: any) {
-        // const tabElm: HTMLIonTabElement = $event.detail
-        //     .tab as HTMLIonTabElement;
-        // tabElm.forceUpdate();
-        // console.log(tabElm.href);
-        // await tabElm.setActive();
-        // await tabElm.componentOnReady();
-        // const tabs = tabElm.closest('ion-tabs');
-        // if (tabs) {
-        //     await tabs.componentOnReady();
-        //     await tabs.select(tabElm);
-        //     tabs.forceUpdate();
-        // }
-    }
+    ionSelect($event) {}
+    async ionChange($event: any) {}
 
     listenForSelectEvents() {}
 
@@ -103,7 +82,6 @@ export class LayoutTabsComponent extends IndexControl
             if (this.routerOutlets)
                 this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
                     if (outlet && outlet.canGoBack()) {
-                        debugger;
                         outlet.pop();
                     }
                 });

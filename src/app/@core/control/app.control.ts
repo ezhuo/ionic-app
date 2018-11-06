@@ -1,16 +1,60 @@
 import { OnInit, OnDestroy, Injector } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 import { InjectorControl } from './injector.control';
 import { AppFunc } from './app.func';
 import { AppCase } from './app.case';
+import { FormData, DataSource, ModalData, PageData } from './app.interface';
 
 export class AppControl extends InjectorControl implements OnInit, OnDestroy {
+    /**
+     * 基础处理类
+     */
+    protected __appFunc: AppFunc = new AppFunc(this);
+
+    /**
+     * 业务处理类
+     */
+    protected __appCase: AppCase = new AppCase(this);
+
+    /**
+     * 当前页面的参数
+     */
+    protected ___pageData: PageData = { title: null };
+
+    // ----------------------------------------
+
+    /**
+     * 与服务器数据交换
+     * @protected
+     * @type {DataSource}
+     * @memberof AppControl
+     */
+    protected ___dataSource: DataSource = {
+        url: '',
+        key: 'id',
+        val: null,
+    };
+
+    /**
+     * 主要表单值
+     */
+    protected ___formData: FormData = {
+        group: null,
+        data: {},
+    };
+
+    /**
+     * modal对话框中的参数传递
+     */
+    protected ____modalData: ModalData = {
+        title: null,
+        data: null,
+    };
+
+    // --------------------------------------
+
     constructor(protected injector: Injector) {
         super(injector);
-
-        this.__appFunc = new AppFunc(this);
-        this.__appCase = new AppCase(this);
     }
 
     // ----------------------------------------
@@ -31,62 +75,6 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
         }
     }
 
-    /**
-     * 基础处理类
-     */
-    protected __appFunc: AppFunc;
-
-    /**
-     * 业务处理类
-     */
-    protected __appCase: AppCase;
-
-    /**
-     * 当前页面的参数
-     */
-    protected ___pageParams: any = {};
-
-    // ----------------------------------------
-
-    /**
-     * 主要的URL
-     */
-    protected ___primaryURL = '';
-
-    /**
-     * 主键KEY
-     */
-    protected ___primaryKey = 'id';
-
-    /**
-     * 主键值
-     */
-    protected ___primaryValue: any = null;
-
-    // ----------------------------------------
-
-    /**
-     * 主要表单
-     */
-    protected ___mainForm: FormGroup;
-
-    /**
-     * 表格附加参数
-     */
-    public ___mainTableParams: any = {};
-
-    /**
-     * 主要表单值
-     */
-    protected ___formData: any = {};
-
-    /**
-     * modal对话框中的参数传递
-     */
-    protected ___modalParams: any = {};
-
-    // --------------------------------------
-
     get appCase() {
         return this.__appCase;
     }
@@ -95,72 +83,40 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
         return this.__appFunc;
     }
 
-    get primaryURL() {
-        return this.___primaryURL;
+    get dataSource(): DataSource {
+        return this.___dataSource;
     }
 
-    set primaryURL(value) {
-        this.___primaryURL = value;
+    set dataSource(value: DataSource) {
+        this.___dataSource = value;
     }
 
-    get primaryKey() {
-        return this.___primaryKey;
-    }
-
-    set primaryKey(value) {
-        this.___primaryKey = value;
-    }
-
-    get primaryValue() {
-        return this.___primaryValue;
-    }
-
-    set primaryValue(value) {
-        this.___primaryValue = value;
-    }
-
-    get pageParams() {
-        return this.___pageParams;
+    get pageData(): PageData {
+        return this.___pageData;
     }
 
     set pageTitle(value) {
-        this.___pageParams.title = value;
+        this.pageData.title = value;
     }
 
     get pageTitle() {
         return '';
     }
 
-    set mainForm(value) {
-        this.___mainForm = value;
-    }
-
-    get mainForm() {
-        return this.___mainForm;
-    }
-
-    get mainTableParams() {
-        this.___mainTableParams = this.___mainTableParams || {};
-        if (!this.___mainTableParams.hasOwnProperty('ps')) {
-            this.___mainTableParams.ps = this.configSrv.define.table_page_size;
-        }
-        return this.___mainTableParams;
-    }
-
-    set formData(value) {
+    set formData(value: FormData) {
         this.___formData = value;
     }
 
-    get formData() {
+    get formData(): FormData {
         return this.___formData;
     }
 
-    set modalParams(value) {
-        this.___modalParams = value;
+    set modalData(value: ModalData) {
+        this.____modalData = value;
     }
 
-    get modalParams() {
-        return this.___modalParams;
+    get modalData(): ModalData {
+        return this.____modalData;
     }
 
     // -- init -----------------------------------------
@@ -169,8 +125,8 @@ export class AppControl extends InjectorControl implements OnInit, OnDestroy {
      * 初始化
      */
     protected __init(url: string, key: any, params?: any) {
-        this.primaryURL = url;
-        this.primaryKey = key;
+        this.dataSource.url = url;
+        this.dataSource.key = key;
     }
 
     navigate(url: string) {

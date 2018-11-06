@@ -4,7 +4,9 @@ import {
     Validators as angularValidators,
 } from '@angular/forms';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+  })
 export class Validators extends angularValidators {
     /*E-mail*/
     static email = (control: AbstractControl) => {

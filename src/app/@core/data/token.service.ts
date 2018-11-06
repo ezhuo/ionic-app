@@ -13,7 +13,9 @@ import { HttpService } from '../net';
 
 import * as helper from '../helpers';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TokenService {
   protected __token = '';
   protected __isAuth: Boolean = false;

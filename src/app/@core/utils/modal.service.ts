@@ -4,7 +4,9 @@ import { ModalController, PopoverController } from '@ionic/angular';
 /**
  * 对话框辅助类
  */
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+  })
 export class ModalService {
     private __modalList: any[] = [];
     constructor(private injector: Injector) {}

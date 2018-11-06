@@ -1,14 +1,41 @@
-<ion-tabs (ionChange)="ionChange($event)">
-    <ion-tab label="Schedule" icon="calendar" href="/app/tabs/(schedule:schedule)">
-        <ion-router-outlet stack name="schedule"></ion-router-outlet>
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="schedule" href="/app/tabs/(schedule:schedule)">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>Schedule</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="speakers" href="/app/tabs/(speakers:speakers)">
+            <ion-icon name="contacts"></ion-icon>
+            <ion-label>Speakers</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="demo" href="/app/tabs/(demo:demo)">
+            <ion-icon name="contacts"></ion-icon>
+            <ion-label>demo</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="mine" href="/app/tabs/(mine:mine)">
+            <ion-icon name="information-circle"></ion-icon>
+            <ion-label>我的</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+    <ion-tab tab="schedule">
+        <ion-router-outlet name="schedule"></ion-router-outlet>
     </ion-tab>
-    <ion-tab label="Speakers" icon="contacts" href="/app/tabs/(speakers:speakers)">
-        <ion-router-outlet stack name="speakers"></ion-router-outlet>
+
+    <ion-tab tab="speakers">
+        <ion-router-outlet name="speakers"></ion-router-outlet>
     </ion-tab>
-    <ion-tab label="demo" icon="contacts" href="/app/tabs/(demo:demo)">
-        <ion-router-outlet stack name="demo"></ion-router-outlet>
+
+    <ion-tab tab="demo">
+        <ion-router-outlet name="demo"></ion-router-outlet>
     </ion-tab>
-    <ion-tab label="我的" icon="information-circle" href="/app/tabs/(mine:mine)">
-        <ion-router-outlet stack name="mine"></ion-router-outlet>
+
+    <ion-tab tab="mine">
+        <ion-router-outlet name="mine"></ion-router-outlet>
     </ion-tab>
+
 </ion-tabs>

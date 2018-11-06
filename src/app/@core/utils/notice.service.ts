@@ -8,7 +8,9 @@ import {
 import { Toast } from '../ionic/native.plugins';
 import { Platform } from '@ionic/angular';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+  })
 export class NoticeService {
     private __msgList: any[] = [];
     private __loadingList: any[] = [];

@@ -1,8 +1,7 @@
 import { OnInit, OnDestroy, Injector } from '@angular/core';
 import { AppControl } from './app.control';
 
-export class IndexControl extends AppControl
-    implements OnInit, OnDestroy {
+export class IndexControl extends AppControl implements OnInit, OnDestroy {
     constructor(protected injector: Injector) {
         super(injector);
     }
@@ -30,14 +29,12 @@ export class IndexControl extends AppControl
     formatModalParams(record?: any, params?: any): Object {
         const frmData = this.helpers.deepExtend(
             {},
-            record || this.formData || {},
+            record || this.formData.data || {},
         );
         return {
-            primaryKey: this.primaryKey,
-            primaryURL: this.primaryURL,
-            formData: frmData,
-            modalParams: this.helpers.deepExtend({}, this.modalParams),
+            dataSource: this.dataSource,
+            formData: { data: frmData },
+            modalData: this.helpers.deepExtend({}, this.modalData),
         };
     }
-
 }

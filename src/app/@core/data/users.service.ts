@@ -4,7 +4,9 @@ import { Observable, of } from 'rxjs';
 import { define, app_debug } from '../config.inc';
 import * as helper from '../helpers';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+  })
 export class UserService {
     private __api_dt: any = null;
     private __userInfo: any = {};
