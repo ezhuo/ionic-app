@@ -27,8 +27,8 @@ const routes: Routes = [
         path: 'tutorial',
         loadChildren: './routes/tutorial/tutorial.module#TutorialModule',
     },
-    { path: '', redirectTo: configInc.router.default, pathMatch: 'full' },
-    { path: '**', redirectTo: configInc.router.default },
+    { path: '', redirectTo: configInc.router.defaultRoute, pathMatch: 'full' },
+    { path: '**', redirectTo: configInc.router.defaultRoute },
 ];
 
 const config: ExtraOptions = {

@@ -1,5 +1,5 @@
 import { AppControl } from './app.control';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 export class AppFunc {
     private ___appCtrl: AppControl = null;

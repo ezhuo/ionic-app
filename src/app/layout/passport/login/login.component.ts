@@ -149,7 +149,7 @@ export class UserLoginComponent extends IndexControl
             });
             this.login$ = this.authSrv.doLogin(value).subscribe(
                 (data: any) => {
-                    if (this.configSrv.app_debug)
+                    if (this.configSrv.appDebug)
                         console.log('login.component:', data);
                     this.error = '';
                     // this.noticeSrv.msg_success('登录成功！');
@@ -170,7 +170,7 @@ export class UserLoginComponent extends IndexControl
     // region: social
 
     goDefaultURL() {
-        return this.route.navigate([this.configSrv.config.router.default]);
+        return this.route.navigate([this.configSrv.config.router.defaultUrl]);
     }
 
     onLogin(form: NgForm) {
@@ -184,7 +184,7 @@ export class UserLoginComponent extends IndexControl
                 })
                 .subscribe(
                     (data: any) => {
-                        if (this.configSrv.app_debug)
+                        if (this.configSrv.appDebug)
                             console.log('login.component:', data);
                         this.error = '';
                         // this.noticeSrv.msg_success('登录成功！');

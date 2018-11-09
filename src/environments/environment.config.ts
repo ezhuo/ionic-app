@@ -1,15 +1,14 @@
-import { PlatformConfig } from '@core';
+import { App, PlatformConfig, Canton, Router, Api, Define, Http } from '@core';
 
-export const app_debug = true;
+export const appDebug = true;
+export const appDebugError = true;
 
-export const app_debug_error = true;
-
-export const app = {
+export const app: App = {
     key: 'ionicApp',
     year: 2018,
 };
 
-export const api = {
+export const api: Api = {
     host: 'http://192.168.168.202:8090/api/sys/app/v1',
 };
 
@@ -19,24 +18,18 @@ export const platformConfig: PlatformConfig = {
     statusBarColor: '#3880ff', //'#488aff'
 };
 
-export const define = {
-    // 用户默认图片
-    user_images: './assets/images/default/no-user.png',
-
-    // 默认用户的图片
-    user_cut_images: './assets/images/user/default_user.png',
-
-    logo_login: './assets/images/logo/logo.png',
-
-    logo_top_large: './assets/images/logo/logo.png',
-
-    logo_top_small: './assets/images/logo/logo-small.png',
+export const define: Define = {
+    userImages: './assets/images/default/no-user.png', // 用户默认图片
+    userCutImages: './assets/images/user/default_user.png', // 默认用户的图片
+    logoLogin: './assets/images/logo/logo.png',
+    logoTopLarge: './assets/images/logo/logo.png',
+    logoTopSmall: './assets/images/logo/logo-small.png',
 };
 
 /**
  *区域设置
  */
-export const canton = {
+export const canton: Canton = {
     id: null, // 默认区域ID
     fdn: null, // 默认区域
     name: null,
@@ -45,8 +38,9 @@ export const canton = {
 /**
  *路由配置
  */
-export const router = {
-    default: '/app/tabs/(schedule:schedule)',
+export const router: Router = {
+    defaultRoute: '/app/tabs/(schedule:schedule)',
+    defaultUrl: '/app/tabs/(schedule:schedule)',
     home: '/app/home',
     admin: '/app/tabs',
 };

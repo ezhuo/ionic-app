@@ -12,20 +12,20 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { ModalService } from '../utils/modal.service';
-import { NoticeService } from '../utils/notice.service';
-import { LoggerService } from '../utils/logger.service';
-import { StorageService } from './../utils/storage.service';
-
 import { IonicService } from '../ionic';
-
-import { AuthService } from '../data/auth.service';
-import { TokenService } from '../data/token.service';
-import { StateService } from '../data/state.service';
-import { ConfigService } from '../data/config.service';
-import { UserService } from '../data/users.service';
-
+import {
+    ModalService,
+    NoticeService,
+    LoggerService,
+    StorageService,
+} from '../utils';
+import {
+    AuthService,
+    TokenService,
+    StateService,
+    ConfigService,
+    UserService,
+} from '../data';
 import { HttpService } from '../net/http.service';
 
 import * as helpers from '../helpers';

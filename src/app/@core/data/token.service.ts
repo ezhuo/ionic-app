@@ -3,12 +3,9 @@ import { HttpHeaders } from '@angular/common/http';
 import * as md5 from 'blueimp-md5';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-
 import { NoticeService } from '../utils/notice.service';
-import { http, app_debug } from '../config.inc';
-
+import { http, appDebug } from '../config.inc';
 import { UserService } from './users.service';
-
 import { HttpService } from '../net';
 
 import * as helper from '../helpers';
@@ -100,7 +97,7 @@ export class TokenService {
     this.__isAuth =
       (this.tokenRead() || '').length > 10 &&
       !helper.isEmpty(this.userSrv.userInfo);
-    if (app_debug) console.log('isAuth', this.__isAuth);
+    if (appDebug) console.log('isAuth', this.__isAuth);
     return this.__isAuth;
   }
 

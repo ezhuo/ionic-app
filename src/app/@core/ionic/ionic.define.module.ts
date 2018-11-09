@@ -1,9 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { IonicModule, Config } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
-
 import { IonicService } from './ionic.service';
-
 import { platformConfig } from '../config.inc';
 
 import {

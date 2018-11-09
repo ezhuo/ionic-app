@@ -15,7 +15,7 @@ import { IonicDefineModule } from './ionic/ionic.define.module';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { StartupService } from './startup/startup.service';
 
-import { AuthInterceptor } from './net/http.interceptor';
+import { HttpAuthInterceptor } from './net/http.interceptor';
 
 // 中文设置
 import './i18n/zh_CN';
@@ -51,7 +51,7 @@ export class CoreModule {
                 { provide: LOCALE_ID, useValue: 'zh-Hans' },
                 {
                     provide: HTTP_INTERCEPTORS,
-                    useClass: AuthInterceptor,
+                    useClass: HttpAuthInterceptor,
                     multi: true,
                 },
                 {

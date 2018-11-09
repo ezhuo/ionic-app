@@ -1,5 +1,4 @@
 import { AppControl } from './app.control';
-import { of } from 'rxjs';
 
 export class AppCase {
     private ___appCtrl: AppControl = null;

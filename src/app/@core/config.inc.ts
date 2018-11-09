@@ -1,29 +1,26 @@
+import { App, PlatformConfig, Canton, Router, Api, Define, Http } from '@core';
 import * as env from '@env/environment.config';
 import { deepExtend } from './helpers/extend';
 
-export const app_debug = env.app_debug;
-export const app_debug_error = env.app_debug_error;
-export const app = env.app;
+export const appDebug = env.appDebug;
+export const appDebugError = env.appDebugError;
+export const app: App = env.app;
 
 /**
  *区域设置
  */
-export const canton = env.canton;
+export const canton: Canton = env.canton;
 
 /**
  * 平台配置
  */
-export const platformConfig = env.platformConfig;
+export const platformConfig: PlatformConfig = env.platformConfig;
 
 /**
  *路由配置
  */
-export const router = deepExtend(
+export const router: Router = deepExtend(
     {
-        routeDefault: 'tabs',
-        default: '/app/tabs',
-        home: '/app/home',
-        admin: '/app/tabs',
         login: '/passport/login',
         lock: '/passport/lock',
     },
@@ -33,7 +30,7 @@ export const router = deepExtend(
 /**
  * API
  */
-export const api = deepExtend(
+export const api: Api = deepExtend(
     {
         host: '',
         base: 'api',
@@ -57,22 +54,11 @@ export const editor = null;
 /**
  *默认定义
  */
-export const define = deepExtend(
+export const define: Define = deepExtend(
     {
-        // table page size
-        table_page_size: 10,
-
-        // 用户默认图片
-        user_images: './assets/images/default/no-user.png',
-
-        // 默认用户的图片
-        user_cut_images: './assets/images/user/default_user.png',
-
-        logo_login: './assets/images/logo/logo.png',
-
-        logo_top_large: './assets/images/logo/logo.png',
-
-        logo_top_small: './assets/images/logo/logo-small.png',
+        pageSize: 10,
+        qualitySize: 10,
+        imageSize: 10,
     },
     env.define,
 );
@@ -80,7 +66,7 @@ export const define = deepExtend(
 /**
  *HTTP配置
  */
-export const http = {
+export const http: Http = {
     // 数据包发送格式，10是明文 11是密文
     style: 10,
 
@@ -88,7 +74,7 @@ export const http = {
     check: 'ezhuo@20161016',
 };
 
-export const http_code = {
+export const httpCode = {
     200: '',
     201: '',
     202: '',

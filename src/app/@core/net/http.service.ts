@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError, switchMap } from 'rxjs/operators';
-import { api, app_debug } from '../config.inc';
+import { api, appDebug } from '../config.inc';
 import { UserService } from './../data/users.service';
 import { Platform } from '@ionic/angular';
 
@@ -497,7 +497,7 @@ export class HttpService {
         }
         return this.http.request(method, url, options).pipe(
             tap(res => {
-                if (app_debug) console.log('http.service:', res);
+                if (appDebug) console.log('http.service:', res);
                 this.end();
             }),
             catchError(res => {

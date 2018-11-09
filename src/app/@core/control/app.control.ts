@@ -3,7 +3,7 @@ import { OnInit, OnDestroy, Injector } from '@angular/core';
 import { InjectorControl } from './injector.control';
 import { AppFunc } from './app.func';
 import { AppCase } from './app.case';
-import { FormData, DataSource, ModalData, PageData } from './app.interface';
+import { FormData, DataSource, ModalData, PageData } from '../model/app.d';
 
 export class AppControl extends InjectorControl implements OnInit, OnDestroy {
     /**

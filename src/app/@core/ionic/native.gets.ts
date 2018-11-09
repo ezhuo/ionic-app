@@ -33,11 +33,11 @@ export class NativeGets {
         const ops: CameraOptions = {
             sourceType: this.ionSrv.camera.PictureSourceType.CAMERA, // 图片来源,CAMERA:拍照,PHOTOLIBRARY:相册
             destinationType: this.ionSrv.camera.DestinationType.FILE_URI, // 默认返回图片路径：DATA_URL:base64字符串，FILE_URI:图片路径
-            quality: define.quality_size, // 图像质量，范围为0 - 100
+            quality: define.qualitySize, // 图像质量，范围为0 - 100
             allowEdit: false, // 选择图片前是否允许编辑
             encodingType: this.ionSrv.camera.EncodingType.JPEG,
-            targetWidth: define.image_size, // 缩放图像的宽度（像素）
-            targetHeight: define.image_size, // 缩放图像的高度（像素）
+            targetWidth: define.imageSize, // 缩放图像的宽度（像素）
+            targetHeight: define.imageSize, // 缩放图像的高度（像素）
             saveToPhotoAlbum: false, // 是否保存到相册
             correctOrientation: true,
             ...options,
@@ -82,9 +82,9 @@ export class NativeGets {
         const that = this;
         const ops = {
             maximumImagesCount: 6,
-            width: define.image_size, // 缩放图像的宽度（像素）
-            height: define.image_size, // 缩放图像的高度（像素）
-            quality: define.quality_size,
+            width: define.imageSize, // 缩放图像的宽度（像素）
+            height: define.imageSize, // 缩放图像的高度（像素）
+            quality: define.qualitySize,
             ...options,
         };
         return Observable.create(observer => {

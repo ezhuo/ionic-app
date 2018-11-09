@@ -95,7 +95,7 @@ export class AppComponent extends IndexControl implements OnInit {
 
             if (this.routerOutlets)
                 this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
-                    if (this.route.url == this.configSrv.router.default) {
+                    if (this.route.url == this.configSrv.router.defaultUrl) {
                         if (
                             new Date().getTime() - this.lastTimeBackPress <
                             this.timePeriodToExit
@@ -104,10 +104,10 @@ export class AppComponent extends IndexControl implements OnInit {
                         } else {
                             this.noticeSrv.msgSuccess(`再按一次退出系统`);
                             this.lastTimeBackPress = new Date().getTime();
-                            this.navigateByUrl(this.configSrv.router.default);
+                            this.navigateByUrl(this.configSrv.router.defaultUrl);
                         }
                     } else if (tabsUrl.indexOf(this.route.url) > -1) {
-                        this.navigateByUrl(this.configSrv.router.default);
+                        this.navigateByUrl(this.configSrv.router.defaultUrl);
                     } else if (outlet && outlet.canGoBack()) {
                         debugger;
                         outlet.pop();

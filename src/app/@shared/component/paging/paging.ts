@@ -28,7 +28,7 @@ export class PagingPage extends IndexControl implements OnInit, OnDestroy {
     total: number; // 共多少条数据
 
     @Input()
-    pageSize: number = configInc.define.page_size; // 每页大小,默认5条
+    pageSize: number = configInc.define.pageSize; // 每页大小,默认5条
 
     @Input()
     color = 'primary'; // 主题颜色

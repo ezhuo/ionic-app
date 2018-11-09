@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { define, app_debug } from '../config.inc';
+import { define, appDebug } from '../config.inc';
 import * as helper from '../helpers';
 
 @Injectable({
     providedIn: 'root',
-  })
+})
 export class UserService {
     private __api_dt: any = null;
     private __userInfo: any = {};
-    private __user:any = {};
+    private __user: any = {};
 
     constructor() {}
 
@@ -21,7 +21,7 @@ export class UserService {
     set userInfo(dd: any) {
         this.__userInfo = dd;
         if (dd) {
-            this.__userInfo.avatar = define.user_images;
+            this.__userInfo.avatar = define.userImages;
             if (dd.images) {
                 const pic = helper.parseJSON(dd.images) || [];
                 if (pic && pic.length > 0) {
@@ -33,7 +33,7 @@ export class UserService {
             this.__user.email = this.__userInfo.email || '';
             this.__user.key = this.__userInfo.id;
         }
-        if (app_debug) console.log(this.__userInfo);
+        if (appDebug) console.log(this.__userInfo);
     }
 
     get userInfo() {
