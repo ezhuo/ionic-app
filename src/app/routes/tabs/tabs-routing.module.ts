@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutTabsComponent } from '@layout';
 import { AuthGuard } from '@core';
 
-
 import { SchedulePage } from './schedule/default/schedule';
 import { SessionDetailPage } from './schedule/session-detail/session-detail';
 

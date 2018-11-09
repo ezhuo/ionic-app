@@ -1,6 +1,5 @@
 import { Component, Injector, ViewEncapsulation } from '@angular/core';
-import { IndexControl } from '@core';
-import { Position } from '@core/model/type';
+import { IndexControl, Position } from '@core';
 
 @Component({
     selector: 'page-native-demo',

@@ -1,6 +1,6 @@
 import { Component, Injector } from '@angular/core';
 
-import { ConferenceData } from '@shared/data/conference-data';
+import { ConferenceData } from '@shared';
 import { IndexControl } from '@core';
 
 @Component({

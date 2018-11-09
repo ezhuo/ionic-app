@@ -5,8 +5,7 @@ import {
     OnDestroy,
     ViewEncapsulation,
 } from '@angular/core';
-import { IndexControl } from '@core';
-import { FileObj } from '@core/model/FileObj';
+import { IndexControl, FileInfo } from '@core';
 
 @Component({
     selector: 'page-file-cache',
@@ -17,7 +16,7 @@ import { FileObj } from '@core/model/FileObj';
 export class FileCachePage extends IndexControl implements OnInit, OnDestroy {
     enabledFileCache = true; // app是否开启缓存
     uploading = false; // 是否正在上传
-    fileObjList: FileObj[] = []; // 待上传的文件数组
+    fileObjList: FileInfo[] = []; // 待上传的文件数组
     uploadTotal = 0; // 待上传的文件数量
     progress;
 

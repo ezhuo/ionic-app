@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SharedModule } from '@shared';
+import { SharedModule, UserData, ConferenceData } from '@shared';
 import { CoreModule } from './@core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { UserData } from '@shared/data/user-data';
-import { ConferenceData } from '@shared/data/conference-data';
 
 @NgModule({
     imports: [

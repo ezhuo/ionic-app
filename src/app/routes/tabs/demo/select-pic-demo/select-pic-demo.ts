@@ -1,6 +1,5 @@
-import { Component, Injector ,ViewEncapsulation} from '@angular/core';
-import { IndexControl } from '@core';
-import { FileObj } from '@core/model/FileObj';
+import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { IndexControl, FileInfo } from '@core';
 import { map } from 'rxjs/operators';
 // import { FileService } from '../../../providers/FileService';
 
@@ -10,8 +9,8 @@ import { map } from 'rxjs/operators';
     encapsulation: ViewEncapsulation.None,
 })
 export class SelectPicDemoPage extends IndexControl {
-    fileObjList: FileObj[] = [];
-    filePaths: FileObj[] = [];
+    fileObjList: FileInfo[] = [];
+    filePaths: FileInfo[] = [];
 
     constructor(protected injector: Injector) {
         super(injector);
@@ -23,8 +22,8 @@ export class SelectPicDemoPage extends IndexControl {
                 if (res.success) {
                     for (const fileObj of res.data) {
                         this.fileObjList.push({
-                            thumbPath: fileObj.base64,
-                            origPath: fileObj.base64,
+                            thumbUrl: fileObj.base64,
+                            originFileObj: fileObj.base64,
                             base64: fileObj.base64,
                         });
                     }

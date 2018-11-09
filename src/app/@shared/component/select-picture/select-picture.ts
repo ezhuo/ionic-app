@@ -8,8 +8,7 @@ import {
     EventEmitter,
     Output,
 } from '@angular/core';
-import { IndexControl } from '@core';
-import { FileObj } from '@core/model';
+import { IndexControl, FileInfo } from '@core';
 import { PreviewPicturePage } from './preview-picture/preview-picture';
 
 @Component({
@@ -30,7 +29,7 @@ export class SelectPicturePage extends IndexControl
     allowDelete = true; // 是否允许删除
 
     @Input()
-    fileObjList: FileObj[] = []; // 图片列表,与fileObjListChange形成双向数据绑定
+    fileObjList: FileInfo[] = []; // 图片列表,与fileObjListChange形成双向数据绑定
     @Output()
     fileObjListChange = new EventEmitter<any>();
 
@@ -108,7 +107,7 @@ export class SelectPicturePage extends IndexControl
         // 照片预览
         const picturePaths = [];
         for (const fileObj of this.fileObjList) {
-            picturePaths.push(fileObj.origPath);
+            picturePaths.push(fileObj.originFileObj);
         }
         this.modalSrv.create(PreviewPicturePage, {
             initialSlide: index,
@@ -117,7 +116,7 @@ export class SelectPicturePage extends IndexControl
     }
 
     private getPictureSuccess(img) {
-        const fileObj = { origPath: img, thumbPath: img };
+        const fileObj = { originFileObj: img, thumbUrl: img };
         this.fileObjList.push(fileObj);
         this.fileObjListChange.emit(this.fileObjList);
     }

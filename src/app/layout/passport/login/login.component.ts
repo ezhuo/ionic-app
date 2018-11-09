@@ -6,9 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { FormGroup, Validators, NgForm } from '@angular/forms';
-
-import { IndexControl } from '@core';
-import { UserOptions } from '@core/model/user-options';
+import { IndexControl, LoginOptions } from '@core';
 
 @Component({
     selector: 'app-passport-login',
@@ -25,7 +23,7 @@ export class UserLoginComponent extends IndexControl
     captcha$: any;
     captchaData: any = {};
     isLoading: Boolean = false;
-    login: UserOptions = { username: '', password: '' };
+    login: LoginOptions = { username: '', password: '' };
     submitted = false;
 
     constructor(protected injector: Injector) {

@@ -1,9 +1,7 @@
 import { Component, ViewEncapsulation, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { IndexControl } from '@core';
-import { UserData } from '@shared/data/user-data';
-
-import { UserOptions } from '@core/model/user-options';
+import { UserData } from '@shared';
+import { IndexControl, LoginOptions } from '@core';
 
 @Component({
     selector: 'page-signup',
@@ -12,7 +10,7 @@ import { UserOptions } from '@core/model/user-options';
     encapsulation: ViewEncapsulation.None,
 })
 export class SignupPage extends IndexControl {
-    signup: UserOptions = { username: '', password: '' };
+    signup: LoginOptions = { username: '', password: '' };
     submitted = false;
 
     constructor(protected injector: Injector) {

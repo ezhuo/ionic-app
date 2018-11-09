@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
+import { UserInfo, User } from '@core';
 import { define, appDebug } from '../config.inc';
 import * as helper from '../helpers';
 
@@ -9,16 +9,16 @@ import * as helper from '../helpers';
 })
 export class UserService {
     private __api_dt: any = null;
-    private __userInfo: any = {};
-    private __user: any = {};
+    private __userInfo: UserInfo = { id: 0 };
+    private __user: User = {};
 
     constructor() {}
 
-    getUser(): Observable<any> {
+    getUser(): Observable<UserInfo> {
         return of(this.__userInfo);
     }
 
-    set userInfo(dd: any) {
+    set userInfo(dd: UserInfo) {
         this.__userInfo = dd;
         if (dd) {
             this.__userInfo.avatar = define.userImages;
@@ -36,11 +36,11 @@ export class UserService {
         if (appDebug) console.log(this.__userInfo);
     }
 
-    get userInfo() {
+    get userInfo(): UserInfo {
         return this.__userInfo;
     }
 
-    get user() {
+    get user(): User {
         return this.__user;
     }
 

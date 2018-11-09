@@ -5,8 +5,7 @@ import {
     OnDestroy,
     Injector,
 } from '@angular/core';
-import { IndexControl } from '@core';
-import { FileObj } from '@core/model/FileObj';
+import { IndexControl, FileInfo } from '@core';
 // import { FileService } from '../../../providers/FileService';
 // import { Validators } from '../../../providers/Validators';
 // import { FormBuilder } from '@angular/forms';
@@ -19,7 +18,8 @@ import { FileObj } from '@core/model/FileObj';
     styleUrls: [`./feed-back.scss`],
     encapsulation: ViewEncapsulation.None,
 })
-export class TabsMineFeedBack extends IndexControl implements OnInit, OnDestroy {
+export class TabsMineFeedBack extends IndexControl
+    implements OnInit, OnDestroy {
     verifyMessages = {
         title: {
             errorMsg: '',
@@ -34,7 +34,7 @@ export class TabsMineFeedBack extends IndexControl implements OnInit, OnDestroy 
             maxlength: '内容最大500个字符',
         },
     };
-    fileObjList: FileObj[] = [];
+    fileObjList: FileInfo[] = [];
     form: any;
 
     constructor(protected injector: Injector) {

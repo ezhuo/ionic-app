@@ -91,7 +91,7 @@ export class TabsMineEditAvatarModal extends ModalControl
         // this.fileService.uploadByBase64(fileObj).subscribe(fileObj => {
         //     // 上传头像图片到文件服务器
         //     const avatarId = fileObj.id;
-        //     const avatarPath = fileObj.origPath;
+        //     const avatarPath = fileObj.originFileObj;
         //     this.globalData.user.avatarId = avatarId;
         //     this.globalData.user.avatarPath = avatarPath;
         //     this.viewCtrl.dismiss();

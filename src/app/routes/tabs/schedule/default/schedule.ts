@@ -7,8 +7,7 @@ import {
 import { List } from '@ionic/angular';
 import { IndexControl } from '@core';
 import { ScheduleFilterPage } from '.././schedule-filter/schedule-filter';
-import { ConferenceData } from '@shared/data/conference-data';
-import { UserData } from '@shared/data/user-data';
+import { ConferenceData, UserData } from '@shared';
 
 @Component({
     selector: 'page-schedule',
@@ -42,7 +41,7 @@ export class SchedulePage extends IndexControl {
     }
 
     // constructor --> ionViewDidLoad --> ionViewWillEnter --> ionViewDidEnter --> ionViewWillLeave --> ionViewDidLeave --> ionViewWillUnload.
-    ionViewDidLoad(){
+    ionViewDidLoad() {
         console.log('ionViewDidLoad');
     }
     ionViewWillEnter() {
@@ -50,19 +49,19 @@ export class SchedulePage extends IndexControl {
         console.log('ionViewWillEnter');
         this.updateSchedule();
     }
-    ionViewDidEnter(){
+    ionViewDidEnter() {
         console.log('ionViewDidEnter');
     }
-    ionViewWillLeave(){
+    ionViewWillLeave() {
         console.log('ionViewWillLeave');
     }
-    ionViewDidLeave(){
+    ionViewDidLeave() {
         console.log('ionViewDidLeave');
     }
-    ionViewWillUnload(){
+    ionViewWillUnload() {
         console.log('ionViewWillUnload');
     }
-    ionSelect(){
+    ionSelect() {
         console.log('ionSelect');
     }
 

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { IndexControl } from '@core';
 import { IonRouterOutlet } from '@ionic/angular';
-import { UserData } from '@shared/data/user-data';
+import { UserData } from '@shared';
 
 @Component({
     selector: 'app-root',
