@@ -11,7 +11,7 @@ import {
 import { ModalControl } from '@core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Searchbar } from '@ionic/angular';
+import { IonSearchbar } from '@ionic/angular';
 
 @Component({
     selector: 'page-search-address',
@@ -22,7 +22,7 @@ import { Searchbar } from '@ionic/angular';
 export class SearchAddress extends ModalControl
     implements OnInit, OnDestroy, AfterContentInit {
     @ViewChild('searchBar')
-    searchBar: Searchbar;
+    searchBar: IonSearchbar;
     address: any = '';
     items: any[] = [];
     historyButton = false;

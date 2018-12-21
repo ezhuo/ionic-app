@@ -19,6 +19,8 @@ export class TabsMine extends IndexControl implements OnInit, OnDestroy {
 
     constructor(protected injector: Injector) {
         super(injector);
+        super.__init__(this);
+
         // this.userInfo = this.globalData.user;
         this.ionSrv.events.subscribe('user:login', userInfo => {
             this.userInfo = userInfo;

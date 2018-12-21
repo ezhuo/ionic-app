@@ -24,11 +24,11 @@
 
             <ion-card-content>
               <ion-list>
-                <ion-item *ngFor="let session of speaker.sessions" button [href]="'app/tabs/(speakers:session/'+session.id">
+                <ion-item *ngFor="let session of speaker.sessions" button [href]="'app/tabs/speakers/session/'+session.id">
                   <h3>{{session.name}}</h3>
                 </ion-item>
 
-                <ion-item button (click)="goToSpeakerDetail(speaker)" [href]="'app/tabs/(speakers:speaker-details/'+ speaker.id">
+                <ion-item button (click)="goToSpeakerDetail(speaker)" [href]="'app/tabs/speakers/speaker-details/'+ speaker.id">
                   <h3>About {{speaker.name}}</h3>
                 </ion-item>
               </ion-list>

@@ -6,16 +6,15 @@ import { SupportPage } from './support';
 const routes: Routes = [
   {
     path: '',
-    component: SupportPage
-  }
+    component: SupportPage,
+  },
 ];
 
 export const routedComponents = [];
-
 export const entryComponents = [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SupportPageRoutingModule { }
+export class SupportPageRoutingModule {}

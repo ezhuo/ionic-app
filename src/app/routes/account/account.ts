@@ -12,7 +12,6 @@ import { UserData } from '@shared';
     selector: 'page-account',
     templateUrl: 'account.html',
     styleUrls: ['./account.scss'],
-    encapsulation: ViewEncapsulation.None,
 })
 export class AccountPage extends IndexControl implements AfterViewInit {
     username: string;

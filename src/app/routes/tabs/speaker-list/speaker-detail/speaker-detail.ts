@@ -6,13 +6,13 @@ import { IndexControl } from '@core';
     selector: 'page-speaker-detail',
     templateUrl: 'speaker-detail.html',
     styleUrls: ['./speaker-detail.scss'],
-    encapsulation: ViewEncapsulation.None,
 })
 export class SpeakerDetailPage extends IndexControl {
     speaker: any;
 
     constructor(protected injector: Injector) {
         super(injector);
+        super.__init__(this);
     }
 
     get dataProvider() {
@@ -36,6 +36,6 @@ export class SpeakerDetailPage extends IndexControl {
     }
 
     goToSessionDetail(session: any) {
-        this.navigateByUrl(`app/tabs/(schedule:session/${session.id})`);
+        this.navigateByUrl(`app/tabs/schedule/session/${session.id})`);
     }
 }

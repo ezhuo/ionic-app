@@ -7,7 +7,6 @@ import { IndexControl, LoginOptions } from '@core';
     selector: 'page-signup',
     templateUrl: 'signup.html',
     styleUrls: ['./signup.scss'],
-    encapsulation: ViewEncapsulation.None,
 })
 export class SignupPage extends IndexControl {
     signup: LoginOptions = { username: '', password: '' };
@@ -15,6 +14,7 @@ export class SignupPage extends IndexControl {
 
     constructor(protected injector: Injector) {
         super(injector);
+        super.__init__(this);
     }
 
     get userData() {

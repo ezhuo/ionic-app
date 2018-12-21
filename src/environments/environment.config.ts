@@ -39,8 +39,8 @@ export const canton: Canton = {
  *路由配置
  */
 export const router: Router = {
-    defaultRoute: '/app/tabs/(schedule:schedule)',
-    defaultUrl: '/app/tabs/(schedule:schedule)',
+    defaultRoute: '/tutorial',
+    defaultUrl: '/tutorial',
     home: '/app/home',
     admin: '/app/tabs',
 };

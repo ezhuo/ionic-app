@@ -1,52 +1,52 @@
 <ion-header>
-    <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>demo</ion-title>
-    </ion-toolbar>
+  <ion-toolbar [color]="configSrv.platformConfig.toolbarColor">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>demo</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/permission)')">
-            <ion-label>app权限演示</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/native)')">
-            <ion-label>本地能力demo</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/pagination)')">
-            <ion-label>自定义分页组件</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/customIcon)')">
-            <ion-label>自定义图标</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/echarts)')">
-            <ion-label>ECharts</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/selectPic)')">
-            <ion-label>自定义添加/预览图片组件</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/cropPic)')">
-            <ion-label>图片裁剪demo</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/pageTransition)')">
-            <ion-label>自定义过渡动画</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/cityPicker)')">
-            <ion-label>省市区级联</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/calendar)')">
-            <ion-label>日历/日期范围选择</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/fileCache)')">
-            <ion-label>测试图片缓存</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/qrCode)')">
-            <ion-label>生成二维码demo(两种方式)</ion-label>
-        </ion-item>
-        <ion-item button (click)="navigateByUrl('app/tabs/(demo:demo/alloylever)')">
-            <ion-label>开发者工具</ion-label>
-        </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/permission')">
+      <ion-label>app权限演示</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/native')">
+      <ion-label>本地能力demo</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/pagination')">
+      <ion-label>自定义分页组件</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/customIcon')">
+      <ion-label>自定义图标</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/echarts')">
+      <ion-label>ECharts</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/selectPic')">
+      <ion-label>自定义添加/预览图片组件</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/cropPic')">
+      <ion-label>图片裁剪demo</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/pageTransition')">
+      <ion-label>自定义过渡动画</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/cityPicker')">
+      <ion-label>省市区级联</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/calendar')">
+      <ion-label>日历/日期范围选择</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/fileCache')">
+      <ion-label>测试图片缓存</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/qrCode')">
+      <ion-label>生成二维码demo(两种方式)</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateByUrl('app/tabs/demo/alloylever')">
+      <ion-label>开发者工具</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

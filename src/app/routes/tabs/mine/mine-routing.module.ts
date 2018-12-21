@@ -22,82 +22,71 @@ import { PopoverPage } from './about-popover/about-popover';
 import { FileCachePage } from '@shared';
 
 export const routes: Routes = [
-    {
-        path: 'mine',
-        component: TabsMine,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/about',
-        component: TabsMineAbout,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/about/update-log',
-        component: TabsMineUpdateLog,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/about/feed-back-list',
-        component: TabsMineFeedBackList,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/about/feed-back-list',
-        component: TabsMineFeedBackList,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/setting',
-        component: TabsMineSetting,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/setting/change-password',
-        component: TabsMineChangePassword,
-        outlet: 'mine',
-    },
-
-    {
-        path: 'mine/map',
-        component: TabsMineWorkMap,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/file',
-        component: FileCachePage,
-        outlet: 'mine',
-    },
-    {
-        path: 'mine/edit',
-        component: TabsMineEdit,
-        outlet: 'mine',
-    },
+  {
+    path: '',
+    component: TabsMine,
+  },
+  {
+    path: 'about',
+    component: TabsMineAbout,
+  },
+  {
+    path: 'about/update-log',
+    component: TabsMineUpdateLog,
+  },
+  {
+    path: 'about/feed-back-list',
+    component: TabsMineFeedBackList,
+  },
+  {
+    path: 'about/feed-back-list',
+    component: TabsMineFeedBackList,
+  },
+  {
+    path: 'setting',
+    component: TabsMineSetting,
+  },
+  {
+    path: 'setting/change-password',
+    component: TabsMineChangePassword,
+  },
+  {
+    path: 'map',
+    component: TabsMineWorkMap,
+  },
+  {
+    path: 'file',
+    component: FileCachePage,
+  },
+  {
+    path: 'edit',
+    component: TabsMineEdit,
+  },
 ];
 
 export const routedComponents = [
-    TabsMine,
-    TabsMineAbout,
-    TabsMineUpdateLog,
-    TabsMineFeedBackList,
+  TabsMine,
+  TabsMineAbout,
+  TabsMineUpdateLog,
+  TabsMineFeedBackList,
 
-    TabsMineSetting,
-    TabsMineWorkMap,
-    TabsMineEdit,
+  TabsMineSetting,
+  TabsMineWorkMap,
+  TabsMineEdit,
 ];
 
 export const entryComponents = [
-    TabsMineFeedBackDetail,
-    TabsMineFeedBack,
-    TabsMineChangePassword,
+  TabsMineFeedBackDetail,
+  TabsMineFeedBack,
+  TabsMineChangePassword,
 
-    TabsMineEditModal,
-    TabsMineEditAvatarModal,
-    PopoverPage,
+  TabsMineEditModal,
+  TabsMineEditAvatarModal,
+  PopoverPage,
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class MineRoutingModule {}

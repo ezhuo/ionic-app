@@ -6,18 +6,21 @@ import { ScheduleFilterPage } from './schedule-filter/schedule-filter';
 import { SessionDetailPage } from './session-detail/session-detail';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: SchedulePage,
-    },
+  {
+    path: '',
+    component: SchedulePage,
+  },
+  {
+    path: 'session/:sessionId',
+    component: SessionDetailPage,
+  },
 ];
 
 export const routedComponents = [SchedulePage, SessionDetailPage];
-
 export const entryComponents = [ScheduleFilterPage];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class SchedulePageRoutingModule {}

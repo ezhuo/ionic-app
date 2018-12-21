@@ -22,99 +22,85 @@ import { QrcodeDemoPage } from './qrcode-demo/qrcode-demo';
 import { AllowleverDemoPage } from './allowlever-demo/allowlever-demo';
 
 export const routes: Routes = [
-    {
-        path: 'demo',
-        component: DemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/permission',
-        component: PermissionDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/native',
-        component: NativeDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/pagination',
-        component: PaginationDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/customIcon',
-        component: CustomIconDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/echarts',
-        component: EchartsDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/selectPic',
-        component: SelectPicDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/cropPic',
-        component: CropPicDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/pageTransition',
-        component: TransitionDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/cityPicker',
-        component: CityPickerDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/calendar',
-        component: CalendarDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/fileCache',
-        component: FileCacheDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/qrCode',
-        component: QrcodeDemoPage,
-        outlet: 'demo',
-    },
-    {
-        path: 'demo/alloylever',
-        component: AllowleverDemoPage,
-        outlet: 'demo',
-    },
+  {
+    path: '',
+    component: DemoPage,
+  },
+  {
+    path: 'permission',
+    component: PermissionDemoPage,
+  },
+  {
+    path: 'native',
+    component: NativeDemoPage,
+  },
+  {
+    path: 'pagination',
+    component: PaginationDemoPage,
+  },
+  {
+    path: 'customIcon',
+    component: CustomIconDemoPage,
+  },
+  {
+    path: 'echarts',
+    component: EchartsDemoPage,
+  },
+  {
+    path: 'selectPic',
+    component: SelectPicDemoPage,
+  },
+  {
+    path: 'cropPic',
+    component: CropPicDemoPage,
+  },
+  {
+    path: 'pageTransition',
+    component: TransitionDemoPage,
+  },
+  {
+    path: 'cityPicker',
+    component: CityPickerDemoPage,
+  },
+  {
+    path: 'calendar',
+    component: CalendarDemoPage,
+  },
+  {
+    path: 'fileCache',
+    component: FileCacheDemoPage,
+  },
+  {
+    path: 'qrCode',
+    component: QrcodeDemoPage,
+  },
+  {
+    path: 'alloylever',
+    component: AllowleverDemoPage,
+  },
 ];
 
 export const routedComponents = [
-    DemoPage,
-    NativeDemoPage,
-    PaginationDemoPage,
-    CustomIconDemoPage,
-    SelectPicDemoPage,
-    TransitionDemoPage,
-    CropPicDemoPage,
-    CityPickerDemoPage,
-    CalendarDemoPage,
-    FileCacheDemoPage,
-    EchartsDemoPage,
-    PermissionDemoPage,
-    QrcodeDemoPage,
-    AllowleverDemoPage,
+  DemoPage,
+  NativeDemoPage,
+  PaginationDemoPage,
+  CustomIconDemoPage,
+  SelectPicDemoPage,
+  TransitionDemoPage,
+  CropPicDemoPage,
+  CityPickerDemoPage,
+  CalendarDemoPage,
+  FileCacheDemoPage,
+  EchartsDemoPage,
+  PermissionDemoPage,
+  QrcodeDemoPage,
+  AllowleverDemoPage,
 ];
 
 export const entryComponents = [ModalScalePage, ModalFromRightPage];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class DemoRoutingModule {}

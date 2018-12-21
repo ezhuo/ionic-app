@@ -6,3 +6,5 @@ export { AuthGuard } from './auth-guard.service';
 
 export { TokenService } from './token.service';
 export { ConfigService } from './config.service';
+
+export { CheckTutorial } from './check-tutorial.service';

@@ -1,67 +1,54 @@
-import {
-    Component,
-    Injector,
-    OnInit,
-    OnDestroy,
-    ViewChild,
-    ViewEncapsulation,
-} from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 
-import { Slides } from '@ionic/angular';
+import { IonSlides } from '@ionic/angular';
 import { IndexControl } from '@core';
 
 @Component({
-    selector: 'page-tutorial',
-    templateUrl: 'tutorial.html',
-    styleUrls: ['./tutorial.scss'],
-    encapsulation: ViewEncapsulation.None,
+  selector: 'page-tutorial',
+  templateUrl: 'tutorial.html',
+  styleUrls: ['./tutorial.scss'],
 })
-export class TutorialPage extends IndexControl implements OnInit, OnDestroy {
-    showSkip = true;
+export class TutorialPage extends IndexControl implements OnInit {
+  showSkip = true;
 
-    @ViewChild('slides')
-    slides: Slides;
+  @ViewChild('slides')
+  slides: IonSlides;
 
-    constructor(protected injector: Injector) {
-        super(injector);
-    }
+  constructor(protected injector: Injector) {
+    super(injector);
+    super.__init__(this);
+  }
 
-    ngOnInit() {
-        super.ngOnInit();
-    }
+  ngOnInit() {
+    super.ngOnInit();
+  }
 
-    ngOnDestroy() {
-        super.ngOnDestroy();
-    }
+  startApp() {
+    this.route
+      .navigateByUrl('/app/tabs/schedule')
+      .then(() => this.ionSrv.storage.set('ion_did_tutorial', 'true'));
+  }
 
-    startApp() {
-        this.route
-            .navigateByUrl('/app/tabs/(schedule:schedule)')
-            .then(() => this.ionSrv.storage.set('ion_did_tutorial', 'true'));
-    }
+  onSlideChangeStart(event) {
+    event.target.isEnd().then(isEnd => {
+      this.showSkip = !isEnd;
+    });
+  }
 
-    onSlideChangeStart(event) {
-        event.target.isEnd().then(isEnd => {
-            this.showSkip = !isEnd;
-        });
-    }
+  ionViewWillEnter() {
+    super.ionViewWillEnter();
+    this.ionSrv.storage.get('ion_did_tutorial').then(res => {
+      if (res === true) {
+        this.route.navigateByUrl('/app/tabs/schedule');
+      }
+    });
 
-    // constructor --> ionViewDidLoad --> ionViewWillEnter --> ionViewDidEnter --> ionViewWillLeave --> ionViewDidLeave --> ionViewWillUnload.
+    this.ionSrv.menu.enable(false);
+  }
 
-    ionViewWillEnter() {
-        console.log('ionViewWillEnter');
-        this.ionSrv.storage.get('ion_did_tutorial').then(res => {
-            if (res) {
-                this.route.navigateByUrl('/app/tabs/(schedule:schedule)');
-            }
-        });
-
-        this.ionSrv.menu.enable(false);
-    }
-
-    ionViewDidLeave() {
-        console.log('ionViewDidLeave');
-        // enable the root left menu when leaving the tutorial page
-        this.ionSrv.menu.enable(true);
-    }
+  ionViewDidLeave() {
+    super.ionViewDidLeave();
+    // enable the root left menu when leaving the tutorial page
+    this.ionSrv.menu.enable(true);
+  }
 }
