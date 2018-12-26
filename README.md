@@ -1,6 +1,6 @@
 # ionic-app
 
-> android APP , ionic1.3.3 ，angular.js 1.5.3
+> android APP , ionic4 ，angular7
 
 ## 安装
 
