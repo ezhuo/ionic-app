@@ -8,13 +8,13 @@ import * as configInc from '../config.inc';
 
 @Injectable({
     providedIn: 'root',
-  })
+})
 export class AuthService {
     constructor(
         private http: HttpService,
         protected tokenSrv: TokenService,
         protected stateSrv: StateService,
-    ) {}
+    ) { }
 
     /**
      * @param loginData 登录

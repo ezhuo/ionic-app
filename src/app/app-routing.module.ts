@@ -45,4 +45,4 @@ export const routedComponents = [];
   providers: [AuthGuard],
   declarations: [...routedComponents],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
