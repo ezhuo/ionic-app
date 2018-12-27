@@ -2,6 +2,30 @@
 
 > android APP , ionic4 ，angular7
 
+## 环境配置
+
+### 1. JAVA环境
+```
+(1)安装JDK
+(2)新建->环境变量名"JAVA_HOME"，变量值"C:\Java\jdk1.8.0_05"（即JDK的安装路径） 
+(3)编辑->环境变量名"Path"，在原变量值的最后面加上“ ;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin ” 
+(4)新建->环境变量名“CLASSPATH”,变量值“.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar”
+```
+### 2. ANDROID SDK 环境
+```
+(1)安装SDK
+(2)新建->环境变量名"ANDROID_HOME"，变量值"D:\Android\android-sdk"
+(3)编辑->环境变量名"Path"，在原变量值的最后面加上“ ;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools ”
+```
+
+### 3. gradle 环境
+```
+(1)下载 gradle ， 解压放到相关目录
+(2)新建->环境变量名"GRADLE_HOME"，变量值"D:\Android\gradle-4.4"
+(3)新建->环境变量名"GRADLE_USER_HOME"，变量值"D:\Android\.gradle"（本地仓库位置）
+(4)编辑->环境变量名"Path"，在原变量值的最后面加上“ ;%GRADLE_HOME%\bin ”
+```
+
 ## 安装
 
 * npm i
@@ -19,7 +43,7 @@
 * ionic cordova platform rm android --save
 * git config --system core.longpaths true
 
-## 调试 1
+## 调试
 
 * ionic serve -lc
 * ionic cordova run android --device --livereload
