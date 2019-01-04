@@ -1,6 +1,43 @@
 # ionic-app
 
-> android APP , ionic4 ，angular7
+> 本APP是从 [ionic-conference-app](https://github.com/ionic-team/ionic-conference-app) fork 而来， ionic4 + angular7 的集成环境，可用于商用
+
+> 感觉好用的朋友，麻烦请您留下您的star再走，谢谢！
+
+
+## 目录说明
+
+```
+src
+├─app\@core 核心控制
+│       ├─control 基础页面类，使用者可继承
+│       ├─data 权限控制、用户、状态类
+│       ├─helpers 工具类
+│       ├─i18n 语言类
+│       ├─ionic cordova插件集成
+│       ├─model 数据定义接口
+│       ├─net http和拦截器
+│       ├─startup 初始化服务
+│       ├─utils 提醒等工具
+│
+├─app\@shared 共享模块
+│       ├─ component 共享组件
+│       ├─ directives 共享指令
+│
+├─app\layout 公共布局类
+│       ├─ passport 登录布局
+│       ├─ tabs 主tabs布局
+│
+├─app\routes 业务组件类
+│       ├─ account 账户业务
+│       ├─ support 扩展业务
+│       ├─ tabs 主业务页面
+│       ├─ tutorial 首次启动时业务介绍页
+│
+├─assets 静态资源类
+├─environments 环境配置
+├─theme 自定义样式类
+```
 
 ## 环境配置
 
@@ -26,7 +63,7 @@
 (4)编辑->环境变量名"Path"，在原变量值的最后面加上“ ;%GRADLE_HOME%\bin ”
 ```
 
-## 安装
+## 安装包
 
 * npm i
 * npm run platform
