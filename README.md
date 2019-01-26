@@ -2,7 +2,7 @@
 
 > 本APP是从 [ionic-conference-app](https://github.com/ionic-team/ionic-conference-app) fork 而来， ionic4 + angular7 的集成环境，可用于商用
 
-> 感觉好用的朋友，麻烦请您留下您的star再走，谢谢！
+> 如果能帮到您，请留下您的star再走，谢谢！
 
 
 ## 目录说明
